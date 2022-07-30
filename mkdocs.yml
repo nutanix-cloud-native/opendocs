@@ -1,0 +1,6 @@
+site_name: opendocs.nutanix.com
+theme:
+  name: material
+extra_css:
+  - stylesheets/extra.css
+  

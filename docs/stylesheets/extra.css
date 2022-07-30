@@ -1,0 +1,12 @@
+@font-face {
+  font-family: NutanixSoft,Helvetica Neue,Helvetica,Arial,sans-serif;
+  src: "...";
+}
+:root > * {
+    --md-text-font: NutanixSoft,Helvetica Neue,Helvetica,Arial,sans-serif;
+    --md-primary-fg-color:        #22272E;
+    --md-primary-fg-color--light: #ECB7B7;
+    --md-primary-fg-color--dark:  #90030C;
+    --md-accent-fg-color:         #1C6Cc6;
+  }
+  

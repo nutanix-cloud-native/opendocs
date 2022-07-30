@@ -1,4 +1,4 @@
-## Nutanix Cloud Native Open Source Documentation
+# Nutanix Cloud Native Open Source Documentation
 
 All Nutanix Cloud Native project documentation is open sourced in Markdown and transformed into HTML/CSS pages through automation.
 
