@@ -1,6 +1,6 @@
 ## Nutanix Cloud Native Open Source Documentation
 
-All Nutanix Cloud Native project documentation is sourced in Markdown and transformed into HTML/CSS and other formats through automation.
+All Nutanix Cloud Native project documentation is sourced in Markdown and transformed into HTML/CSS and other formats through MkDocs automation.
 
 The documentation published from these source files can be viewed at https://opendocs.nutanix.com.
 
