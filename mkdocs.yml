@@ -4,6 +4,7 @@ theme:
   logo: images/nutanix_x_white.png
   features:
     - content.code.annotate
+  favicon: images/favicon.png
 extra_css:
   - stylesheets/extra.css
 nav:
