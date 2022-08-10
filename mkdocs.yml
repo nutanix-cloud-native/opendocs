@@ -1,6 +1,26 @@
 site_name: opendocs.nutanix.com
 theme:
   name: material
+  logo: images/nutanix_x_white.png
+  features:
+    - content.code.annotate
 extra_css:
   - stylesheets/extra.css
-  
+nav:
+    - 'Nutanix Cloud Native': 'index.md'
+    - 'Red Hat OpenShift':
+        - 'Install':
+          - 'Agnostic': 'openshift/install/agnostic/index.md'
+          - 'IPI': 'openshift/install/ipi/index.md'
+        - 'Post Install': 'openshift/post-install/index.md'
+        - Operators:
+          - 'CSI': 'openshift/operators/csi/index.md'
+markdown_extensions:
+  - attr_list
+copyright: Copyright &copy; 2021 - 2022 Nutanix, Inc.
+extra:
+  generator: false
+repo_url: https://github.com/nutanix-cloud-native/opendocs
+repo_name: nutanix-cloud-native/opendocs
+edit_uri: ""
+
