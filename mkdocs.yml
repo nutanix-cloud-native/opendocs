@@ -20,13 +20,15 @@ nav:
           - 'Topology Discovery': 'ccm/latest/topology_discovery.md'
           - 'Custom Labeling':  'ccm/latest/custom_labeling.md'
     - 'Red Hat OpenShift':
-          - 'Install':
-            - 'Agnostic': 'openshift/install/agnostic/index.md'
-            - 'IPI': 'openshift/install/ipi/index.md'
-          - 'Post Install': 'openshift/post-install/index.md'
-          - Operators:
-            - 'CSI': 'openshift/operators/csi/index.md'
-    
+        - 'Install':
+          - 'Agnostic': 'openshift/install/agnostic/index.md'
+          - 'IPI': 'openshift/install/ipi/index.md'
+        - 'Post Install': 'openshift/post-install/index.md'
+        - Operators:
+          - 'CSI': 'openshift/operators/csi/index.md'
+    - 'Cluster API Provider: Nutanix (CAPX)':
+        - 'Latest (v0.4.0)':
+          - 'Validation Policy': 'capx/latest/validation_policy.md'
 markdown_extensions:
   - attr_list
   - admonition
