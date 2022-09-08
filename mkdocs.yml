@@ -12,6 +12,9 @@ extra_css:
   - stylesheets/extra.css
 nav:
     - 'Nutanix Cloud Native': 'index.md'
+    - 'Cluster API Provider: Nutanix (CAPX)':
+        - 'Latest (v0.4.0)':
+          - 'Validated Integrations': 'capx/latest/validated_integrations.md'
     - 'Nutanix Cloud Controller Manager (CCM)':
         - 'Latest (v0.2.0)':
           - 'Requirements': 'ccm/latest/requirements.md'
@@ -20,13 +23,12 @@ nav:
           - 'Topology Discovery': 'ccm/latest/topology_discovery.md'
           - 'Custom Labeling':  'ccm/latest/custom_labeling.md'
     - 'Red Hat OpenShift':
-          - 'Install':
-            - 'Agnostic': 'openshift/install/agnostic/index.md'
-            - 'IPI': 'openshift/install/ipi/index.md'
-          - 'Post Install': 'openshift/post-install/index.md'
-          - Operators:
-            - 'CSI': 'openshift/operators/csi/index.md'
-    
+        - 'Install':
+          - 'Agnostic': 'openshift/install/agnostic/index.md'
+          - 'IPI': 'openshift/install/ipi/index.md'
+        - 'Post Install': 'openshift/post-install/index.md'
+        - Operators:
+          - 'CSI': 'openshift/operators/csi/index.md'
 markdown_extensions:
   - attr_list
   - admonition
