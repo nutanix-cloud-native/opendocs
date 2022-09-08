@@ -1,8 +1,8 @@
-# Custom labeling
+# Custom Labeling
 
-Enabling the Nutanix CCM custom labeling feature will add additional labels to the Kubernetes nodes. See [Nutanix CCM configuration](./ccm_configuration.md) for more information on how to configure CCM to enable custom labeling.
+Enabling the Nutanix CCM custom labeling feature will add additional labels to the Kubernetes nodes. See [Nutanix CCM Configuration](./ccm_configuration.md) for more information on how to configure CCM to enable custom labeling.
 
-Following labels will be added:
+The following labels will be added:
 
 |Label                         |Description                                                      |
 |------------------------------|-----------------------------------------------------------------|

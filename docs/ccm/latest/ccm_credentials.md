@@ -2,7 +2,6 @@
 
 Nutanix CCM requires credentials to connect to Prism Central. These credentials need to be stored in a secret in following format:
 
-
 ```YAML
 ---
 apiVersion: v1

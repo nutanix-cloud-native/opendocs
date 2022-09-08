@@ -1,9 +1,6 @@
 # Requirements
 
-This section will provide an overview of following requirements for Nutanix CCM:
-
-- [Port requirements](#port-requirements)
-- [User permissions](#user-permissions)
+This section provides an overview of the requirements for Nutanix CCM:
 
 ## Port requirements
 
@@ -11,11 +8,10 @@ Nutanix CCM uses Prism Central APIs to fetch the required information for the Ku
 
 |Source            |Destination         |Protocol  |Port |Description                             |
 |------------------|--------------------|----------|-----|----------------------------------------|
-|Kubernetes nodes|Prism Central       |TCP       |9440 |Nutanix CCM communication to Prism Central|
-
+|Kubernetes nodes  |Prism Central       |TCP       |9440 |Nutanix CCM communication to Prism Central|
 
 ## User permissions
-Nutanix CCM requires a user account to consume the Prism Central APIs. Nutanix CCM will only perform read operations, hence no create, update or delete permissions are required and a `Viewer` role will suffice.
+Nutanix CCM will only perform read operations and requires a user account with an assigned `Viewer` role to consume Prism Central APIs.
 
 ### Required roles: Local user
 
@@ -24,8 +20,9 @@ Nutanix CCM requires a user account to consume the Prism Central APIs. Nutanix C
 |User Admin         |No      |
 |Prism Central Admin|No      |
 
-**Note:** If no role is assigned, the local user will only get `Viewer` permissions
+!!! note
 
+    For local users, if no role is assigned, the local user will only get `Viewer` permissions
 
 ### Required roles: Directory user
 

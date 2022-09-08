@@ -1,4 +1,4 @@
-# Nutanix CCM configuration
+# Nutanix CCM Configuration
 
 Nutanix CCM can be configured via a `JSON` formated file stored in a configmap called `nutanix-config`. This configmap is located in the same namespace as the Nutanix CCM deployment. See the `manifests/cloud-provider-nutanix-deployment.yaml` file for details on the Nutanix CCM deployment. 
 
@@ -34,7 +34,7 @@ data:
 
 ```
 
-This document will provide an overview of the supported configuration parameters.
+The table below provides an overview of the supported configuration parameters.
 
 ### Configuration parameters
 
@@ -45,12 +45,12 @@ This document will provide an overview of the supported configuration parameters
 |                    |topologyCategories|         |              |Required if topology discovery mode is `Categories`.<br>                                                                                           |
 |                    |                  |         |regionCategory|Category key defining the region of the Kubernetes node.                                                                                           |
 |                    |                  |         |zoneCategory  |Category key defining the zone of the Kubernetes node.                                                                                             |
-|enableCustomLabeling|                  |         |              |Boolean value to enable custom labeling. See [Custom Labeling](./custom_labeling.md) for more information.<br>Default value is `false`             |
-|prismCentral        |                  |         |              |Prism Central endpoint configuration                                                                                                               |
-|                    |address           |         |              |FQDN/IP of the Prism Central endpoint                                                                                                              |
-|                    |port              |         |              |Port to connect to Prism Central.<br>Default: 9440                                                                                                 |
-|                    |insecure          |         |              |Disable Prism Central certificate checking.<br>Default: false                                                                                      |
-|                    |credentialRef     |         |              |Prism Central credential configuration. See [Credentials](./ccm_credentials.md) for more information                                               |
+|enableCustomLabeling|                  |         |              |Boolean value to enable custom labeling. See [Custom Labeling](./custom_labeling.md) for more information.<br>Default: `false`                     |
+|prismCentral        |                  |         |              |Prism Central endpoint configuration.                                                                                                               |
+|                    |address           |         |              |FQDN/IP of the Prism Central endpoint.                                                                                                              |
+|                    |port              |         |              |Port to connect to Prism Central.<br>Default: `9440`                                                                                               |
+|                    |insecure          |         |              |Disable Prism Central certificate checking.<br>Defau: `false`                                                                                      |
+|                    |credentialRef     |         |              |Prism Central credential configuration. See [Credentials](./ccm_credentials.md) for more information.                                               |
 |                    |                  |kind     |              |Credential kind.<br>Allowed value: `secret`                                                                                                        |
 |                    |                  |name     |              |Name of the secret.                                                                                                                                |
-|                    |                  |namespace|              |(Optional) namespace of the Secret.                                                                                                                |
+|                    |                  |namespace|              |(Optional) Namespace of the secret.                                                                                                                |
