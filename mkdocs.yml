@@ -12,6 +12,9 @@ extra_css:
   - stylesheets/extra.css
 nav:
     - 'Nutanix Cloud Native': 'index.md'
+    - 'Cluster API Provider: Nutanix (CAPX)':
+        - 'Latest (v0.4.0)':
+          - 'Validated Integrations': 'capx/latest/validated_integrations.md'
     - 'Nutanix Cloud Controller Manager (CCM)':
         - 'Latest (v0.2.0)':
           - 'Requirements': 'ccm/latest/requirements.md'
@@ -26,9 +29,6 @@ nav:
         - 'Post Install': 'openshift/post-install/index.md'
         - Operators:
           - 'CSI': 'openshift/operators/csi/index.md'
-    - 'Cluster API Provider: Nutanix (CAPX)':
-        - 'Latest (v0.4.0)':
-          - 'Validation Policy': 'capx/latest/validation_policy.md'
 markdown_extensions:
   - attr_list
   - admonition
