@@ -20,6 +20,9 @@ nav:
           - 'Addons':
             - 'CSI Driver Installation': 'capx/latest/addons/install_csi_driver.md' 
           - 'Validated Integrations': 'capx/latest/validated_integrations.md'
+          - 'Experimental':
+            - 'Multi-PE CAPX cluster': 'capx/latest/experimental/capx_multi_pe.md'
+            - 'Autoscaler': 'capx/latest/experimental/autoscaler.md'
     - 'Nutanix Cloud Controller Manager (CCM)':
         - 'Latest (v0.2.0)':
           - 'Requirements': 'ccm/latest/requirements.md'
