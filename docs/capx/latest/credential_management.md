@@ -2,11 +2,12 @@
 Cluster API Provider Nutanix Cloud Infrastructure (CAPX) interacts with Nutanix Prism Central (PC) APIs to manage the required Kubernetes cluster infrastructure resources.
 
 PC credentials are required to authenticate to the PC APIs. CAPX currently supports two mechanisms to supply the required credentials:
-- Credentials injected in CAPX Manager
+
+- Credentials injected into the CAPX manager deployment
 - Workload cluster specific credentials
 
-## Credentials injected in CAPX Manager
-By default, credentials will be injected in the CAPX Manager when the Cluster API Provider Nutanix Cloud Infrastructure is initialized. See the [getting started guide](./getting_started.md) for more information on the initialization.
+## Credentials injected into the CAPX manager deployment
+By default, credentials will be injected into the CAPX manager deployment when CAPX is initialized. See the [getting started guide](./getting_started.md) for more information on the initialization.
 
 Upon initialization a `nutanix-creds` secret will automatically be created in the `capx-system` namespace. This secret will contain the values supplied via the `NUTANIX_USER` and `NUTANIX_PASSWORD` parameters. 
 
@@ -28,7 +29,7 @@ stringData:
 ```
 
 ## Workload cluster specific credentials
-Users can override the [credentials injected in CAPX Manager](#credentials-injected-in-capx-manager) by supplying a credential specific to a workload cluster. The credentials can be supplied by creating a secret in the same namespace as the `NutanixCluster` namespace. 
+Users can override the [credentials injected in CAPX manager deployment](#credentials-injected-in-capx-manager) by supplying a credential specific to a workload cluster. The credentials can be supplied by creating a secret in the same namespace as the `NutanixCluster` namespace. 
 
 The secret can be referenced by adding a `credentialRef` inside the `prismCentral` attribute contained in the `NutanixCluster`. 
 The secret will also be deleted when the `NutanixCluster` is deleted.

@@ -34,13 +34,6 @@ nav:
         - 'Post Install': 'openshift/post-install/index.md'
         - Operators:
           - 'CSI': 'openshift/operators/csi/index.md'
-    - 'Cluster API Provider: Nutanix (CAPX)':
-        - 'Latest (v0.4.0)':
-          - 'Getting Started': 'capx/latest/getting_started.md'
-          - 'Credential Management': 'capx/latest/credential_management.md'
-          - 'Port Requirements': 'capx/latest/port_requirements.md'
-          - 'Addons':
-            - 'CSI Driver Installation': 'capx/latest/addons/install_csi_driver.md' 
 markdown_extensions:
   - attr_list
   - admonition
