@@ -5,10 +5,28 @@ theme:
   features:
     - content.code.annotate
   favicon: images/favicon.png
+  icon:
+    admonition:
+      note: material/note
 extra_css:
   - stylesheets/extra.css
 nav:
     - 'Nutanix Cloud Native': 'index.md'
+    - 'Cluster API Provider: Nutanix (CAPX)':
+        - 'Latest (v0.4.0)':
+          - 'Getting Started': 'capx/latest/getting_started.md'
+          - 'Credential Management': 'capx/latest/credential_management.md'
+          - 'Port Requirements': 'capx/latest/port_requirements.md'
+          - 'Addons':
+            - 'CSI Driver Installation': 'capx/latest/addons/install_csi_driver.md' 
+          - 'Validated Integrations': 'capx/latest/validated_integrations.md'
+    - 'Nutanix Cloud Controller Manager (CCM)':
+        - 'Latest (v0.2.0)':
+          - 'Requirements': 'ccm/latest/requirements.md'
+          - 'Configuration': 'ccm/latest/ccm_configuration.md'
+          - 'Credentials':  'ccm/latest/ccm_credentials.md'
+          - 'Topology Discovery': 'ccm/latest/topology_discovery.md'
+          - 'Custom Labeling':  'ccm/latest/custom_labeling.md'
     - 'Red Hat OpenShift':
         - 'Install':
           - 'Agnostic': 'openshift/install/agnostic/index.md'
@@ -25,6 +43,10 @@ nav:
             - 'CSI Driver Installation': 'capx/latest/addons/install_csi_driver.md' 
 markdown_extensions:
   - attr_list
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - tables
 copyright: Copyright &copy; 2021 - 2022 Nutanix, Inc.
 extra:
   generator: false
