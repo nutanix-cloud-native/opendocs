@@ -24,19 +24,8 @@ metadata:
   name: nutanix-creds
   namespace: capx-system
 stringData:
-  credentials: |
-    [
-      {
-        "type": "basic_auth", 
-        "data": { 
-          "prismCentral":{
-            "username": "<nutanix-user>",
-            "password": "<nutanix-password>"
-          },
-          "prismElements": null
-        }
-      }
-    ]
+  NUTANIX_USER: "<nutanix-user>"
+  NUTANIX_PASSWORD: "<nutanix-password>"
 ```
 
 ## Workload cluster specific credentials
@@ -58,22 +47,11 @@ metadata:
   name: "<my-secret>"
   namespace: "<nutanixcluster-namespace>"
 stringData:
-  credentials: |
-    [
-      {
-        "type": "basic_auth", 
-        "data": { 
-          "prismCentral":{
-            "username": "<nutanix-user>",
-            "password": "<nutanix-password>"
-          },
-          "prismElements": null
-        }
-      }
-    ]
+  NUTANIX_PASSWORD: "<nutanix-password>"
+  NUTANIX_USER: "<nutanix-user>"
 ```
 
-Add a `prismCentral` and corresponding `credentialRef` to the `NutanixCluster`:
+Add `credentialRef` to the `NutanixCluster`:
 
 ```yaml
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
@@ -83,11 +61,8 @@ metadata:
   namespace: "<nutanixcluster-namespace>"
 spec:
   prismCentral:
-    ...
     credentialRef:
       name: "<my-secret>"
       kind: Secret
 ...
 ```
-
-See the [NutanixCluster](./types/nutanix_cluster.md) documentation for all supported configuration parameters for the `prismCentral` and `credentialRef` attribute.
