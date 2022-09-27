@@ -10,7 +10,7 @@ For more information on the port requirements for CAPX, visit [Port Requirements
 ## Production Workflow
 
 ### Build OS image for NutanixMachineTemplate resource
-To build an OS image for NutanixMachineTemplate, visit [Nutanix OS Image Builder](../tools/imagebuilder/README.md)
+To build an OS image for NutanixMachineTemplate, visit [Nutanix OS Image Builder](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/blob/main/tools/imagebuilder/README.md){target=_blank}.
 
 ### Configure and Install Cluster API Provider Nutanix Cloud Infrastructure
 To initialize Cluster API Provider Nutanix Cloud Infrastructure, `clusterctl` requires the following variables, which should be set in either `~/.cluster-api/clusterctl.yaml` or as environment variables.
