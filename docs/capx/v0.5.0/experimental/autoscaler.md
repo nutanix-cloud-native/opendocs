@@ -3,7 +3,7 @@
 !!! warning
         The scenario and features described on this page are experimental and should not be deployed in production environments.
         
-Users can use [Autoscaler in combination with Cluster API](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md){target=_blank} to automatically add machines to or remove machines from a Cluster API cluster. 
+[Autoscaler](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md){target=_blank} can be used in combination with Cluster API to automatically add or remove machines in a cluster. 
 
 Autoscaler can be used in different deployment scenarios. This page will provide an overview of multiple autoscaler deployment scenarios in combination with CAPX.
 See the [Testing](#testing) section to see how scale-up/scale-down events can be triggered to validate the autoscaler behaviour.

@@ -2,7 +2,8 @@
 
 This is a guide on getting started with Cluster API Provider Nutanix Cloud Infrastructure (CAPX). To learn more about cluster API in more depth, check out the [Cluster API book](https://cluster-api.sigs.k8s.io/){target=_blank}.
 
-For more information on how install the Nutanix CSI Driver on a CAPX cluster, visit [Nutanix CSI Driver installation with CAPX](./addons/install_csi_driver.md)
+For more information on how install the Nutanix CSI Driver on a CAPX cluster, visit [Nutanix CSI Driver installation with CAPX](./addons/install_csi_driver.md).
+
 For more information on how CAPX handles credentials, visit [Credential Management](./credential_management.md).
 
 For more information on the port requirements for CAPX, visit [Port Requirements](./port_requirements.md).
@@ -86,7 +87,7 @@ clusterctl get kubeconfig ${TEST_CLUSTER_NAME} -n ${TEST_NAMESPACE} > ${TEST_CLU
 kubectl --kubeconfig ./${TEST_CLUSTER_NAME}.kubeconfig get nodes 
 ```
 
-### Install CNI on workload cluster
+### Install CNI on workload a cluster
 
 You must deploy a Container Network Interface (CNI) based pod network add-on so that your pods can communicate with each other. Cluster DNS (CoreDNS) will not start up before a network is installed.
 

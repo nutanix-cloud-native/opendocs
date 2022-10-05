@@ -28,16 +28,16 @@ The table below provides an overview of the supported parameters of the `spec` a
 
 ### Configuration parameters
 
-| Key                                |Type  |Description                                                                |
-|------------------------------------|------|---------------------------------------------------------------------------|
-|controlPlaneEndpoint                |object|Defines the host IP and port of the CAPX Kubernetes cluster                |
-|controlPlaneEndpoint.host           |string|Host IP to be assigned to the CAPX Kubernetes cluster                      |
-|controlPlaneEndpoint.port           |int   |Port of the CAPX Kubernetes cluster. Default: `6443`                       |
-|prismCentral                        |object|(Optional) Prism Central endpoint definition                               |
-|prismCentral.address                |string|IP/FQDN of Prism Central                                                   |
-|prismCentral.port                   |int   |Port of Prism Central. Default: `9440`                                     |
-|prismCentral.insecure               |bool  |Disable Prism Central certificate checking. Default: `false`               |
-|prismCentral.credentialRef          |object|Reference to the credentials used to connect to Prism Central              |
-|prismCentral.credentialRef.kind     |string|Kind of the credentialRef. Allowed value: `Secret`                         |
-|prismCentral.credentialRef.name     |string|Name of the secret containing the Prism Central credentials                |
-|prismCentral.credentialRef.namespace|string|(Optional) Namespace of the secret containing the Prism Central credentials|
+| Key                                |Type  |Description                                                                 |
+|------------------------------------|------|----------------------------------------------------------------------------|
+|controlPlaneEndpoint                |object|Defines the host IP and port of the CAPX Kubernetes cluster.                |
+|controlPlaneEndpoint.host           |string|Host IP to be assigned to the CAPX Kubernetes cluster.                      |
+|controlPlaneEndpoint.port           |int   |Port of the CAPX Kubernetes cluster. Default: `6443`                        |
+|prismCentral                        |object|(Optional) Prism Central endpoint definition.                               |
+|prismCentral.address                |string|IP/FQDN of Prism Central.                                                   |
+|prismCentral.port                   |int   |Port of Prism Central. Default: `9440`                                      |
+|prismCentral.insecure               |bool  |Disable Prism Central certificate checking. Default: `false`                |
+|prismCentral.credentialRef          |object|Reference to credentials used for Prism Central connection.                 |
+|prismCentral.credentialRef.kind     |string|Kind of the credentialRef. Allowed value: `Secret`                          |
+|prismCentral.credentialRef.name     |string|Name of the secret containing the Prism Central credentials.                |
+|prismCentral.credentialRef.namespace|string|(Optional) Namespace of the secret containing the Prism Central credentials.|
