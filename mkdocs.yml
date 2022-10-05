@@ -13,9 +13,14 @@ extra_css:
 nav:
   - "Nutanix Cloud Native": "index.md"
   - "Cluster API Provider: Nutanix (CAPX)":
-      - "Latest (v0.5.0)":
+      - "v1.0.0 (Latest)":
           - "Getting Started": "capx/latest/getting_started.md"
+          - "Types":
+              - "NutanixCluster": "capx/latest/types/nutanix_cluster.md"
+              - "NutanixMachineTemplate": "capx/latest/types/nutanix_machine_template.md"
           - "Credential Management": "capx/latest/credential_management.md"
+          - "Tasks":
+              - "Modifying Machine Configuration": "capx/latest/tasks/modify_machine_configuration.md"
           - "Port Requirements": "capx/latest/port_requirements.md"
           - "Addons":
               - "CSI Driver Installation": "capx/latest/addons/install_csi_driver.md"
@@ -24,6 +29,22 @@ nav:
               - "Multi-PE CAPX cluster": "capx/latest/experimental/capx_multi_pe.md"
               - "Autoscaler": "capx/latest/experimental/autoscaler.md"
           - "Troubleshooting": "capx/latest/troubleshooting.md"
+      - "v0.5.0":
+          - "Getting Started": "capx/v0.5.0/getting_started.md"
+          - "Types":
+              - "NutanixCluster": "capx/v0.5.0/types/nutanix_cluster.md"
+              - "NutanixMachineTemplate": "capx/v0.5.0/types/nutanix_machine_template.md"
+          - "Credential Management": "capx/v0.5.0/credential_management.md"
+          - "Tasks":
+              - "Modifying Machine Configuration": "capx/v0.5.0/tasks/modify_machine_configuration.md"
+          - "Port Requirements": "capx/v0.5.0/port_requirements.md"
+          - "Addons":
+              - "CSI Driver Installation": "capx/v0.5.0/addons/install_csi_driver.md"
+          - "Validated Integrations": "capx/v0.5.0/validated_integrations.md"
+          - "Experimental":
+              - "Multi-PE CAPX cluster": "capx/v0.5.0/experimental/capx_multi_pe.md"
+              - "Autoscaler": "capx/v0.5.0/experimental/autoscaler.md"
+          - "Troubleshooting": "capx/v0.5.0/troubleshooting.md"
   - "Nutanix Cloud Controller Manager (CCM)":
       - "Latest (v0.2.0)":
           - "Requirements": "ccm/latest/requirements.md"
