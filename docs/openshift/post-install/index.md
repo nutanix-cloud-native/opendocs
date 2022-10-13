@@ -18,11 +18,11 @@ Based on requirements, choose one of the following options:
         provisioner: csi.nutanix.com
         parameters:
             csi.storage.k8s.io/provisioner-secret-name: ntnx-secret
-            csi.storage.k8s.io/provisioner-secret-namespace: ntnx-system
+            csi.storage.k8s.io/provisioner-secret-namespace: openshift-cluster-csi-drivers
             csi.storage.k8s.io/node-publish-secret-name: ntnx-secret
-            csi.storage.k8s.io/node-publish-secret-namespace: ntnx-system
+            csi.storage.k8s.io/node-publish-secret-namespace: openshift-cluster-csi-drivers
             csi.storage.k8s.io/controller-expand-secret-name: ntnx-secret
-            csi.storage.k8s.io/controller-expand-secret-namespace: ntnx-system
+            csi.storage.k8s.io/controller-expand-secret-namespace: openshift-cluster-csi-drivers
             csi.storage.k8s.io/fstype: ext4
             dataServiceEndPoint: 10.0.0.15:3260
             storageContainer: default-container
@@ -96,7 +96,7 @@ Based on requirements, choose one of the following options:
             nfsServerName: nfs01
             #nfsServerName above is File Server Name in Prism without DNS suffix, not the FQDN.
             csi.storage.k8s.io/provisioner-secret-name: ntnx-secret
-            csi.storage.k8s.io/provisioner-secret-namespace: ntnx-system
+            csi.storage.k8s.io/provisioner-secret-namespace: openshift-cluster-csi-drivers
         storageType: NutanixFiles
 
 2. Create a PVC yaml file like the below example and apply in the openshift-image-registry namespace (`oc -n openshift-image-registry apply -f <filename>`).

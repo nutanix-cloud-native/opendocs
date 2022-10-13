@@ -23,7 +23,7 @@ With Nutanix CSI Provider you can:
 
         <image src=images/operatorhub-csi.png>
 
-    2. Install the Operator by creating a new "ntnx-system" namespace and selecting defaults.
+    2. Install the Operator by using the "openshift-cluster-csi-drivers" namespace and selecting defaults.
 
 ### Installing the CSI Driver using the Operator
 
@@ -37,13 +37,13 @@ With Nutanix CSI Provider you can:
 
 In order to use this driver, create the relevant storage classes and secrets using the OpenShift CLI, by followinig the below section:
 
-1. Create a secret yaml file like the below example and apply (`oc -n ntnx-system apply -f <filename>`).
+1. Create a secret yaml file like the below example and apply (`oc -n openshift-cluster-csi-drivers apply -f <filename>`).
 
         apiVersion: v1
         kind: Secret
         metadata:
           name: ntnx-secret
-          namespace: ntnx-system
+          namespace: openshift-cluster-csi-drivers
         stringData:
           # prism-element-ip:prism-port:admin:password
           key: 10.0.0.14:9440:admin:password
@@ -57,11 +57,11 @@ In order to use this driver, create the relevant storage classes and secrets usi
         provisioner: csi.nutanix.com
         parameters:
           csi.storage.k8s.io/provisioner-secret-name: ntnx-secret
-          csi.storage.k8s.io/provisioner-secret-namespace: ntnx-system
+          csi.storage.k8s.io/provisioner-secret-namespace: openshift-cluster-csi-drivers
           csi.storage.k8s.io/node-publish-secret-name: ntnx-secret
-          csi.storage.k8s.io/node-publish-secret-namespace: ntnx-system
+          csi.storage.k8s.io/node-publish-secret-namespace: openshift-cluster-csi-drivers
           csi.storage.k8s.io/controller-expand-secret-name: ntnx-secret
-          csi.storage.k8s.io/controller-expand-secret-namespace: ntnx-system
+          csi.storage.k8s.io/controller-expand-secret-namespace: openshift-cluster-csi-drivers
           csi.storage.k8s.io/fstype: ext4
           dataServiceEndPoint: 10.0.0.15:3260
           storageContainer: default-container
