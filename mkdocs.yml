@@ -13,7 +13,7 @@ extra_css:
 nav:
   - "Nutanix Cloud Native": "index.md"
   - "Cluster API Provider: Nutanix (CAPX)":
-      - "v0.5.2 (Latest)":
+      - "v1.0.0 (Latest)":
           - "Getting Started": "capx/latest/getting_started.md"
           - "Types":
               - "NutanixCluster": "capx/latest/types/nutanix_cluster.md"
