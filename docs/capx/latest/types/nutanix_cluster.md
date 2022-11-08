@@ -41,3 +41,6 @@ The table below provides an overview of the supported parameters of the `spec` a
 |prismCentral.credentialRef.kind     |string|Kind of the credentialRef. Allowed value: `Secret`                          |
 |prismCentral.credentialRef.name     |string|Name of the secret containing the Prism Central credentials.                |
 |prismCentral.credentialRef.namespace|string|(Optional) Namespace of the secret containing the Prism Central credentials.|
+
+!!! note
+    To prevent duplicate IP assignments, it is required to assign an IP-address to the `controlPlaneEndpoint.host` variable that is not part of the Nutanix IPAM or DHCP range assigned to the subnet of the CAPX cluster.

@@ -60,6 +60,9 @@ Optional Variables:
   - WORKER_MACHINE_COUNT             (defaults to 0)
 ```
 
+!!! note
+    To prevent duplicate IP assignments, it is required to assign an IP-address to the `CONTROL_PLANE_ENDPOINT_IP` variable that is not part of the Nutanix IPAM or DHCP range assigned to the subnet of the CAPX cluster.
+
 Now you can instantiate Cluster API with the following:
 ```
 clusterctl init -i nutanix
