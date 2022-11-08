@@ -119,6 +119,10 @@ This setting allows control plane load balancing using IPVS. See
 This setting enables a service of type LoadBalancer. See
 [Kubernetes Service Load Balancing documentation](https://kube-vip.chipzoller.dev/docs/about/architecture/#kubernetes-service-load-balancing){target=_blank} for further information.
 
+- `KUBEVIP_SVC_ELECTION`
+
+This setting enables Load Balancing of Load Balancers. See [Load Balancing Load Balancers](https://kube-vip.io/docs/usage/kubernetes-services/#load-balancing-load-balancers-when-using-arp-mode-yes-you-read-that-correctly-kube-vip-v050){target=_blank} for further information.
+
 ### Delete a workload cluster
 To remove a workload cluster from your management cluster, remove the cluster object and the provider will clean-up all resources. 
 
