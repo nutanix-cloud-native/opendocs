@@ -13,7 +13,7 @@ extra_css:
 nav:
   - "Nutanix Cloud Native": "index.md"
   - "Cluster API Provider: Nutanix (CAPX)":
-      - "v1.0.0 (Latest)":
+      - "v1.0.x (Latest)":
           - "Getting Started": "capx/latest/getting_started.md"
           - "Types":
               - "NutanixCluster": "capx/latest/types/nutanix_cluster.md"
@@ -29,7 +29,7 @@ nav:
               - "Multi-PE CAPX cluster": "capx/latest/experimental/capx_multi_pe.md"
               - "Autoscaler": "capx/latest/experimental/autoscaler.md"
           - "Troubleshooting": "capx/latest/troubleshooting.md"
-      - "v0.5.0-1":
+      - "v0.5.x":
           - "Getting Started": "capx/v0.5.0/getting_started.md"
           - "Types":
               - "NutanixCluster": "capx/v0.5.0/types/nutanix_cluster.md"

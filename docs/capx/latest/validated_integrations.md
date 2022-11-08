@@ -29,8 +29,8 @@ Nutanix follows the version validation policies below:
 ### Cluster-API
 | CAPX   | CAPI v1.1.4+ | CAPI v1.2.x |
 |--------|--------------|-------------|
-| v1.0.0 | Yes          | Yes         |
-| v0.5.0 | Yes          | Yes         |
+| v1.0.x | Yes          | Yes         |
+| v0.5.x | Yes          | Yes         |
 
 See the [Validated Kubernetes Versions](https://cluster-api.sigs.k8s.io/reference/versions.html?highlight=version#validated-kubernetes-versions){target=_blank} page for more information on CAPI validated versions.
 
@@ -38,13 +38,13 @@ See the [Validated Kubernetes Versions](https://cluster-api.sigs.k8s.io/referenc
 
 | CAPX   | 5.20.4.5 (LTS) | 6.1.1.5 (STS) |
 |--------|----------------|---------------|
-| v1.0.0 | Yes            | Yes           |
-| v0.5.0 | Yes            | Yes           |
+| v1.0.x | Yes            | Yes           |
+| v0.5.x | Yes            | Yes           |
 
 
 ### Prism Central
 
 | CAPX   | 2022.1.0.2 | pc.2022.6 |
 |--------|------------|-----------|
-| v1.0.0 | Yes        | Yes       |
-| v0.5.0 | Yes        | Yes       |
+| v1.0.x | Yes        | Yes       |
+| v0.5.x | Yes        | Yes       |
