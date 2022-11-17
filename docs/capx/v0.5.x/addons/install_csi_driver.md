@@ -38,6 +38,8 @@ spec:
 ```
 ## Install the Nutanix CSI Driver with Helm
 
+A recent [Helm](https://helm.sh){target=_blank} version is needed (tested with Helm v3.10.1).
+
 The example below must be applied on a ready workload cluster. The workload cluster's kubeconfig can be retrieved and used to connect with the following command:
 
 ```shell
@@ -57,7 +59,7 @@ helm repo add nutanix https://nutanix.github.io/helm/
 helm repo update
 
 # Install the nutanix-csi-snapshot chart
-helm install nutanix-csi-snapshot nutanix/nutanix-csi-snapshot -n ntnx-system --create-namespace
+helm install nutanix-csi-snapshot nutanix/nutanix-csi-snapshot -n ntnx-system --create-namespace --set createSecret=false
 
 # Install the nutanix-csi-storage chart
 helm install nutanix-storage nutanix/nutanix-csi-storage -n ntnx-system 
@@ -138,7 +140,7 @@ spec:
     name: nutanix-csi-crs
 ```
 
-The `clusterSelector` field controls how Cluster API will match this `ClusterResourceSet` on one or more workload clusters. In the example scenario, the `matchLabels` approach is being used where the `ClusterResourceSet` will be applied to all workload clusters having the `csi: nutanix` label present. If the label isn’t present, the `ClusterResourceSet` won’t apply to that workload cluster.
+The `clusterSelector` field controls how Cluster API will match this `ClusterResourceSet` on one or more workload clusters. In the example scenario, the `matchLabels` approach is being used where the `ClusterResourceSet` will be applied to all workload clusters having the `csi: nutanix` label present. If the label isn't present, the `ClusterResourceSet` won't apply to that workload cluster.
 
 The `resources` field references the `ConfigMap` created above, which contains the manifests for installing the Nutanix CSI driver.
 
