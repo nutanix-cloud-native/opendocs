@@ -59,10 +59,10 @@ helm repo add nutanix https://nutanix.github.io/helm/
 helm repo update
 
 # Install the nutanix-csi-snapshot chart
-helm install nutanix-csi-snapshot nutanix/nutanix-csi-snapshot -n ntnx-system --create-namespace --set createSecret=false
+helm install nutanix-csi-snapshot nutanix/nutanix-csi-snapshot -n ntnx-system --create-namespace
 
 # Install the nutanix-csi-storage chart
-helm install nutanix-storage nutanix/nutanix-csi-storage -n ntnx-system 
+helm install nutanix-storage nutanix/nutanix-csi-storage -n ntnx-system  --set createSecret=false
 ```
 
 !!! warning
