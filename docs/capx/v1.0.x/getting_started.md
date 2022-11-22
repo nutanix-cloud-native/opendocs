@@ -115,12 +115,12 @@ You can tweak kube-vip settings by using the following properties:
 - `KUBEVIP_LB_ENABLE`
 
 This setting allows control plane load balancing using IPVS. See
-[Control Plane Load-Balancing documentation](https://kube-vip.chipzoller.dev/docs/about/architecture/#control-plane-load-balancing){target=_blank} for further information.
+[Control Plane Load-Balancing documentation](https://kube-vip.io/docs/about/architecture/#control-plane-load-balancing){target=_blank} for further information.
 
 - `KUBEVIP_SVC_ENABLE` 
 
 This setting enables a service of type LoadBalancer. See
-[Kubernetes Service Load Balancing documentation](https://kube-vip.chipzoller.dev/docs/about/architecture/#kubernetes-service-load-balancing){target=_blank} for further information.
+[Kubernetes Service Load Balancing documentation](https://kube-vip.io/docs/about/architecture/#kubernetes-service-load-balancing){target=_blank} for further information.
 
 - `KUBEVIP_SVC_ELECTION`
 
