@@ -16,9 +16,9 @@ To build an OS image for NutanixMachineTemplate, visit [Nutanix OS Image Builder
 ### Configure and Install Cluster API Provider Nutanix Cloud Infrastructure
 To initialize Cluster API Provider Nutanix Cloud Infrastructure, `clusterctl` requires the following variables, which should be set in either `~/.cluster-api/clusterctl.yaml` or as environment variables.
 ```
-NUTANIX_ENDPOINT: ""
-NUTANIX_USER: ""
-NUTANIX_PASSWORD: ""
+NUTANIX_ENDPOINT: ""    # IP or FQDN of Prism Central
+NUTANIX_USER: ""        # Prism Central user
+NUTANIX_PASSWORD: ""    # Prism Central password
 NUTANIX_INSECURE: false # or true
 
 KUBERNETES_VERSION: "v1.22.9"
@@ -114,12 +114,13 @@ You can tweak kube-vip settings by using the following properties:
 - `KUBEVIP_LB_ENABLE`
 
 This setting allows control plane load balancing using IPVS. See
-[Control Plane Load-Balancing documentation](https://kube-vip.chipzoller.dev/docs/about/architecture/#control-plane-load-balancing){target=_blank} for further information.
+[Control Plane Load-Balancing documentation](https://kube-vip.io/docs/about/architecture/#control-plane-load-balancing){target=_blank} for further information.
 
 - `KUBEVIP_SVC_ENABLE` 
 
 This setting enables a service of type LoadBalancer. See
-[Kubernetes Service Load Balancing documentation](https://kube-vip.chipzoller.dev/docs/about/architecture/#kubernetes-service-load-balancing){target=_blank} for further information.
+[Kubernetes Service Load Balancing documentation](https://kube-vip.io/docs/about/architecture/#kubernetes-service-load-balancing){target=_blank} for further information.
+
 
 ### Delete a workload cluster
 To remove a workload cluster from your management cluster, remove the cluster object and the provider will clean-up all resources. 
