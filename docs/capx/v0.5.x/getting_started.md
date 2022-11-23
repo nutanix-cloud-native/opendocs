@@ -98,7 +98,7 @@ You must deploy a Container Network Interface (CNI) based pod network add-on so 
 
 Several external projects provide Kubernetes pod networks using CNI, some of which also support [Network Policy](https://kubernetes.io/docs/concepts/services-networking/network-policies/){target=_blank}.
 
-See a list of add-ons that implement the [Kubernetes networking model](https://kubernetes.io/docs/concepts/cluster-administration/networking/#how-to-implement-the-kubernetes-networking-model){target=_blank}. At time of writing, the most common are [Calico](https://www.tigera.io/project-calico/){target=_blank} and [Cilium](https://cilium.io){target=_blank}.
+See a list of add-ons that implement the [Kubernetes networking model](https://kubernetes.io/docs/concepts/cluster-administration/networking/#how-to-implement-the-kubernetes-network-model){target=_blank}. At time of writing, the most common are [Calico](https://www.tigera.io/project-calico/){target=_blank} and [Cilium](https://cilium.io){target=_blank}.
 
 Follow the specific install guide for your selected CNI and install only one pod network per cluster.
 

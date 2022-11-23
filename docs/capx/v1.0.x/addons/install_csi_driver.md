@@ -17,7 +17,7 @@ Kubernetes workers need the following prerequisites to use the Nutanix CSI Drive
 - iSCSI initiator package (for Volumes based block storage)
 - NFS client package (for Files based storage)
 
-These packages may already be present in the image you use with your infrastructure provider or you can also rely on your bootstrap provider to install them. More info is available in the [Prerequisites docs](https://portal.nutanix.com/page/documents/details?targetId=CSI-Volume-Driver-v2_5:csi-csi-plugin-prerequisites-r.html){target=_blank}.
+These packages may already be present in the image you use with your infrastructure provider or you can also rely on your bootstrap provider to install them. More info is available in the [Prerequisites docs](https://portal.nutanix.com/page/documents/details?targetId=CSI-Volume-Driver-v2_6:csi-csi-plugin-prerequisites-r.html){target=_blank}.
 
 The package names and installation method will also vary depending on the operating system you plan to use.
 
@@ -47,9 +47,9 @@ clusterctl get kubeconfig $CLUSTER_NAME -n $CLUSTER_NAMESPACE > $CLUSTER_NAME-KU
 export KUBECONFIG=$(pwd)/$CLUSTER_NAME-KUBECONFIG
 ```
 
-Once connected to the cluster, first follow the [CSI documentation](https://portal.nutanix.com/page/documents/details?targetId=CSI-Volume-Driver-v2_5:csi-csi-driver-install-t.html){target=_blank}. 
+Once connected to the cluster, follow the [CSI documentation](https://portal.nutanix.com/page/documents/details?targetId=CSI-Volume-Driver-v2_6:csi-csi-driver-install-t.html){target=_blank}. 
 
-Next, install the [nutanix-csi-snapshot](https://github.com/nutanix/helm/tree/master/charts/nutanix-csi-snapshot){target=_blank} chart followed by the [nutanix-csi-storage](https://github.com/nutanix/helm/tree/master/charts/nutanix-csi-storage){target=_blank} chart.
+First, install the [nutanix-csi-snapshot](https://github.com/nutanix/helm/tree/master/charts/nutanix-csi-snapshot){target=_blank} chart followed by the [nutanix-csi-storage](https://github.com/nutanix/helm/tree/master/charts/nutanix-csi-storage){target=_blank} chart.
 
 See an example below:
 
@@ -62,7 +62,7 @@ helm repo update
 helm install nutanix-csi-snapshot nutanix/nutanix-csi-snapshot -n ntnx-system --create-namespace
 
 # Install the nutanix-csi-storage chart
-helm install nutanix-storage nutanix/nutanix-csi-storage -n ntnx-system  --set createSecret=false
+helm install nutanix-storage nutanix/nutanix-csi-storage -n ntnx-system --set createSecret=false
 ```
 
 !!! warning
@@ -212,4 +212,4 @@ After the driver is installed, it must be configured for use by minimally defini
 
 This can be done manually in the workload clusters or by using a `ClusterResourceSet` in the management cluster as explained above.
 
-See the Managing Storage section of [CSI Driver documentation](https://portal.nutanix.com/page/documents/details?targetId=CSI-Volume-Driver-v2_5:csi-csi-plugin-storage-c.html){target=_blank} on the Nutanix Portal for more configuration information. 
+See the Official [CSI Driver documentation](https://portal.nutanix.com/page/documents/details?targetId=CSI-Volume-Driver-v2_6:CSI-Volume-Driver-v2_6){target=_blank} on the Nutanix Portal for more configuration information. 

@@ -3,6 +3,7 @@ theme:
   name: material
   logo: images/nutanix_x_white.png
   features:
+    - navigation.instant
     - content.code.annotate
   favicon: images/favicon.png
   icon:

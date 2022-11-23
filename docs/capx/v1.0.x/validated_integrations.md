@@ -32,7 +32,7 @@ Nutanix follows the version validation policies below:
 | v1.0.x | Yes          | Yes         |
 | v0.5.x | Yes          | Yes         |
 
-See the [Validated Kubernetes Versions](https://cluster-api.sigs.k8s.io/reference/versions.html?highlight=version#validated-kubernetes-versions){target=_blank} page for more information on CAPI validated versions.
+See the [Validated Kubernetes Versions](https://cluster-api.sigs.k8s.io/reference/versions.html?highlight=version#supported-kubernetes-versions){target=_blank} page for more information on CAPI validated versions.
 
 ### AOS
 
