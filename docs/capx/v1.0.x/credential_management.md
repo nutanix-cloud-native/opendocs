@@ -40,7 +40,7 @@ stringData:
 ```
 
 ## Workload cluster specific credentials
-Users can override the [credentials injected in CAPX manager deployment](#credentials-injected-in-capx-manager) by supplying a credential specific to a workload cluster. The credentials can be supplied by creating a secret in the same namespace as the `NutanixCluster` namespace. 
+Users can override the [credentials injected in CAPX manager deployment](#credentials-injected-into-the-capx-manager-deployment) by supplying a credential specific to a workload cluster. The credentials can be supplied by creating a secret in the same namespace as the `NutanixCluster` namespace. 
 
 The secret can be referenced by adding a `credentialRef` inside the `prismCentral` attribute contained in the `NutanixCluster`. 
 The secret will also be deleted when the `NutanixCluster` is deleted.

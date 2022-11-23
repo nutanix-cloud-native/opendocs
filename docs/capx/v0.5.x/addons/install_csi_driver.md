@@ -1,6 +1,6 @@
 # Nutanix CSI Driver installation with CAPX
 
-The Nutanix CSI driver is fully supported on CAPI/CAPX deployed clusters where all the nodes meet the [Nutanix CSI driver prerequisites](#capi-workload-cluster-prerequisites-for-nutanix-csi-driver).
+The Nutanix CSI driver is fully supported on CAPI/CAPX deployed clusters where all the nodes meet the [Nutanix CSI driver prerequisites](#capi-workload-cluster-prerequisites-for-the-nutanix-csi-driver).
 
 There are three methods to install the Nutanix CSI driver on a CAPI/CAPX cluster:
 
@@ -174,8 +174,8 @@ The CAPX provider can utilize a flavor to automatically deploy the Nutanix CSI u
 
 The following requirements must be met:
 
-- The operating system must meet the [Nutanix CSI OS prerequisites](#capi-workload-cluster-prerequisites-for-nutanix-csi-driver).
-- The Management cluster must be installed with the [`CLUSTER_RESOURCE_SET` feature gate](#enabling-clusterresourceset-feature).
+- The operating system must meet the [Nutanix CSI OS prerequisites](#capi-workload-cluster-prerequisites-for-the-nutanix-csi-driver).
+- The Management cluster must be installed with the [`CLUSTER_RESOURCE_SET` feature gate](#enabling-the-clusterresourceset-feature).
 
 ### Installation
 
