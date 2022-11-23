@@ -7,13 +7,13 @@ CAPX uses the ports documented below to create workload clusters.
 
 ## Management cluster
 
-|Source            |Destination         |Protocol  |Port |Description                                                                                 |
-|------------------|--------------------|----------|-----|--------------------------------------------------------------------------------------------|
-|Management cluster|External Registries |TCP       |443  |Pull container images from [CAPX public registries](#public-registries-used-when-using-capx)|
-|Management cluster|Prism Central       |TCP       |9440 |Management cluster communication to Prism Central                                           |
+| Source             | Destination         | Protocol | Port | Description                                                                                      |
+|--------------------|---------------------|----------|------|--------------------------------------------------------------------------------------------------|
+| Management cluster | External Registries | TCP      | 443  | Pull container images from [CAPX public registries](#public-registries-utilized-when-using-capx) |
+| Management cluster | Prism Central       | TCP      | 9440 | Management cluster communication to Prism Central                                                |
 
 ## Public registries utilized when using CAPX
 
-|Registry name|
-|-------------|
-|ghcr.io      |
+| Registry name |
+|---------------|
+| ghcr.io       |
