@@ -22,7 +22,7 @@ To configure an additional trust bundle, the `NUTANIX_ADDITIONAL_TRUST_BUNDLE` e
 
 It is also possible to configure the additional trust bundle manually by creating a custom `cluster-template`. See the [Configuring the additional trust bundle manually](#configuring-the-additional-trust-bundle-manually)  section for more information
 
-The `NUTANIX_ADDITIONAL_TRUST_BUNDLE` environment can be set when initializing the CAPX provider or when creating a workload cluster. If the `NUTANIX_ADDITIONAL_TRUST_BUNDLE` is configured when the CAPX provider is initialized, the additional trust bundle will be used for every CAPX workload cluster. If it only is configured when creating a workload cluster, it will only be applicable for that specific workload cluster.
+The `NUTANIX_ADDITIONAL_TRUST_BUNDLE` environment variable can be set when initializing the CAPX provider or when creating a workload cluster. If the `NUTANIX_ADDITIONAL_TRUST_BUNDLE` is configured when the CAPX provider is initialized, the additional trust bundle will be used for every CAPX workload cluster. If it is only configured when creating a workload cluster, it will only be applicable for that specific workload cluster.
 
 
 ### Configuring the trust bundle environment variable
@@ -52,8 +52,8 @@ $ export NUTANIX_ADDITIONAL_TRUST_BUNDLE="<base64 string>"
 
 To configure the additional trust bundle manually without using the `NUTANIX_ADDITIONAL_TRUST_BUNDLE` environment variable present in the default `cluster-template` files, it is required to:
 
-- Create a `ConfigMap` containing the additional trust bundle
-- Configure the `prismCentral.additionalTrustBundle` object in the `NutanixCluster` spec
+- Create a `ConfigMap` containing the additional trust bundle.
+- Configure the `prismCentral.additionalTrustBundle` object in the `NutanixCluster` spec.
 
 #### Creating the additional trust bundle ConfigMap
 
@@ -114,7 +114,7 @@ spec:
 ```
 
 !!! note
-    the default value of `prismCentral.insecure` attribute is `false`. Hence it can be omitted when an additional trust bundle is configured. 
+    the default value of `prismCentral.insecure` attribute is `false`. It can be omitted when an additional trust bundle is configured. 
     
     If `prismCentral.insecure` attribute is set to `true`, all certificate verification will be disabled. 
 
@@ -125,9 +125,9 @@ spec:
     Disabling certificate verification is not recommended for production purposes and should only be used for testing.
 
 
-Certificate verification be disabled by setting the `prismCentral.insecure` attribute to `true` in the `NutanixCluster` spec. Certificate verification will be disabled even if an additional trust bundle is configured and the `prismCentral.insecure` attribute is set to `true`. 
+Certificate verification can be disabled by setting the `prismCentral.insecure` attribute to `true` in the `NutanixCluster` spec. Certificate verification will be disabled even if an additional trust bundle is configured. 
 
-Example of how to disable certificate verification:
+Disabled certificate verification example:
 
 ```YAML
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
