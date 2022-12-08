@@ -90,7 +90,7 @@ When the additional trust bundle `ConfigMap` is created, it needs to be referenc
     Disabling certificate verification is not recommended for production purposes and should only be used for testing.
 
 
-Certificate verification be disabled by setting the `prismCentral.insecure` attribute to `true` in the `nutanix-config` `ConfigMap`. Certificate verification will be disabled even if an additional trust bundle is configured and the `prismCentral.insecure` attribute is set to `true`. 
+Certificate verification can be disabled by setting the `prismCentral.insecure` attribute to `true` in the `nutanix-config` `ConfigMap`. Certificate verification will be disabled even if an additional trust bundle is configured and the `prismCentral.insecure` attribute is set to `true`. 
 
 Example of how to disable certificate verification:
 
