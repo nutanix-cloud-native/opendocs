@@ -43,6 +43,9 @@ Use a `base64` tool to encode these contents in base64. The command below will p
 $ cat cert.crt | base64
 <base64 string>
 ```
+!!! note
+    Make sure the `base64` string does not contain any newlines (`\n`). If the output string contains newlines, remove them manually or check the manual of the `base64` tool on how to generate a `base64` string without newlines. 
+
 Use the `base64` string as value for the `NUTANIX_ADDITIONAL_TRUST_BUNDLE` environment variable.
 ```
 $ export NUTANIX_ADDITIONAL_TRUST_BUNDLE="<base64 string>"
