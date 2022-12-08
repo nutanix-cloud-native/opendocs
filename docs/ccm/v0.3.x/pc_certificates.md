@@ -80,7 +80,7 @@ When the additional trust bundle `ConfigMap` is created, it needs to be referenc
 ```
 
 !!! note
-    the default value of `prismCentral.insecure` attribute is `false`. Hence it can be omitted when an additional trust bundle is configured. 
+    The default value of `prismCentral.insecure` attribute is `false`. It can be omitted when an additional trust bundle is configured. 
     If `prismCentral.insecure` attribute is set to `true`, all certificate verification will be disabled. 
 
 
