@@ -58,12 +58,21 @@ nav:
               - "Autoscaler": "capx/v0.5.x/experimental/autoscaler.md"
           - "Troubleshooting": "capx/v0.5.x/troubleshooting.md"
   - "Nutanix Cloud Controller Manager (CCM)":
-      - "Latest (v0.2.0)":
-          - "Requirements": "ccm/latest/requirements.md"
-          - "Configuration": "ccm/latest/ccm_configuration.md"
-          - "Credentials": "ccm/latest/ccm_credentials.md"
-          - "Topology Discovery": "ccm/latest/topology_discovery.md"
-          - "Custom Labeling": "ccm/latest/custom_labeling.md"
+      - "v0.3.x (Latest)":
+          - "Overview": "ccm/v0.3.x/overview.md"
+          - "Requirements": "ccm/v0.3.x/requirements.md"
+          - "Configuration": "ccm/v0.3.x/ccm_configuration.md"
+          - "Certificate Trust":  "ccm/v0.3.x/pc_certificates.md"
+          - "Credentials": "ccm/v0.3.x/ccm_credentials.md"
+          - "Topology Discovery": "ccm/v0.3.x/topology_discovery.md"
+          - "Custom Labeling": "ccm/v0.3.x/custom_labeling.md"
+      - "v0.2.0":
+          - "Overview": "ccm/v0.2.x/overview.md"
+          - "Requirements": "ccm/v0.2.x/requirements.md"
+          - "Configuration": "ccm/v0.2.x/ccm_configuration.md"
+          - "Credentials": "ccm/v0.2.x/ccm_credentials.md"
+          - "Topology Discovery": "ccm/v0.2.x/topology_discovery.md"
+          - "Custom Labeling": "ccm/v0.2.x/custom_labeling.md"
   - "Red Hat OpenShift":
       - "Install":
           - "Agnostic": "openshift/install/agnostic/index.md"
