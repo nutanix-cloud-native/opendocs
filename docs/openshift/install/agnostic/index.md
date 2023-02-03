@@ -1,6 +1,11 @@
 # Red Hat OpenShift Container Platform Manual Installation on Nutanix AOS (AHV)
 
-**Note:** Red Hat OpenShift Container Platform versions 4.6 - 4.11 have been tested for specific compatibility on Nutanix AOS 5.20.4 and 6.1.1 with Prism Central 2022.4.
+**Note:** Red Hat OpenShift Container Platform has been tested for specific compatibility on following AOS and Prism Central versions:
+
+| Openshift | AOS                | Prism Central |
+|-----------|--------------------|---------------|
+| 4.6 - 4.11|  5.20.4+ or 6.1.1+ | 2022.4+       |   
+
 
 ## Installation Prerequisites
 
