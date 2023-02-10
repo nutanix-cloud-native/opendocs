@@ -5,3 +5,7 @@ See the [NutanixMachineTemplate](../types/nutanix_machine_template.md) documenta
 
 !!! note
     Manually modifying existing and linked `NutanixMachineTemplate` resources will not trigger a rolling update of the machines. 
+
+!!! note
+    Do not modify the virtual machine configuration of CAPX cluster nodes manually in Prism/Prism Central. 
+    CAPX will not automatically revert the configuration change but performing scale-up/scale-down/upgrade operations will override manual modifications. Only use the `Updating Infrastructure Machine` procedure referenced above to perform configuration changes.
