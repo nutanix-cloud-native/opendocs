@@ -81,6 +81,11 @@ nav:
       - "Post Install": "openshift/post-install/index.md"
       - Operators:
           - "CSI": "openshift/operators/csi/index.md"
+  - "Google Anthos":
+      - "Architecture": "anthos/architecture/index.md"
+      - "Install":
+          - "Manual": "anthos/install/manual/index.md" 
+     
 markdown_extensions:
   - attr_list
   - admonition
