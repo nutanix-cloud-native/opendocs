@@ -33,7 +33,7 @@ Once the infrastructure components are provisioned and ready for use, Assisted I
 - Access to [Red Hat Console](https://console.redhat.com/) (portal) to use Assisted Installer and install a OpenShift Kubernetes cluster, add extra OpenShift nodes (at a later time), etc.
 -   OCP Master and Worker virtual machines on Nutanix HCI platform created by the administrator
 -   Compute, networking and storage associated with the OCP Master and Worker VMs provisioned by the administrator
--   DNS and DHCP server in the environment
+-  AHV Network - configured with DNS and DHCP pool in the environment
 -   A SSH key pair for the OCP Master and Worker virtual machines
 
     <details>
@@ -201,7 +201,7 @@ Assisted Installer does the following:
 -   Upon successful installation of a OCP cluster the following will be
     provided:
     -   KUBECONFIG file for `oc` command line access
-    -   Configurable DNS entries for OCP Cluster access inside your networking environment
+    -   Configurable DNS entries for OCP Cluster access
 
 
 !!!info "About Assisted Installer"
@@ -217,7 +217,7 @@ At a high level, we will do the following to get a OCP cluster deployed using As
 
 1.  Provision OCP Cluster in Red Hat Console
 2.  Generate CD-ROM ISO URL
-3.  Provision OCP Infrastructure - Create Master and Worker VMs in your
+3.  Provision OCP Infrastructure - Create Master and Worker VMs in your Nutanix cluster
 4.  Nutanix AHV cluster using Terraform infrastructure as code
 5.  Install OCP Cluster from Red Hat Console (portal)
 
@@ -334,7 +334,7 @@ For latest resource requirements of an OpenShift cluster refer to [OpenShift por
 
         ```bash
         cluster_name        = "your cluster name" # << Change this
-        subnet_name         = "your AHV network"  # << Change this
+        subnet_name         = "your AHV network's name"  # << Change this
         user                = "admin"             # << Change this
         password            = "XXXXXXX"           # << Change this
         endpoint            = "Prism Element IP"  # << Change this
@@ -350,7 +350,7 @@ For latest resource requirements of an OpenShift cluster refer to [OpenShift por
 
         ```bash
         cluster_name        = "my-pe-cluster"          
-        subnet_name         = "Primary"
+        subnet_name         = "Primary"       
         user                = "admin"            
         password            = "mypepassword"           
         endpoint            = "10.55.64.100"          
@@ -441,7 +441,9 @@ In this section we will use Red Hat Console's Assisted Installer wizard to insta
 
 2.  Click **Next** at the bottom of the page
 
-3.  In the Networking section, assign IPs for your **API Virtual IP** and **Ingress Virtual IP** from your AHV network CIDR range 
+3.  In the Networking section, assign IPs for your **API Virtual IP** and **Ingress Virtual IP** from your AHV network CIDR range (sample IPs provided in screenshot - use your own reserved IPs)
+   
+    ![](images/ocp_ing_api_ips.png)
 
 4.  In the **Host inventory** section, choose the **Control Plane Node** for Master VMs and **Worker** nodes for Worker VMs from the drop-down menu
 
@@ -480,6 +482,9 @@ In this section we will use Red Hat Console's Assisted Installer wizard to insta
 15. Once all the user actions are sustained for Master and Worker VMs, OCP cluster will be installed
 
     ![](images/ocp_install_finish.png)
+
+    !!!tip
+           There is a potential for automation for the eject process using [Nutanix REST APIs](https://www.nutanix.dev/api-reference/). 
 
 ### Access to your OpenShift Cluster
 
