@@ -78,6 +78,7 @@ nav:
       - "Install":
           - "Agnostic": "openshift/install/agnostic/index.md"
           - "IPI": "openshift/install/ipi/index.md"
+          - "Assisted Installation (UPI)": "openshift/install/assisted/index.md"
       - "Post Install": "openshift/post-install/index.md"
       - Operators:
           - "CSI": "openshift/operators/csi/index.md"
@@ -92,6 +93,9 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
   - tables
+  - pymdownx.tabbed:
+      alternate_style: true
+      
 copyright: Copyright &copy; 2021 - 2022 Nutanix, Inc.
 extra:
   generator: false
