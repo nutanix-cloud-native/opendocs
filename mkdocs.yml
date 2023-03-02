@@ -31,6 +31,7 @@ nav:
               - "Multi-PE CAPX cluster": "capx/v1.1.x/experimental/capx_multi_pe.md"
               - "Autoscaler": "capx/v1.1.x/experimental/autoscaler.md"
               - "OIDC Integration": "capx/v1.1.x/experimental/oidc.md"
+              - "Flow VPC": "capx/v1.1.x/experimental/vpc.md"
           - "Troubleshooting": "capx/v1.1.x/troubleshooting.md"
       - "v1.0.x":
           - "Getting Started": "capx/v1.0.x/getting_started.md"
