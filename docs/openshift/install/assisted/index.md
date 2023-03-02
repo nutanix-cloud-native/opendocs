@@ -527,7 +527,7 @@ Once you have done creating DNS entries, you can access OpenShift cluster in two
 
 ## Takeaways
 
--   You can easily deploy multinode/single node OCP cluster using the Red Hat console
+-   You can easily deploy multinode/single node OCP cluster using the Assisted Installer in Red Hat console
 -   You can provision resources (VM, Storage, etc) on Nutanix using Terraform IaaC (GitOps)
     
     !!!info "Good to know"
