@@ -504,7 +504,7 @@ Once you have done creating DNS entries, you can access OpenShift cluster in two
    
     Download the kubeconfig file from the installation page of the Red Hat portal to your workstation
  
-    ```bash title="Change access mode for security"
+    ```bash title="Change kubeconfig file's access mode for security"
     chmod 400 kubeconfig
     ```
     ```bash title="Export kubeconfig to PATH"
