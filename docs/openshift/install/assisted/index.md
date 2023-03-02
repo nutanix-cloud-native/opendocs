@@ -30,6 +30,7 @@ Once the infrastructure components are provisioned and ready for use, Assisted I
   
 ## Pre-requisites for Assisted Installation
 
+- Access to [Red Hat Console](https://console.redhat.com/) (portal) to use Assisted Installer and install a OpenShift Kubernetes cluster, add extra OpenShift nodes (at a later time), etc.
 -   OCP Master and Worker virtual machines on Nutanix HCI platform created by the administrator
 -   Compute, networking and storage associated with the OCP Master and Worker VMs provisioned by the administrator
 -   DNS and DHCP server in the environment
@@ -111,7 +112,82 @@ Once the infrastructure components are provisioned and ready for use, Assisted I
     </div>
     </details>
 
--   Access to [Red Hat Console](https://console.redhat.com/) (portal) to use Assisted Installer and install a OpenShift Kubernetes cluster, add extra OpenShift nodes (at a later time), etc.
+- Add reserved static IPs to your environment's DNS server for the API and Ingress endpoints
+  
+    <details>
+    <summary>Steps to add DNS server - Windows DNS server example</summary>
+    <div>
+    <body>
+    
+    We will add PC, API and APPS Ingress DNS records for lookup by OCP IPI installer.
+
+    Your OCP cluster's name becomes a subdomain in your DNS zone ``ntnxlab.local``. All OCP cluster related lookups are located within subdomain.
+    
+    - Main domain -  ``ntnxlab.local`` (this gets created with your HPOC reservation)
+      - Sub domain - ``xyz.ntnxlab.local`` (xyz is your OCP cluster's name)
+    
+    1. Logon to your environment's Windows DNS server
+    
+    2. We will add the following entries to DNS server using the two consecutive IPs you found in the previous section
+       
+        ```buttonless
+        10.38.18.219   api.your_ocp_cluster_subdomain.ntnxlab.local
+        10.38.18.220   *.apps.your_ocp_cluster_subdomain.ntnxlab.local
+        ```
+        
+        !!!warning
+                  Use IP addresses from your Nutanix cluster's CIDR.
+              
+                  The IP addresses in the following commands are used as an example. You should use IP address details that belong to your HPOC cluster. For information on locating your cluster IP see Getting Started [Networking](../intro.md#networking) section. 
+  
+    3. Open PowerShell as Administrator and create the two A records
+       
+        === "Command template"
+ 
+            ```PowerShell title="Add the API A record - use your own subdomain"
+            Add-DnsServerResourceRecordA -Name api.<your_ocp_cluster_subdomain> -IPv4Address <your API IP> -ZoneName ntnxlab.local -ZoneScope ntnxlab.local
+            ```
+            ```PowerShell title="Add the apps Ingress A record - use your own subdomain"
+            Add-DnsServerResourceRecordA -Name *.apps.<your_ocp_cluster_subdomain> -IPv4Address <your Ingress IP> -ZoneName ntnxlab.local -ZoneScope ntnxlab.local 
+            ```
+            ```PowerShell title="Add the Prism Central A record"
+            Add-DnsServerResourceRecordA -Name pc -IPv4Address <your PC IP> -ZoneName ntnxlab.local -ZoneScope ntnxlab.local 
+            ```
+        === "Command example"
+ 
+        ```PowerShell title="Sample commands with 'xyz' as a subdomain and your OCP cluster name"
+        Add-DnsServerResourceRecordA -Name api.xyz -IPv4Address 10.38.18.219 -ZoneName ntnxlab.local -ZoneScope ntnxlab.local
+        Add-DnsServerResourceRecordA -Name *.apps.xyz -IPv4Address 10.38.18.220 -ZoneName ntnxlab.local -ZoneScope ntnxlab.local 
+        Add-DnsServerResourceRecordA -Name pc -IPv4Address 10.38.18.201 -ZoneName ntnxlab.local -ZoneScope ntnxlab.local
+        ```
+    
+    4. Test name resolution for added entries
+    
+        ```PowerShell hl_lines="6 13 20"
+        nslookup api.xyz.ntnxlab.local
+        Server: dc.ntnxlab.local
+        Address: 10.38.18.203
+     
+        Name: api.xyz.ntnxlab.local
+        Address: 10.38.18.219 
+        #
+        nslookup myapp.apps.xyz.ntnxlab.local
+        Server: dc.ntnxlab.local
+        Address: 10.38.18.203
+     
+        Name: myapp.apps.xyz.ntnxlab.local
+        Address: 10.38.18.220
+        #
+        nslookup pc.ntnxlab.local
+        Server: dc.ntnxlab.local
+        Address: 10.38.18.203
+     
+        Name: pc.ntnxlab.local
+        Address: 10.38.3.201
+        ```
+    </body>
+    </div>
+    </details>
 
 ## Overview of Assisted Installation Process
 
@@ -411,7 +487,7 @@ Create DNS entries in your environment to be able to access the OpenShift cluste
 
 - On your workstation - using ``/etc/hosts`` file
 
-- In your network - creating entries in a DNS server
+- On your network - creating entries in a DNS server (see [pre-requisites](../assisted/index.md#pre-requisites-for-assisted-installation))
 
 The Installation wizard gives you DNS entries for your workstation as well as a centralised DNS server.
 
@@ -444,7 +520,7 @@ Once you have done creating DNS entries, you can access OpenShift cluster in two
     
     !!!warning
  
-              This URL can **only** be accessed within your Nutanix AHV environment unless you expose it outside your private CIDR range.
+              This URL can **only** be accessed within your network environment unless you expose it outside your private CIDR range.
  
     ![](images/ocp_console_ai.png)
 
