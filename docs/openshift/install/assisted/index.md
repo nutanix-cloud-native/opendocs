@@ -150,16 +150,13 @@ Once the infrastructure components are provisioned and ready for use, Assisted I
             ```PowerShell title="Add the apps Ingress A record - use your own subdomain"
             Add-DnsServerResourceRecordA -Name *.apps.<your_ocp_cluster_subdomain> -IPv4Address <your Ingress IP> -ZoneName ntnxlab.local -ZoneScope ntnxlab.local 
             ```
-            ```PowerShell title="Add the Prism Central A record"
-            Add-DnsServerResourceRecordA -Name pc -IPv4Address <your PC IP> -ZoneName ntnxlab.local -ZoneScope ntnxlab.local 
-            ```
+
         === "Command example"
  
-        ```PowerShell title="Sample commands with 'xyz' as a subdomain and your OCP cluster name"
-        Add-DnsServerResourceRecordA -Name api.xyz -IPv4Address 10.38.18.219 -ZoneName ntnxlab.local -ZoneScope ntnxlab.local
-        Add-DnsServerResourceRecordA -Name *.apps.xyz -IPv4Address 10.38.18.220 -ZoneName ntnxlab.local -ZoneScope ntnxlab.local 
-        Add-DnsServerResourceRecordA -Name pc -IPv4Address 10.38.18.201 -ZoneName ntnxlab.local -ZoneScope ntnxlab.local
-        ```
+            ```PowerShell title="Sample commands with 'xyz' as a subdomain and your OCP cluster name"
+            Add-DnsServerResourceRecordA -Name api.xyz -IPv4Address 10.38.18.219 -ZoneName ntnxlab.local -ZoneScope ntnxlab.local
+            Add-DnsServerResourceRecordA -Name *.apps.xyz -IPv4Address 10.38.18.220 -ZoneName ntnxlab.local -ZoneScope ntnxlab.local 
+            ```
     
     4. Test name resolution for added entries
     
