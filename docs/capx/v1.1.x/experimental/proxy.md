@@ -9,7 +9,7 @@ Follow the steps below to configure a CAPX cluster to use a proxy.
 
 ## Steps
 1. Generate a `cluster.yaml` file with the required CAPX cluster configuration. Refer to the [Getting Started](../getting_started.md){target=_blank} page for more information on how to generate a `cluster.yaml` file. Do not apply the `cluster.yaml` file. 
-2. Edit the `cluster.yaml` file and modify following resources as shown in the [example](#example) below to add the proxy configuration.
+2. Edit the `cluster.yaml` file and modify the following resources as shown in the [example](#example) below to add the proxy configuration.
     1. `KubeadmControlPlane`: 
         * Add the proxy configuration to the `spec.kubeadmConfigSpec.files` list. Do not modify other items in the list.
         * Add `systemctl` commands to apply the proxy config in `spec.kubeadmConfigSpec.preKubeadmCommands`. Do not modify other items in the list.
