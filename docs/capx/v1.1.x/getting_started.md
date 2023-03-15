@@ -11,7 +11,11 @@ For more information on the port requirements for CAPX, visit [Port Requirements
 ## Production Workflow
 
 ### Build OS image for NutanixMachineTemplate resource
-To build an OS image for NutanixMachineTemplate, visit [Nutanix OS Image Builder](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/blob/main/tools/imagebuilder/README.md){target=_blank}.
+Cluster API Provider Nutanix Cloud Infrastructure (CAPX) uses the [Image Builder](https://image-builder.sigs.k8s.io/){target=_blank} project to build OS images used for the Nutanix machines. 
+
+Follow the steps detailed in [Building CAPI Images for Nutanix Cloud Platform (NCP)](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#building-capi-images-for-nutanix-cloud-platform-ncp){target=_blank} to use Image Builder on the Nutanix Cloud Platform.
+
+For a list of operating systems visit the OS image [Configuration](https://image-builder.sigs.k8s.io/capi/providers/nutanix.html#configuration){target=_blank} page.
 
 ### Prerequisites for using Cluster API Provider Nutanix Cloud Infrastructure
 The [Cluster API installation](https://cluster-api.sigs.k8s.io/user/quick-start.html#installation){target=_blank} section provides an overview of all required prerequisites:
