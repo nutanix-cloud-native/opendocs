@@ -1,0 +1,15 @@
+# This is a sample file to input values for variables
+# Either create a new file called terraform.tfvars with the contents 
+# Or rename this file to terraform.tfvars
+
+cluster_name        = "your cluster name"
+subnet_name         = "your network name"
+user                = "your cluster user name"
+password            = ""
+endpoint            = "PE IP"
+vm_worker_prefix    = "ocp-worker"
+vm_master_prefix    = "ocp-master"
+vm_domain           = "ntnxlab.local"
+vm_master_count     = 3
+vm_worker_count     = 2
+image_uri           = "uri you copied from RH Console while creating Assisted Installer Cluster"
