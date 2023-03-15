@@ -308,20 +308,26 @@ For latest resource requirements of an OpenShift cluster refer to [OpenShift por
 3.  Clone the following git repo and initialise Terraform provider
 
     ```bash
-    git clone https://github.com/nutanix-japan/tf-ocp-infra
-    cd tf-ocp-infra
+    curl -OL https://github.com/nutanix-cloud-native/opendocs/raw/main/docs/openshift/install/assisted/tffiles.zip
+    unzip tffiles.zip
+    cd tf-ocp-infra-tffiles
     alias "tf=terraform" 
+    ```
+
+4.  Initialise Terraform with the files you have downloaded
+    
+    ```bash
     tf init
     ```
 
-4.  Get your variables file ready with your Nutanix AHV environment
+5.  Get your variables file ready with your Nutanix AHV environment
     information
 
     ```bash
     cp terraform.tfvars.sample terraform.tfvars
     ```
 
-5.  Modify your variables to suit your Nutanix environment
+6.  Modify your variables to suit your Nutanix environment
 
     ``` bash
     vi terraform.tfvars
@@ -359,13 +365,13 @@ For latest resource requirements of an OpenShift cluster refer to [OpenShift por
         image_uri           = "https://api.openshift.com/api/assisted-images/images/fff332e9-abc1-42d1-b9e4-60ce81a914bf?arch=x86_64&image_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzc3NDIzNjEsInN1YiI6ImZmZjMzMmU5LWFiYzEtNDJkMS1iOWU0LTYwY2U4MWE5MTRiZiJ9.w5uPr2yxw2Vk1ZbeIdOlvaAqDOY0TliuMQUX1j0fTLo&type=minimal-iso&version=4.12" 
         ```
 
-6.  Validate your Terraform code
+7.  Validate your Terraform code
 
     ```bash
     tf validate
     ```
 
-7.  Apply your Terraform code to create virtual machines and associated resources
+8.  Apply your Terraform code to create virtual machines and associated resources
   
     ```bash
     tf apply 
@@ -404,7 +410,7 @@ For latest resource requirements of an OpenShift cluster refer to [OpenShift por
     Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
     ```
 
-8.  Run the Terraform state list command to verify what resources have been created
+9.  Run the Terraform state list command to verify what resources have been created
 
     ``` bash
     tf state list
@@ -423,7 +429,7 @@ For latest resource requirements of an OpenShift cluster refer to [OpenShift por
     nutanix_virtual_machine.RHCOS-worker[1] # < This is worker vm 2
     ```
 
-9.  Login to **Prism Element** > **VM** and verify the VMs and if they are powered on
+10. Login to **Prism Element** > **VM** and verify the VMs and if they are powered on
 
     ![](images/ocp_tf_vms.png)
 
