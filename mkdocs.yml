@@ -24,6 +24,7 @@ nav:
           - "Tasks":
               - "Modifying Machine Configuration": "capx/v1.1.x/tasks/modify_machine_configuration.md"
           - "Port Requirements": "capx/v1.1.x/port_requirements.md"
+          - "User Requirements": "capx/v1.1.x/user_requirements.md"
           - "Addons":
               - "CSI Driver Installation": "capx/v1.1.x/addons/install_csi_driver.md"
           - "Validated Integrations": "capx/v1.1.x/validated_integrations.md"
