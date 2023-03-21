@@ -11,7 +11,7 @@ See [Credential Management](./credential_management.md){target=_blank} for more 
 
 ## Minimum required CAPX permissions for domain users
 
-Following permissions are required for Prism Central domain users: 
+The following permissions are required for Prism Central domain users: 
 
 - Create Category Mapping
 - Create Image
