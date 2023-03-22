@@ -1,7 +1,6 @@
 ---
 title: "Assisted Installation (UPI)"
 ---
-
 # OCP: Assisted Installation (UPI)
 
 !!!note "Nutanix AOS, Prism Central and Openshift Compatibility"
@@ -123,7 +122,7 @@ Once the infrastructure components are provisioned and ready for use, Assisted I
 
     Your OCP cluster's name becomes a subdomain in your DNS zone ``ntnxlab.local``. All OCP cluster related lookups are located within subdomain.
     
-    - Main domain -  ``ntnxlab.local`` (this gets created with your HPOC reservation)
+      - Main domain -  ``ntnxlab.local``  (can be any domain name but needs to be existing and contactable)
       - Sub domain - ``xyz.ntnxlab.local`` (xyz is your OCP cluster's name)
     
     1. Logon to your environment's Windows DNS server
@@ -138,7 +137,7 @@ Once the infrastructure components are provisioned and ready for use, Assisted I
         !!!warning
                   Use IP addresses from your Nutanix cluster's CIDR.
               
-                  The IP addresses in the following commands are used as an example. You should use IP address details that belong to your HPOC cluster. For information on locating your cluster IP see Getting Started [Networking](../intro.md#networking) section. 
+                  The IP addresses in the following commands are used as an example. You should use IP address details that belong to your cluster. For information on locating your cluster IP see Getting Started [Networking](../intro.md#networking) section. 
   
     3. Open PowerShell as Administrator and create the two A records
        
