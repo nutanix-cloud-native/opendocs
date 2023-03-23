@@ -5,6 +5,8 @@ theme:
   features:
     - navigation.instant
     - content.code.annotate
+    - navigation.tabs
+    - navigation.top
   favicon: images/favicon.png
   icon:
     admonition:
@@ -12,89 +14,97 @@ theme:
 extra_css:
   - stylesheets/extra.css
 nav:
-  - "Nutanix Cloud Native": "index.md"
-  - "Cluster API Provider: Nutanix (CAPX)":
-      - "v1.1.x (Latest)":
-          - "Getting Started": "capx/v1.1.x/getting_started.md"
-          - "Types":
-              - "NutanixCluster": "capx/v1.1.x/types/nutanix_cluster.md"
-              - "NutanixMachineTemplate": "capx/v1.1.x/types/nutanix_machine_template.md"
-          - "Certificate Trust": "capx/v1.1.x/pc_certificates.md"
-          - "Credential Management": "capx/v1.1.x/credential_management.md"
-          - "Tasks":
-              - "Modifying Machine Configuration": "capx/v1.1.x/tasks/modify_machine_configuration.md"
-          - "Port Requirements": "capx/v1.1.x/port_requirements.md"
-          - "User Requirements": "capx/v1.1.x/user_requirements.md"
-          - "Addons":
-              - "CSI Driver Installation": "capx/v1.1.x/addons/install_csi_driver.md"
-          - "Validated Integrations": "capx/v1.1.x/validated_integrations.md"
-          - "Experimental":
-              - "Multi-PE CAPX cluster": "capx/v1.1.x/experimental/capx_multi_pe.md"
-              - "Autoscaler": "capx/v1.1.x/experimental/autoscaler.md"
-              - "OIDC Integration": "capx/v1.1.x/experimental/oidc.md"
-              - "Flow VPC": "capx/v1.1.x/experimental/vpc.md"
-              - "Proxy Configuration": "capx/v1.1.x/experimental/proxy.md"
-          - "Troubleshooting": "capx/v1.1.x/troubleshooting.md"
-      - "v1.0.x":
-          - "Getting Started": "capx/v1.0.x/getting_started.md"
-          - "Types":
-              - "NutanixCluster": "capx/v1.0.x/types/nutanix_cluster.md"
-              - "NutanixMachineTemplate": "capx/v1.0.x/types/nutanix_machine_template.md"
-          - "Credential Management": "capx/v1.0.x/credential_management.md"
-          - "Tasks":
-              - "Modifying Machine Configuration": "capx/v1.0.x/tasks/modify_machine_configuration.md"
-          - "Port Requirements": "capx/v1.0.x/port_requirements.md"
-          - "Addons":
-              - "CSI Driver Installation": "capx/v1.0.x/addons/install_csi_driver.md"
-          - "Validated Integrations": "capx/v1.0.x/validated_integrations.md"
-          - "Experimental":
-              - "Multi-PE CAPX cluster": "capx/v1.0.x/experimental/capx_multi_pe.md"
-              - "Autoscaler": "capx/v1.0.x/experimental/autoscaler.md"
-          - "Troubleshooting": "capx/v1.0.x/troubleshooting.md"
-      - "v0.5.x":
-          - "Getting Started": "capx/v0.5.x/getting_started.md"
-          - "Credential Management": "capx/v0.5.x/credential_management.md"
-          - "Addons":
-              - "CSI Driver Installation": "capx/v0.5.x/addons/install_csi_driver.md"
-          - "Validated Integrations": "capx/v0.5.x/validated_integrations.md"
-          - "Experimental":
-              - "Multi-PE CAPX cluster": "capx/v0.5.x/experimental/capx_multi_pe.md"
-              - "Autoscaler": "capx/v0.5.x/experimental/autoscaler.md"
-          - "Troubleshooting": "capx/v0.5.x/troubleshooting.md"
-  - "Nutanix Cloud Controller Manager (CCM)":
-      - "v0.3.x (Latest)":
-          - "Overview": "ccm/v0.3.x/overview.md"
-          - "Requirements": "ccm/v0.3.x/requirements.md"
-          - "Configuration": "ccm/v0.3.x/ccm_configuration.md"
-          - "Certificate Trust":  "ccm/v0.3.x/pc_certificates.md"
-          - "Credentials": "ccm/v0.3.x/ccm_credentials.md"
-          - "Topology Discovery": "ccm/v0.3.x/topology_discovery.md"
-          - "Custom Labeling": "ccm/v0.3.x/custom_labeling.md"
-      - "v0.2.0":
-          - "Overview": "ccm/v0.2.x/overview.md"
-          - "Requirements": "ccm/v0.2.x/requirements.md"
-          - "Configuration": "ccm/v0.2.x/ccm_configuration.md"
-          - "Credentials": "ccm/v0.2.x/ccm_credentials.md"
-          - "Topology Discovery": "ccm/v0.2.x/topology_discovery.md"
-          - "Custom Labeling": "ccm/v0.2.x/custom_labeling.md"
-  - "Red Hat OpenShift":
-      - "Install":
-          - "Agnostic": "openshift/install/agnostic/index.md"
-          - "IPI": "openshift/install/ipi/index.md"
-      - "Post Install": "openshift/post-install/index.md"
-      - Operators:
-          - "CSI": "openshift/operators/csi/index.md"
-  - "Google Anthos":
-      - "Architecture": "anthos/architecture/index.md"
-      - "Install":
-          - "Manual": "anthos/install/manual/index.md" 
-     
+  - "Solutions":
+    - "Cloud Native":
+        - "Overview": "index.md"
+        - "Cluster API Provider: Nutanix (CAPX)":
+            - "v1.1.x (Latest)":
+                - "Getting Started": "capx/v1.1.x/getting_started.md"
+                - "Types":
+                    - "NutanixCluster": "capx/v1.1.x/types/nutanix_cluster.md"
+                    - "NutanixMachineTemplate": "capx/v1.1.x/types/nutanix_machine_template.md"
+                - "Certificate Trust": "capx/v1.1.x/pc_certificates.md"
+                - "Credential Management": "capx/v1.1.x/credential_management.md"
+                - "Tasks":
+                    - "Modifying Machine Configuration": "capx/v1.1.x/tasks/modify_machine_configuration.md"
+                - "Port Requirements": "capx/v1.1.x/port_requirements.md"
+                - "User Requirements": "capx/v1.1.x/user_requirements.md"
+                - "Addons":
+                    - "CSI Driver Installation": "capx/v1.1.x/addons/install_csi_driver.md"
+                - "Validated Integrations": "capx/v1.1.x/validated_integrations.md"
+                - "Experimental":
+                    - "Multi-PE CAPX cluster": "capx/v1.1.x/experimental/capx_multi_pe.md"
+                    - "Autoscaler": "capx/v1.1.x/experimental/autoscaler.md"
+                    - "OIDC Integration": "capx/v1.1.x/experimental/oidc.md"
+                    - "Flow VPC": "capx/v1.1.x/experimental/vpc.md"
+                    - "Proxy Configuration": "capx/v1.1.x/experimental/proxy.md"
+                - "Troubleshooting": "capx/v1.1.x/troubleshooting.md"
+            - "v1.0.x":
+                - "Getting Started": "capx/v1.0.x/getting_started.md"
+                - "Types":
+                    - "NutanixCluster": "capx/v1.0.x/types/nutanix_cluster.md"
+                    - "NutanixMachineTemplate": "capx/v1.0.x/types/nutanix_machine_template.md"
+                - "Credential Management": "capx/v1.0.x/credential_management.md"
+                - "Tasks":
+                    - "Modifying Machine Configuration": "capx/v1.0.x/tasks/modify_machine_configuration.md"
+                - "Port Requirements": "capx/v1.0.x/port_requirements.md"
+                - "Addons":
+                    - "CSI Driver Installation": "capx/v1.0.x/addons/install_csi_driver.md"
+                - "Validated Integrations": "capx/v1.0.x/validated_integrations.md"
+                - "Experimental":
+                    - "Multi-PE CAPX cluster": "capx/v1.0.x/experimental/capx_multi_pe.md"
+                    - "Autoscaler": "capx/v1.0.x/experimental/autoscaler.md"
+                - "Troubleshooting": "capx/v1.0.x/troubleshooting.md"
+            - "v0.5.x":
+                - "Getting Started": "capx/v0.5.x/getting_started.md"
+                - "Credential Management": "capx/v0.5.x/credential_management.md"
+                - "Addons":
+                    - "CSI Driver Installation": "capx/v0.5.x/addons/install_csi_driver.md"
+                - "Validated Integrations": "capx/v0.5.x/validated_integrations.md"
+                - "Experimental":
+                    - "Multi-PE CAPX cluster": "capx/v0.5.x/experimental/capx_multi_pe.md"
+                    - "Autoscaler": "capx/v0.5.x/experimental/autoscaler.md"
+                - "Troubleshooting": "capx/v0.5.x/troubleshooting.md"
+        - "Nutanix Cloud Controller Manager (CCM)":
+            - "v0.3.x (Latest)":
+                - "Overview": "ccm/v0.3.x/overview.md"
+                - "Requirements": "ccm/v0.3.x/requirements.md"
+                - "Configuration": "ccm/v0.3.x/ccm_configuration.md"
+                - "Certificate Trust":  "ccm/v0.3.x/pc_certificates.md"
+                - "Credentials": "ccm/v0.3.x/ccm_credentials.md"
+                - "Topology Discovery": "ccm/v0.3.x/topology_discovery.md"
+                - "Custom Labeling": "ccm/v0.3.x/custom_labeling.md"
+            - "v0.2.0":
+                - "Overview": "ccm/v0.2.x/overview.md"
+                - "Requirements": "ccm/v0.2.x/requirements.md"
+                - "Configuration": "ccm/v0.2.x/ccm_configuration.md"
+                - "Credentials": "ccm/v0.2.x/ccm_credentials.md"
+                - "Topology Discovery": "ccm/v0.2.x/topology_discovery.md"
+                - "Custom Labeling": "ccm/v0.2.x/custom_labeling.md"
+        - "Red Hat OpenShift":
+            - "Install":
+                - "Agnostic": "openshift/install/agnostic/index.md"
+                - "IPI": "openshift/install/ipi/index.md"
+            - "Post Install": "openshift/post-install/index.md"
+            - Operators:
+                - "CSI": "openshift/operators/csi/index.md"
+        - "Google Anthos":
+            - "Architecture": "anthos/architecture/index.md"
+            - "Install":
+                - "Manual": "anthos/install/manual/index.md" 
+  - "Guides":
+    - "Cloud Native":
+        - "Red Hat OpenShift":
+            - "Install":
+                - "IPI": "guides/openshift/install/ipi/index.md"
 markdown_extensions:
   - attr_list
   - admonition
   - pymdownx.details
   - pymdownx.superfences
   - tables
+  - toc:
+      permalink: true
 copyright: Copyright &copy; 2021 - 2022 Nutanix, Inc.
 extra:
   generator: false
