@@ -43,7 +43,7 @@ Based on requirements, choose one of the following options:
             accessModes:
             - ReadWriteOnce
             resources:
-            requests:
+              requests:
                 storage: 100Gi
             storageClassName: nutanix-volume
 
@@ -110,7 +110,7 @@ Based on requirements, choose one of the following options:
             accessModes:
             - ReadWriteMany
             resources:
-            requests:
+              requests:
                 storage: 100Gi
             storageClassName: nutanix-files-dynamic
 
