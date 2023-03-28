@@ -1,7 +1,7 @@
 # Creating a workload CAPX cluster spanning Prism Element clusters
 
 !!! warning
-        The scenario and features described on this page are experimental and should not be deployed in production environments.
+        The scenario and features described on this page are experimental. It's important to note that they have not been fully validated.
 
 This page will explain how to deploy CAPX-based Kubernetes clusters where worker nodes are spanning multiple Prism Element (PE) clusters. 
 

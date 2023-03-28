@@ -1,7 +1,7 @@
 # Proxy configuration
 
 !!! warning
-        The scenario and features described on this page are experimental and should not be deployed in production environments.
+        The scenario and features described on this page are experimental. It's important to note that they have not been fully validated.
 
 CAPX can be configured to use a proxy to connect to external networks. This proxy configuration needs to be applied to control plane and worker nodes. 
 
