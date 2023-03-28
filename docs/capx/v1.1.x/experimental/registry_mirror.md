@@ -1,11 +1,11 @@
 # Registry Mirror configuration
 
 !!! warning
-        The scenario and features described on this page are experimental, it's important to note that they have not been fully validated.
+        The scenario and features described on this page are experimental. It's important to note that they have not been fully validated.
 
 CAPX can be configured to use a private registry to act as a mirror of an external public registry. This registry mirror configuration needs to be applied to control plane and worker nodes. 
 
-Follow the steps below to configure a CAPX cluster to use registry mirror.
+Follow the steps below to configure a CAPX cluster to use a registry mirror.
 
 ## Steps
 1. Generate a `cluster.yaml` file with the required CAPX cluster configuration. Refer to the [Getting Started](../getting_started.md){target=_blank} page for more information on how to generate a `cluster.yaml` file. Do not apply the `cluster.yaml` file. 
@@ -20,13 +20,13 @@ Follow the steps below to configure a CAPX cluster to use registry mirror.
 
 ## Example 
 
-This example will configure registry mirror for the following namespace:
+This example will configure a registry mirror for the following namespace:
 
 * registry.k8s.io
 * ghcr.io
 * quay.io
 
-and redirect them to corresponding projects of my `<mirror>` registry.
+and redirect them to corresponding projects of the `<mirror>` registry.
 
 ```YAML
 ---
