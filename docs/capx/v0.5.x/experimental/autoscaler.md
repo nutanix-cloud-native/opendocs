@@ -1,7 +1,7 @@
 # Using Autoscaler in combination with CAPX
 
 !!! warning
-        The scenario and features described on this page are experimental and should not be deployed in production environments.
+        The scenario and features described on this page are experimental. It's important to note that they have not been fully validated.
         
 [Autoscaler](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md){target=_blank} can be used in combination with Cluster API to automatically add or remove machines in a cluster. 
 
@@ -111,10 +111,10 @@ kubectl scale deployment php-apache --replicas 100
 ## Autoscaler node group annotations
 Autoscaler uses following annotations to define the upper and lower boundries of the managed machines:
 
-|Annotation                                                 |Example Value|Description                                  |
-|-----------------------------------------------------------|-------------|---------------------------------------------|
-|cluster.x-k8s.io/cluster-api-autoscaler-node-group-max-size|5            |Maximum amount of machines in this node group|
-|cluster.x-k8s.io/cluster-api-autoscaler-node-group-min-size|1            |Minimum amount of machines in this node group|
+| Annotation                                                  | Example Value | Description                                   |
+|-------------------------------------------------------------|---------------|-----------------------------------------------|
+| cluster.x-k8s.io/cluster-api-autoscaler-node-group-max-size | 5             | Maximum amount of machines in this node group |
+| cluster.x-k8s.io/cluster-api-autoscaler-node-group-min-size | 1             | Minimum amount of machines in this node group |
 
 These annotations must be applied to the `MachineDeployment` resources of a CAPX cluster. 
 

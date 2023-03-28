@@ -1,7 +1,7 @@
 # OIDC integration
 
 !!! warning
-        The scenario and features described on this page are experimental and should not be deployed in production environments.
+        The scenario and features described on this page are experimental. It's important to note that they have not been fully validated.
 
 Kubernetes allows users to authenticate using various authentication mechanisms. One of these mechanisms is OIDC. Information on how Kubernetes interacts with OIDC providers can be found in the [OpenID Connect Tokens](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#openid-connect-tokens){target=_blank} section of the official Kubernetes documentation. 
 

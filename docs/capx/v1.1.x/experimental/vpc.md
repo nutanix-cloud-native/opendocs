@@ -1,7 +1,7 @@
 # Creating a workload CAPX cluster in a Nutanix Flow VPC
 
 !!! warning
-        The scenario and features described on this page are experimental and should not be deployed in production environments.
+        The scenario and features described on this page are experimental. It's important to note that they have not been fully validated.
 
 !!! note
     Nutanix Flow VPCs are only validated with CAPX 1.1.3+
