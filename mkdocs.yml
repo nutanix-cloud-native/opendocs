@@ -86,6 +86,7 @@ nav:
             - "Install":
                 - "Agnostic": "openshift/install/agnostic/index.md"
                 - "IPI": "openshift/install/ipi/index.md"
+                - "Assisted Installer": "openshift/install/assisted_installer/index.md"
             - "Post Install": "openshift/post-install/index.md"
             - Operators:
                 - "CSI": "openshift/operators/csi/index.md"
