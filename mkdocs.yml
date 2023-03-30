@@ -94,6 +94,8 @@ nav:
             - "Architecture": "anthos/architecture/index.md"
             - "Install":
                 - "Manual": "anthos/install/manual/index.md" 
+        - "Amazon EKS Anywhere":
+            - "Install": "eksa/install/index.md"
   - "Guides":
     - "Cloud Native":
         - "Red Hat OpenShift":
