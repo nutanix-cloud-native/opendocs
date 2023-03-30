@@ -40,6 +40,9 @@ spec:
       # project:
       #   type: name
       #   name: "NUTANIX_PROJECT_NAME"
+      # gpus:
+      #  - type: name
+      #    name: "GPU NAME"
 ```
 
 ## NutanixMachineTemplate spec
@@ -47,24 +50,32 @@ The table below provides an overview of the supported parameters of the `spec` a
 
 ### Configuration parameters
 | Key                                |Type  |Description|
-|------------------------------------|------|--------------------------------------------------------------------------------------------------------------|
-|bootType                            |string|Boot type of the VM. Depends on the OS image used. Allowed values: `legacy`, `uefi`. Default: `legacy`        |
-|vcpusPerSocket                      |int   |Amount of vCPUs per socket. Default: `1`                                                                      |
-|vcpuSockets                         |int   |Amount of vCPU sockets. Default: `2`                                                                          |
-|memorySize                          |string|Amount of Memory. Default: `4Gi`                                                                              |
-|systemDiskSize                      |string|Amount of storage assigned to the system disk. Default: `40Gi`                                                |
-|image                               |object|Reference to the OS image used for the system disk.                                                           |
-|image.type                          |string|Type to identify the OS image. Allowed values: `name` and `uuid`                                              |
-|image.name                          |string|Name or UUID of the image.                                                                                    |
-|cluster                             |object|Reference to the Prism Element cluster.                                                                       |
-|cluster.type                        |string|Type to identify the Prism Element cluster. Allowed values: `name` and `uuid`                                 |
-|cluster.name                        |string|Name or UUID of the Prism Element cluster.                                                                    |
-|subnets                             |list  |Reference to the subnets to be assigned to the VMs.                                                           |
-|subnets.[].type                      |string|Type to identify the subnet. Allowed values: `name` and `uuid`                                               |
-|subnets.[].name                      |string|Name or UUID of the subnet.                                                                                  |
-|additionalCategories                |list  |Reference to the categories to be assigned to the VMs. These categories already exist in Prism Central.       |
-|additionalCategories.[].key          |string|Key of the category.                                                                                         |
-|additionalCategories.[].value        |string|Value of the category.                                                                                       |
-|project                             |object|Reference to the project. This project must already exist in Prism Central.                                   |
-|project.type                        |string|Type to identify the project. Allowed values: `name` and `uuid`                                               |
-|project.name                        |string|Name or UUID of the project.                                                                                  |
+|------------------------------------|------|--------------------------------------------------------------------------------------------------------|
+|bootType                            |string|Boot type of the VM. Depends on the OS image used. Allowed values: `legacy`, `uefi`. Default: `legacy`  |
+|vcpusPerSocket                      |int   |Amount of vCPUs per socket. Default: `1`                                                                |
+|vcpuSockets                         |int   |Amount of vCPU sockets. Default: `2`                                                                    |
+|memorySize                          |string|Amount of Memory. Default: `4Gi`                                                                        |
+|systemDiskSize                      |string|Amount of storage assigned to the system disk. Default: `40Gi`                                          |
+|image                               |object|Reference (name or uuid) to the OS image used for the system disk.                                      |
+|image.type                          |string|Type to identify the OS image. Allowed values: `name` and `uuid`                                        |
+|image.name                          |string|Name of the image.                                                                                      |
+|image.uuid                          |string|UUID of the image.                                                                                      |
+|cluster                             |object|Reference (name or uuid) to the Prism Element cluster. Name or UUID can be passed                       |
+|cluster.type                        |string|Type to identify the Prism Element cluster. Allowed values: `name` and `uuid`                           |
+|cluster.name                        |string|Name of the Prism Element cluster.                                                                      |
+|cluster.uuid                        |string|UUID of the Prism Element cluster.                                                                      |
+|subnets                             |list  |Reference (name or uuid) to the subnets to be assigned to the VMs.                                      |
+|subnets.[].type                     |string|Type to identify the subnet. Allowed values: `name` and `uuid`                                          |
+|subnets.[].name                     |string|Name of the subnet.                                                                                     |
+|subnets.[].uuid                     |string|UUID of the subnet.                                                                                     |
+|additionalCategories                |list  |Reference to the categories to be assigned to the VMs. These categories already exist in Prism Central. |
+|additionalCategories.[].key         |string|Key of the category.                                                                                    |
+|additionalCategories.[].value       |string|Value of the category.                                                                                  |
+|project                             |object|Reference (name or uuid) to the project. This project must already exist in Prism Central.              |
+|project.type                        |string|Type to identify the project. Allowed values: `name` and `uuid`                                         |
+|project.name                        |string|Name of the project.                                                                                    |
+|project.uuid                        |string|UUID of the project.                                                                                    |
+|gpus                                |object|Reference (name or deviceID) to the GPUs to be assigned to the VMs. Can be vGPU or Passthrough.         |
+|gpus.[].type                        |string|Type to identify the GPU. Allowed values: `name` and `deviceID`                                         |
+|gpus.[].name                        |string|Name of the GPU or the vGPU profile                                                                     |
+|gpus.[].deviceID                    |string|DeviceID of the GPU or the vGPU profile                                                                 |
