@@ -6,12 +6,12 @@
 |-----------|--------------------|---------------|
 | 4.12      | 5.20.4+ or 6.5.1+  | 2022.4+       |
 
-More information on Red Hat Openshift Container Platform Assisted Installer can be found on the [Installing an on-premise cluster using the Assisted Installer](https://docs.openshift.com/container-platform/latest/installing/installing_on_prem_assisted/installing-on-prem-assisted.html){target=_blank} page. 
+More information on Red Hat OpenShift Container Platform Assisted Installer can be found in [Installing an on-premise cluster using the Assisted Installer](https://docs.openshift.com/container-platform/latest/installing/installing_on_prem_assisted/installing-on-prem-assisted.html){target=_blank}. 
 
 ## Installation Steps
 
-1. Review the prerequisites on [Preparing to install with the Assisted Installer](https://access.redhat.com/documentation/en-us/assisted_installer_for_openshift_container_platform/2022/html-single/assisted_installer_for_openshift_container_platform/index#preparing-to-install-with-ai){target=_blank} page.
-2. Access the [Install OpenShift with the Assisted Installer](https://console.redhat.com/openshift/assisted-installer/clusters/~new){target=_blank} page on the Red Hat OpenShift Cluster Manager site. If you have a Red Hat account, log in with your credentials. If you do not, create an account.
+1. Review the prerequisites in [Preparing to install with the Assisted Installer](https://access.redhat.com/documentation/en-us/assisted_installer_for_openshift_container_platform/2022/html-single/assisted_installer_for_openshift_container_platform/index#preparing-to-install-with-ai){target=_blank}.
+2. Access [Install OpenShift with the Assisted Installer](https://console.redhat.com/openshift/assisted-installer/clusters/~new){target=_blank} on the Red Hat OpenShift Cluster Manager site. If you have a Red Hat account, log in with your credentials. If you do not, create an account.
 3. Follow the UI or API-based installation steps:
     - UI:
         - [Installing with the Assisted Installer UI](https://access.redhat.com/documentation/en-us/assisted_installer_for_openshift_container_platform/2022/html-single/assisted_installer_for_openshift_container_platform/index#installing-with-ui){target=_blank}
