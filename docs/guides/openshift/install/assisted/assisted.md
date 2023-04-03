@@ -307,7 +307,7 @@ For latest resource requirements of an OpenShift cluster refer to [OpenShift por
 3.  Clone the following git repo and initialise Terraform provider
 
     ```bash
-    curl -OL https://github.com/nutanix-cloud-native/opendocs/raw/main/docs/openshift/install/assisted/tffiles.zip
+    curl -OL https://github.com/nutanix-cloud-native/opendocs/raw/main/docs/guides/openshift/install/assisted/tffiles.zip
     unzip tffiles.zip
     cd tf-ocp-infra-tffiles
     alias "tf=terraform" 
