@@ -99,6 +99,7 @@ nav:
         - "Red Hat OpenShift":
             - "Install":
                 - "IPI": "guides/openshift/install/ipi/index.md"
+                - "Assisted Installer": "guides/openshift/install/assisted/assisted.md"
 markdown_extensions:
   - attr_list
   - admonition
@@ -107,6 +108,8 @@ markdown_extensions:
   - tables
   - toc:
       permalink: true
+  - pymdownx.tabbed:
+      alternate_style: true
 copyright: Copyright &copy; 2021 - 2023 Nutanix, Inc.
 extra:
   generator: false
