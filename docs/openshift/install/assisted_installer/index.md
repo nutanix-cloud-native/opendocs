@@ -25,7 +25,7 @@ More information on Red Hat OpenShift Container Platform Assisted Installer can 
 
 ## Installation Guide
 
-A step-by-step Assisted Installer [Installation Guide](../../../guides/openshift/install/assisted/assisted.md) is available for you on this site in the **Guides** section. The guide uses the following:
+A step-by-step Assisted Installer [Installation Guide](../../../guides/openshift/install/assisted_installer/assisted.md) is available for you on this site under the **Guides** section. The guide uses the following:
 
 - [Nutanix Terraform Provider](https://registry.terraform.io/providers/nutanix/nutanix/latest/docs) to build the virtual machines and other infrastructure resources
 - [Install OpenShift with the Assisted Installer](https://console.redhat.com/openshift/assisted-installer/clusters/~new){target=_blank} to detect the Nutanix infrastructure components and install OpenShift Kubernetes cluster

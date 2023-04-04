@@ -95,12 +95,12 @@ nav:
             - "Install":
                 - "Manual": "anthos/install/manual/index.md" 
   - "Guides": 
-    - "Overview": "guides/guides.md"
+    - "Overview": "guides/index.md"
     - "Cloud Native":
         - "Red Hat OpenShift":
             - "Install":
                 - "IPI": "guides/openshift/install/ipi/index.md"
-                - "Assisted Installer": "guides/openshift/install/assisted/assisted.md"
+                - "Assisted Installer": "guides/openshift/install/assisted_installer/assisted.md"
 markdown_extensions:
   - attr_list
   - admonition
