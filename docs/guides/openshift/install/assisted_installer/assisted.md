@@ -10,7 +10,6 @@ title: "Assisted Installer"
          | Openshift | AOS              | Prism Central |
          |:-----------:|:-------------------:|:---------------:|
          | 4.12      | 5.20.4+ or 6.5.1+ | 2022.4+       |
-         | 4.11      | 5.20.4+ or 6.1.1+ | 2022.4+       |
 
 Assisted installation works with User Provisioned Infrastructure(UPI). 
 
@@ -120,18 +119,18 @@ Once the infrastructure components are provisioned and ready for use, Assisted I
     
     We will add PC, API and APPS Ingress DNS records for lookup by OCP IPI installer.
 
-    Your OCP cluster's name becomes a subdomain in your DNS zone ``ntnxlab.local``. All OCP cluster related lookups are located within subdomain.
+    Your OCP cluster's name becomes a subdomain in your DNS zone ``example.com``. All OCP cluster related lookups are located within subdomain.
     
-      - Main domain -  ``ntnxlab.local``  (can be any domain name but needs to be existing and contactable)
-      - Sub domain - ``xyz.ntnxlab.local`` (xyz is your OCP cluster's name)
+      - Main domain -  ``example.com``  (can be any domain name but needs to be existing and contactable)
+      - Sub domain - ``xyz.example.com`` (xyz is your OCP cluster's name)
     
     1. Logon to your environment's Windows DNS server
     
     2. We will add the following entries to DNS server using the two consecutive IPs you found in the previous section
        
         ``` { .bash .no-copy }
-        10.38.18.219   api.your_ocp_cluster_subdomain.ntnxlab.local
-        10.38.18.220   *.apps.your_ocp_cluster_subdomain.ntnxlab.local
+        10.38.18.219   api.your_ocp_cluster_subdomain.example.com
+        10.38.18.220   *.apps.your_ocp_cluster_subdomain.example.com
         ```
         
         !!!warning
@@ -144,41 +143,41 @@ Once the infrastructure components are provisioned and ready for use, Assisted I
         === "Command template"
  
             ```PowerShell title="Add the API A record - use your own subdomain"
-            Add-DnsServerResourceRecordA -Name api.<your_ocp_cluster_subdomain> -IPv4Address <your API IP> -ZoneName ntnxlab.local -ZoneScope ntnxlab.local
+            Add-DnsServerResourceRecordA -Name api.<your_ocp_cluster_subdomain> -IPv4Address <your API IP> -ZoneName example.com -ZoneScope example.com
             ```
             ```PowerShell title="Add the apps Ingress A record - use your own subdomain"
-            Add-DnsServerResourceRecordA -Name *.apps.<your_ocp_cluster_subdomain> -IPv4Address <your Ingress IP> -ZoneName ntnxlab.local -ZoneScope ntnxlab.local 
+            Add-DnsServerResourceRecordA -Name *.apps.<your_ocp_cluster_subdomain> -IPv4Address <your Ingress IP> -ZoneName example.com -ZoneScope example.com 
             ```
 
         === "Command example"
  
             ```PowerShell title="Sample commands with 'xyz' as a subdomain and your OCP cluster name"
-            Add-DnsServerResourceRecordA -Name api.xyz -IPv4Address 10.38.18.219 -ZoneName ntnxlab.local -ZoneScope ntnxlab.local
-            Add-DnsServerResourceRecordA -Name *.apps.xyz -IPv4Address 10.38.18.220 -ZoneName ntnxlab.local -ZoneScope ntnxlab.local 
+            Add-DnsServerResourceRecordA -Name api.xyz -IPv4Address 10.38.18.219 -ZoneName example.com -ZoneScope example.com
+            Add-DnsServerResourceRecordA -Name *.apps.xyz -IPv4Address 10.38.18.220 -ZoneName example.com -ZoneScope example.com 
             ```
     
     4. Test name resolution for added entries
     
         ```PowerShell hl_lines="6 13 20"
-        nslookup api.xyz.ntnxlab.local
-        Server: dc.ntnxlab.local
+        nslookup api.xyz.example.com
+        Server: dc.example.com
         Address: 10.38.18.203
      
-        Name: api.xyz.ntnxlab.local
+        Name: api.xyz.example.com
         Address: 10.38.18.219 
         #
-        nslookup myapp.apps.xyz.ntnxlab.local
-        Server: dc.ntnxlab.local
+        nslookup myapp.apps.xyz.example.com
+        Server: dc.example.com
         Address: 10.38.18.203
      
-        Name: myapp.apps.xyz.ntnxlab.local
+        Name: myapp.apps.xyz.example.com
         Address: 10.38.18.220
         #
-        nslookup pc.ntnxlab.local
-        Server: dc.ntnxlab.local
+        nslookup pc.example.com
+        Server: dc.example.com
         Address: 10.38.18.203
      
-        Name: pc.ntnxlab.local
+        Name: pc.example.com
         Address: 10.38.3.201
         ```
     </body>
@@ -228,7 +227,7 @@ At a high level, we will do the following to get a OCP cluster deployed using As
 4.  Fill in the following details:
 
     -   **Cluster name** - Initials-assisted-cluster (e.g. xyz-assisted-cluster)
-    -   **Base domain** - yourdomain.com (e.g. ntnxlab.local)
+    -   **Base domain** - yourdomain.com (e.g. example.com)
     -   **OpenShift version** - choose the version from drop-down (e.g OpenShift 4.12.4)
     -   **CPU architecture** - x86_64
     -   **Hosts' network configuration** - DHCP only 
@@ -266,7 +265,7 @@ In this section we will create all infrastructure components for the OpenShift c
 
 You are able to create these VMs and its resources using the Prism Element GUI. But in this section we will use **Terraform** code for repeatability and ease. Nutanix provides Terraform integration for managing the entire lifecycle of Nutanix resources (virtual machines, networks, etc). See [Terraform Nutanix Provider](https://github.com/nutanix/terraform-provider-nutanix) for details. 
 
-We will create the following minimum required resources in prepartion for our OpenShift cluster:
+We will create the following minimum required resources in preparation for our OpenShift cluster:
   
 | OCP Role   |    Operating System    |    vCPU    |  RAM         | Storage   | IOPS |           
 | -------------|  ---------------------- |  -------- | ----------- |  --------- |  -------- | 
@@ -358,7 +357,7 @@ For latest resource requirements of an OpenShift cluster refer to [OpenShift por
         endpoint            = "10.55.64.100"          
         vm_worker_prefix    = "xyz-worker"            
         vm_master_prefix    = "xyz-master"         
-        vm_domain           = "ntnxlab.local"
+        vm_domain           = "example.com"
         vm_master_count     = 3
         vm_worker_count     = 2
         image_uri           = "https://api.openshift.com/api/assisted-images/images/fff332e9-abc1-42d1-b9e4-60ce81a914bf?arch=x86_64&image_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzc3NDIzNjEsInN1YiI6ImZmZjMzMmU5LWFiYzEtNDJkMS1iOWU0LTYwY2U4MWE5MTRiZiJ9.w5uPr2yxw2Vk1ZbeIdOlvaAqDOY0TliuMQUX1j0fTLo&type=minimal-iso&version=4.12" 

@@ -7,6 +7,7 @@ theme:
     - content.code.annotate
     - navigation.tabs
     - navigation.top
+    - content.code.copy
   favicon: images/favicon.png
   icon:
     admonition:
