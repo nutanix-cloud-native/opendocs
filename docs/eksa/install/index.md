@@ -1,8 +1,8 @@
 # Amazon EKS Anywhere Installation
 
-[Amazon EKS Anywhere (EKS-A)](https://anywhere.eks.amazonaws.com/docs/overview/){target=_blank} can be deployed on the Nutanix Cloud Infrastructure running Nutanix AHV hypervisor.
+[Amazon EKS Anywhere (EKS-A)](https://anywhere.eks.amazonaws.com/docs/overview/){target=_blank} can be deployed on Nutanix Cloud Infrastructure running the Nutanix AHV hypervisor.
 
-Before starting the installation, make sure following prerequisites are satisfied: 
+Before starting the installation, make sure the following prerequisites are satisfied: 
 
 - [Install EKS Anywhere](https://anywhere.eks.amazonaws.com/docs/getting-started/install/){target=_blank}
 - [Preparing a Nutanix Cloud Infrastructure provider for EKS Anywhere](https://anywhere.eks.amazonaws.com/docs/reference/nutanix/){target=_blank}
