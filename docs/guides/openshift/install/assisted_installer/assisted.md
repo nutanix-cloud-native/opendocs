@@ -240,7 +240,7 @@ At a high level, we will do the following to get a OCP cluster deployed using As
 
 8.  In the **Add Host** pop-up window select **Minimal image file: Provision with virtual media**
 
-9.  In the **SSH public key** text box provide the public key you created in this [pre-requisites section](../assisted_installer/assisted_install.md#pre-requisites-for-assisted-installation).
+9.  In the **SSH public key** text box provide the public key you created in this [pre-requisites](#pre-requisites-for-assisted-installation) section
     
     !!!warning
     
@@ -442,7 +442,7 @@ In this section we will use Red Hat Console's Assisted Installer wizard to insta
 
 2.  Click **Next** at the bottom of the page
 
-3.  In the Networking section, assign IPs for your **API Virtual IP** and **Ingress Virtual IP** from your AHV network CIDR range (sample IPs provided in screenshot - use your own reserved IPs). See [pre-requisites](../assisted_installer/assisted.md#pre-requisites-for-assisted-installation) section where you reserved IPs.
+3.  In the Networking section, assign IPs for your **API Virtual IP** and **Ingress Virtual IP** from your AHV network CIDR range (sample IPs provided in screenshot - use your own reserved IPs). See [pre-requisites](#pre-requisites-for-assisted-installation) section where you reserved IPs.
    
     ![](images/ocp_ing_api_ips.png)
 
@@ -493,7 +493,7 @@ Create DNS entries in your environment to be able to access the OpenShift cluste
 
 - On your workstation - using ``/etc/hosts`` file
 
-- On your network - creating entries in a DNS server (see [pre-requisites](../assisted_installer/assisted_install.md#pre-requisites-for-assisted-installation))
+- On your network - creating entries in a DNS server (see [pre-requisites](#pre-requisites-for-assisted-installation))
 
 The Installation wizard gives you DNS entries for your workstation as well as a centralised DNS server.
 
