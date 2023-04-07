@@ -122,7 +122,7 @@ Once the infrastructure components are provisioned and ready for use, Assisted I
     Your OCP cluster's name becomes a subdomain in your DNS zone ``example.com``. All OCP cluster related lookups are located within subdomain.
     
       - Main domain -  ``example.com``  (can be any domain name but needs to be existing and contactable)
-      - Sub domain - ``xyz-assisted-cluster.example.com`` (xyz is your OCP cluster's name)
+      - Sub domain - ``xyz-assisted-cluster.example.com`` (xyz-assisted-cluster is your OCP cluster's name)
     
     In your environment's DNS server, configure the following DNS entries using the two consecutive IPs you found in the previous section:
     
