@@ -85,13 +85,13 @@ Once the infrastructure components are provisioned and ready for use, Assisted I
         nmap -v -sn 10.38.18.192/26
         ```
 
-       ``` { .bash .no-copy } hl_lines="1 2" title="Sample output - choose the first two consecutive IPs"
+       ```bash hl_lines="1 2" title="Sample output - choose the first two consecutive IPs"
        Nmap scan report for 10.38.18.219 [host down] 
        Nmap scan report for 10.38.18.220 [host down]
        Nmap scan report for 10.38.18.221
        ```
     
-    SSH to any CVM in your cluster and execute the following to **exclude** it from DHCP distribution
+    SSH to any CVM in your cluster and execute the following to **exclude** it from DHCP distribution. So these IPs don't get distributed by AHV IPAM. 
     
        - Username: nutanix
        - Password: your cvm password 
