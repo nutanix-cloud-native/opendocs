@@ -113,7 +113,7 @@ Once the infrastructure components are provisioned and ready for use, Assisted I
 - Add reserved static IPs to your environment's DNS server for the API and Ingress endpoints
   
     <details>
-    <summary>Steps to add DNS server - Windows DNS server example</summary>
+    <summary>Steps to add DNS server</summary>
     <div>
     <body>
     
@@ -122,64 +122,28 @@ Once the infrastructure components are provisioned and ready for use, Assisted I
     Your OCP cluster's name becomes a subdomain in your DNS zone ``example.com``. All OCP cluster related lookups are located within subdomain.
     
       - Main domain -  ``example.com``  (can be any domain name but needs to be existing and contactable)
-      - Sub domain - ``xyz.example.com`` (xyz is your OCP cluster's name)
+      - Sub domain - ``xyz-assisted-cluster.example.com`` (xyz is your OCP cluster's name)
     
-    1. Logon to your environment's Windows DNS server
+    In your environment's DNS server, configure the following DNS entries using the two consecutive IPs you found in the previous section:
     
-    2. We will add the following entries to DNS server using the two consecutive IPs you found in the previous section
-       
-        ``` { .bash .no-copy }
-        10.38.18.219   api.your_ocp_cluster_subdomain.example.com
-        10.38.18.220   *.apps.your_ocp_cluster_subdomain.example.com
-        ```
-        
-        !!!warning
-                  Use IP addresses from your Nutanix cluster's CIDR.
-              
-                  The IP addresses in the following commands are used as an example. You should use IP address details that belong to your Nutanix cluster.
-  
-    3. Open PowerShell as Administrator and create the two A records
-       
-        === "Command template"
- 
-            ```PowerShell title="Add the API A record - use your own subdomain"
-            Add-DnsServerResourceRecordA -Name api.<your_ocp_cluster_subdomain> -IPv4Address <your API IP> -ZoneName example.com -ZoneScope example.com
-            ```
-            ```PowerShell title="Add the apps Ingress A record - use your own subdomain"
-            Add-DnsServerResourceRecordA -Name *.apps.<your_ocp_cluster_subdomain> -IPv4Address <your Ingress IP> -ZoneName example.com -ZoneScope example.com 
-            ```
+    Configure the ``A`` record DNS entry for OCP Kubernetes cluster's API
 
-        === "Command example"
- 
-            ```PowerShell title="Sample commands with 'xyz' as a subdomain and your OCP cluster name"
-            Add-DnsServerResourceRecordA -Name api.xyz -IPv4Address 10.38.18.219 -ZoneName example.com -ZoneScope example.com
-            Add-DnsServerResourceRecordA -Name *.apps.xyz -IPv4Address 10.38.18.220 -ZoneName example.com -ZoneScope example.com 
-            ```
+    ``` { .bash .no-copy }
+    10.38.18.219 == api.xyz-assisted-cluster.example.com
     
-    4. Test name resolution for added entries
+    ```
+
+    Configure the wildcard ``A`` record DNS entry for the OCP cluster's Ingress 
+
+    ``` { .bash .no-copy }
+    10.38.18.220 == *.xyz-assisted-cluster.example.com
+    ```
     
-        ```PowerShell hl_lines="6 13 20"
-        nslookup api.xyz.example.com
-        Server: dc.example.com
-        Address: 10.38.18.203
-     
-        Name: api.xyz.example.com
-        Address: 10.38.18.219 
-        #
-        nslookup myapp.apps.xyz.example.com
-        Server: dc.example.com
-        Address: 10.38.18.203
-     
-        Name: myapp.apps.xyz.example.com
-        Address: 10.38.18.220
-        #
-        nslookup pc.example.com
-        Server: dc.example.com
-        Address: 10.38.18.203
-     
-        Name: pc.example.com
-        Address: 10.38.3.201
-        ```
+    !!!warning
+              Use IP addresses from your Nutanix cluster's CIDR.
+          
+              The IP addresses in the following commands are used as an example. You should use IP address details that belong to your Nutanix cluster.
+
     </body>
     </div>
     </details>
@@ -222,25 +186,29 @@ At a high level, we will do the following to get a OCP cluster deployed using As
    
 2.  Login using your Red Hat Console portal's credentials
 
-3.  Click on **Create New Cluster**
+3.  Click on **OpenShift**
 
-4.  Fill in the following details:
+4.  Click on **Datacenter** tab 
+   
+5.  Under Assisted Installer, click on **Create Cluster**
+
+6.  Fill in the following details:
 
     -   **Cluster name** - Initials-assisted-cluster (e.g. xyz-assisted-cluster)
     -   **Base domain** - yourdomain.com (e.g. example.com)
-    -   **OpenShift version** - choose the version from drop-down (e.g OpenShift 4.12.4)
+    -   **OpenShift version** - choose the version from drop-down (e.g OpenShift 4.12.9)
     -   **CPU architecture** - x86_64
     -   **Hosts' network configuration** - DHCP only 
 
-5.  Click on **Next**
+7.  Click on **Next**
 
-6.  Click Next on **Operators** page - do not select any options
+8.  Click Next on **Operators** page - do not select any options
 
-7.  Click on **Add Host**
+9.  Click on **Add Host**
 
-8.  In the **Add Host** pop-up window select **Minimal image file: Provision with virtual media**
+10. In the **Add Host** pop-up window select **Minimal image file: Provision with virtual media**
 
-9.  In the **SSH public key** text box provide the public key you created in this [pre-requisites](#pre-requisites-for-assisted-installation) section
+11. In the **SSH public key** text box provide the public key you created in this [pre-requisites](#pre-requisites-for-assisted-installation) section
     
     !!!warning
     
@@ -250,14 +218,14 @@ At a high level, we will do the following to get a OCP cluster deployed using As
 
     ![](images/ocp_public_key.png)
    
-10. Click on **Generate Discovery ISO**
+12. Click on **Generate Discovery ISO**
 
-11. Copy the **Discovery ISO URL** and note it down somewhere. You will
+13. Copy the **Discovery ISO URL** and note it down somewhere. You will
     need this for your next section while creating infrastructure.
 
     ![](images/ocp_iso_url.png)
 
-12. Click on **Close**
+14. Click on **Close**
 
 ## Provision OCP Infrastructure
 
@@ -285,12 +253,6 @@ For latest resource requirements of an OpenShift cluster refer to [OpenShift por
         brew tap hashicorp/tap
         brew install hashicorp/tap/terraform
         ```
-
-    === "Windows"
-
-        ```PowerShell
-        choco install terraform
-        ```
     
     === "CentOS"
         
@@ -302,30 +264,35 @@ For latest resource requirements of an OpenShift cluster refer to [OpenShift por
         yum -y install git
         ```
 
-
-3.  Clone the following git repo and initialise Terraform provider
+3.  Create a working directory
+    
+    ```bash
+    mkdir ~/tf
+    cd ~/tf
+    ```
+ 
+4.  Download the following terraform files
 
     ```bash
-    curl -OL https://github.com/nutanix-cloud-native/opendocs/raw/main/docs/guides/openshift/install/assisted_installer/tffiles.zip
-    unzip tffiles.zip
-    cd tf-ocp-infra-tffiles
-    alias "tf=terraform" 
+    curl -OL https://github.com/nutanix-japan/opendocs/raw/main/docs/guides/openshift/install/assisted_installer/tf/main.tf
+    curl -OL https://github.com/nutanix-japan/opendocs/raw/main/docs/guides/openshift/install/assisted_installer/tf/variables.tf
+    curl -OL https://github.com/nutanix-japan/opendocs/raw/main/docs/guides/openshift/install/assisted_installer/tf/terraform.tfvars.sample
     ```
 
-4.  Initialise Terraform with the files you have downloaded
+5.  Initialise Terraform
     
     ```bash
     tf init
     ```
 
-5.  Get your variables file ready with your Nutanix AHV environment
+6.  Get your variables file ready with your Nutanix AHV environment
     information
 
     ```bash
     cp terraform.tfvars.sample terraform.tfvars
     ```
 
-6.  Modify your variables to suit your Nutanix environment
+7.  Modify your variables to suit your Nutanix environment
 
     ``` bash
     vi terraform.tfvars
@@ -334,11 +301,11 @@ For latest resource requirements of an OpenShift cluster refer to [OpenShift por
     === "Template file"
 
         ```bash
-        cluster_name        = "your cluster name" # << Change this
+        cluster_name        = "your Nutanix cluster name" # << Change this
         subnet_name         = "your AHV network's name"  # << Change this
         user                = "admin"             # << Change this
         password            = "XXXXXXX"           # << Change this
-        endpoint            = "Prism Element IP"  # << Change this
+        endpoint            = "Prism Central IP"  # << Change this
         vm_worker_prefix    = "xyz-worker"        # << Change xyz to your initials
         vm_master_prefix    = "xyz-master"        # << Change xyz to your initials
         vm_domain           = "yourdomain.com"    # << Change xyz to your initials
@@ -353,7 +320,7 @@ For latest resource requirements of an OpenShift cluster refer to [OpenShift por
         cluster_name        = "my-pe-cluster"          
         subnet_name         = "Primary"       
         user                = "admin"            
-        password            = "mypepassword"           
+        password            = "mypcpassword"           
         endpoint            = "10.55.64.100"          
         vm_worker_prefix    = "xyz-worker"            
         vm_master_prefix    = "xyz-master"         
@@ -363,13 +330,24 @@ For latest resource requirements of an OpenShift cluster refer to [OpenShift por
         image_uri           = "https://api.openshift.com/api/assisted-images/images/fff332e9-abc1-42d1-b9e4-60ce81a914bf?arch=x86_64&image_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzc3NDIzNjEsInN1YiI6ImZmZjMzMmU5LWFiYzEtNDJkMS1iOWU0LTYwY2U4MWE5MTRiZiJ9.w5uPr2yxw2Vk1ZbeIdOlvaAqDOY0TliuMQUX1j0fTLo&type=minimal-iso&version=4.12" 
         ```
 
-7.  Validate your Terraform code
+8.  Validate your Terraform code
 
     ```bash
     tf validate
     ```
 
-8.  Apply your Terraform code to create virtual machines and associated resources
+9.  Run Terraform plan to check what resources will be created 
+
+    ```bash
+    tf plan
+    ```
+    ``` { .bash .no-copy }
+    # you will see the number of resources that will be created for confirmation
+    Plan: 6 to add, 0 to change, 0 to destroy.
+    ```
+
+
+10.  Apply your Terraform code to create virtual machines and associated resources
   
     ```bash
     tf apply 
@@ -408,7 +386,7 @@ For latest resource requirements of an OpenShift cluster refer to [OpenShift por
     Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
     ```
 
-9.  Run the Terraform state list command to verify what resources have been created
+10. Run the Terraform state list command to verify what resources have been created
 
     ``` bash
     tf state list
@@ -427,7 +405,7 @@ For latest resource requirements of an OpenShift cluster refer to [OpenShift por
     nutanix_virtual_machine.RHCOS-worker[1] # < This is worker vm 2
     ```
 
-10. Login to **Prism Element** > **VM** and verify the VMs and if they are powered on
+11. Login to **Prism Central** > **Compute & Storage** > **VMs** and verify the VMs and if they are powered on
 
     ![](images/ocp_tf_vms.png)
 
