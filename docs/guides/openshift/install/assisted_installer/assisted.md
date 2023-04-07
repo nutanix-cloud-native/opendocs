@@ -126,18 +126,17 @@ Once the infrastructure components are provisioned and ready for use, Assisted I
     
     In your environment's DNS server, configure the following DNS entries using the two consecutive IPs you found in the previous section:
     
-    Configure the ``A`` record DNS entry for OCP Kubernetes cluster's API
+    - One ``A`` record DNS entry for OCP Kubernetes cluster's API
 
-    ``` { .bash .no-copy }
-    10.38.18.219 == api.xyz-assisted-cluster.example.com
-    
-    ```
+       ``` { .text .no-copy }
+       10.38.18.219 == api.xyz-assisted-cluster.example.com
+       ```
 
-    Configure the wildcard ``A`` record DNS entry for the OCP cluster's Ingress 
+    - One wildcard ``A`` record DNS entry for the OCP cluster's Ingress 
 
-    ``` { .bash .no-copy }
-    10.38.18.220 == *.xyz-assisted-cluster.example.com
-    ```
+       ``` { .text .no-copy }
+       10.38.18.220 == *.xyz-assisted-cluster.example.com
+       ```
     
     !!!warning
               Use IP addresses from your Nutanix cluster's CIDR.
