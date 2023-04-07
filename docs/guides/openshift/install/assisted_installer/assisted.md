@@ -274,9 +274,9 @@ For latest resource requirements of an OpenShift cluster refer to [OpenShift por
 4.  Download the following terraform files
 
     ```bash
-    curl -OL https://github.com/nutanix-japan/opendocs/raw/main/docs/guides/openshift/install/assisted_installer/tf/main.tf
-    curl -OL https://github.com/nutanix-japan/opendocs/raw/main/docs/guides/openshift/install/assisted_installer/tf/variables.tf
-    curl -OL https://github.com/nutanix-japan/opendocs/raw/main/docs/guides/openshift/install/assisted_installer/tf/terraform.tfvars.sample
+    curl -OL https://raw.githubusercontent.com/nutanix-japan/opendocs/main/docs/guides/openshift/install/assisted_installer/tf/main.tf
+    curl -OL https://raw.githubusercontent.com/nutanix-japan/opendocs/main/docs/guides/openshift/install/assisted_installer/tf/variables.tf
+    curl -OL https://raw.githubusercontent.com/nutanix-japan/opendocs/main/docs/guides/openshift/install/assisted_installer/tf/terraform.tfvars.sample
     ```
 
 5.  Initialise Terraform
