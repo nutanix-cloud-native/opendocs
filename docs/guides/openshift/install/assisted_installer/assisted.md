@@ -34,118 +34,65 @@ Once the infrastructure components are provisioned and ready for use, Assisted I
 -  AHV Network - configured with DNS and DHCP pool in the environment
 -   A SSH key pair for the OCP Master and Worker virtual machines
 
-    <details>
-    <summary>Steps to create a ssh key pair</summary>
-    <div>
-    <body>
-    Execute the following commands and keep the key pair somewhere safe.
-    
-    ```bash
-    ssh-keygen -t rsa -b 2048 -f ~/.ssh/
-    
-    # follow prompts 
-    # once completed run the following command
-    ```
-    ```bash
-    cat ~/.ssh/id_rsa.pub
-
-    # copy the contents of the id_rsa.pub file to your Add hosts SSH public key section
-    ```
-    </body>
-    </div>
-    </details> 
-
-    
--   Two static IPs for Openshift Kubernetes cluster's API and network Ingress endpoints
-    
-    !!!warning
-              Do not proceed with installation unless you have reserved two IPs for these endpoints. There is a chance of the AHV IPAM network distributing these IPs if not reserved.
-  
-    <details>
-    <summary>Steps to find and reserve two static IPs in AHV network</summary>
-    <div>
-    <body>
-    
-    Get the CIDR for your AHV Network
-
-       ```bash title="CIDR example for your AHV network"
-       10.38.18.192/26
-       ```
-    
-    Find two unused static IP addresses using the following commands and reserve them for API and Ingress endpoints.
+    ???info "Optional steps to create a SSH key pair"
+           
+           Execute the following commands and keep the key pair somewhere safe.
+           
+           ```bash
+           ssh-keygen -t rsa -b 2048 -f ~/.ssh/
+           
+           # follow prompts 
+           # once completed run the following command
+           ```
+           ```bash
+           cat ~/.ssh/id_rsa.pub
        
-    === "Template command"
+           # copy the contents of the id_rsa.pub file to your Add hosts SSH public key section
+           ```
 
-        ```bash
-        nmap -v -sn  <your CIDR>
-        ```
-    === "Sample command"
-
-        ```bash
-        nmap -v -sn 10.38.18.192/26
-        ```
-
-       ```bash hl_lines="1 2" title="Sample output - choose the first two consecutive IPs"
-       Nmap scan report for 10.38.18.219 [host down] 
-       Nmap scan report for 10.38.18.220 [host down]
-       Nmap scan report for 10.38.18.221
-       ```
     
-    SSH to any CVM in your cluster and execute the following to **exclude** it from DHCP distribution. So these IPs don't get distributed by AHV IPAM. 
-    
-       - Username: nutanix
-       - Password: your cvm password 
-  
-    === "Template command"
-
-        ```bash
-        acli net.add_to_ip_blacklist <your-ipam-ahv-network> ip_list=<API IP and Ingress IP addresses>
-        ```
-    === "Sample command"
-
-        ```bash
-        acli net.add_to_ip_blacklist Primary ip_list=10.38.18.219,10.38.18.220
-        ```
-    </body>
-    </div>
-    </details>
-
-- Add reserved static IPs to your environment's DNS server for the API and Ingress endpoints
-  
-    <details>
-    <summary>Steps to add DNS server</summary>
-    <div>
-    <body>
-    
-    We will add PC, API and APPS Ingress DNS records for lookup by OCP IPI installer.
-
-    Your OCP cluster's name becomes a subdomain in your DNS zone ``example.com``. All OCP cluster related lookups are located within subdomain.
-    
-      - Main domain -  ``example.com``  (can be any domain name but needs to be existing and contactable)
-      - Sub domain - ``xyz-assisted-cluster.example.com`` (xyz-assisted-cluster is your OCP cluster's name)
-    
-    In your environment's DNS server, configure the following DNS entries using the two consecutive IPs you found in the previous section:
-    
-    - One ``A`` record DNS entry for OCP Kubernetes cluster's API
-
-       ``` { .text .no-copy }
-       10.38.18.219 == api.xyz-assisted-cluster.example.com
-       ```
-
-    - One wildcard ``A`` record DNS entry for the OCP cluster's Ingress 
-
-       ``` { .text .no-copy }
-       10.38.18.220 == *.xyz-assisted-cluster.example.com
-       ```
+-   Find and reserve two static IPs for Openshift Kubernetes cluster's ``API`` and network ``Ingress`` endpoints in the same CIDR as your yet to be installed OCP kubernetes master and worker VMs. 
     
     !!!warning
-              Use IP addresses from your Nutanix cluster's CIDR.
-          
-              The IP addresses in the following commands are used as an example. You should use IP address details that belong to your Nutanix cluster.
+              Make sure to exclude the assigned IPs for ``API`` and network ``Ingress`` endpoints from any DHCP server's scope. 
+   
+              Do not proceed with installation unless you have made sure that none of the DHCP servers in your environment is distributing these IPs. 
+   
+- Add reserved static IPs to your environment's DNS server for the API and Ingress endpoints
 
-    </body>
-    </div>
-    </details>
+    ???info "Steps to add DNS entries for API and Ingress Endpoints"
+
+        We will add API and APPS Ingress DNS records for lookup by OCP IPI installer.
+
+        Export two reserved IPs to your workstation's environment variables to use with ``API`` and ``Ingress`` 
+        endpoints.
+
+        ```bash
+        export API_IP="x.x.x.x"
+        export INGRESS_IP="x.x.x.x"
+        ```
+        
+        Your OCP cluster's name becomes a subdomain in your DNS zone ``example.com``. All OCP cluster related lookups are located within subdomain.
+        
+        - Main domain -  ``example.com``  (can be any domain name but needs to be existing and contactable)
+        - Sub domain - ``ocp-cluster.example.com`` ( ``ocp-cluster`` is your OCP cluster's name)
+        
+        In your environment's DNS server, configure the following DNS entries using the two consecutive IPs you found in the previous section: 
+
+        **Take care to enter the actual IP address as the environment variables will not be available in your DNS server. It is only mentioned here for documentation purposes.**
+        
+        - One ``A`` record DNS entry for OCP Kubernetes cluster's API
+        
+            ``` { .text .no-copy }
+            ${API_IP} == api.ocp-cluster.example.com
+            ```
+        
+        - One wildcard ``A`` record DNS entry for the OCP cluster's Ingress 
+        
+            ``` { .text .no-copy }
+            ${INGRESS_IP} == *.ocp-cluster.example.com
+            ```
+        
 
 ## Overview of Assisted Installation Process
 
@@ -193,8 +140,8 @@ At a high level, we will do the following to get a OCP cluster deployed using As
 
 6.  Fill in the following details:
 
-    -   **Cluster name** - Initials-assisted-cluster (e.g. xyz-assisted-cluster)
-    -   **Base domain** - yourdomain.com (e.g. example.com)
+    -   **Cluster name** - ocp-cluster 
+    -   **Base domain** - example.com
     -   **OpenShift version** - choose the version from drop-down (e.g OpenShift 4.12.9)
     -   **CPU architecture** - x86_64
     -   **Hosts' network configuration** - DHCP only 
@@ -211,9 +158,9 @@ At a high level, we will do the following to get a OCP cluster deployed using As
     
     !!!warning
     
-            Make sure to copy the contents of **public key** (id_ras.pub) and paste it
+            Make sure to copy the contents of the **public key** (id_ras.pub) file that you created (or any public key you have access to) and paste it in the SSH public key window of the UI.
 
-            You can also use the **Browse** option in the wizard to select the id_ras.pub file
+            You can also use the **Browse** option in the wizard to select the id_ras.pub file.
 
     ![](images/ocp_public_key.png)
    
@@ -240,7 +187,7 @@ We will create the following minimum required resources in preparation for our O
 | Master       |  RHCOS                 |  4        | 16 GB      |  100 GB   |  300 | 
 | Worker       |  RHCOS               |  8  |  16 GB      |  100 GB |    300 | 
 
-For latest resource requirements of an OpenShift cluster refer to [OpenShift portal](https://docs.openshift.com/container-platform/4.9/installing/installing_platform_agnostic/installing-platform-agnostic.html#installation-minimum-resource-requirements_installing-platform-agnostic)
+For latest resource requirements of an OpenShift cluster refer to [OpenShift portal](https://docs.openshift.com/container-platform/4.9/installing/installing_platform_agnostic/installing-platform-agnostic.html#installation-minimum-resource-requirements_installing-platform-agnostic).
 
 1.  Login to your workstation
 
@@ -269,6 +216,53 @@ For latest resource requirements of an OpenShift cluster refer to [OpenShift por
     mkdir ~/tf
     cd ~/tf
     ```
+
+4. Export Nutanix infrastructure/cloud connection parameters to your environment variables.
+
+    === "Template file"
+    
+        ```bash title="Setup to connect to Nutanix Prism Central (Infrastructure/Cloud Provider)"
+        export PRISMCENTRAL_ADDRESS=""
+        export PRISMCENTRAL_PORT=""
+        export PRISMELEMENT_ADDRESS=""
+        export PRISMELEMENT_PORT=""
+        export PRISMELEMENT_CLUSTERNAME=""
+        export PRISMELEMENT_NETWORKNAME=""
+        export NUTANIX_USERNAME=""
+        export NUTANIX_PASSWORD=""
+        ```
+        ```bash title="Setup for OCP environment variables"
+        export INGRESS_IP=""
+        export API_IP=""
+        export VM_MASTER_PREFIX=""
+        export VM_WORKER_PREFIX=""
+        export VM_MASTER_COUNT=""
+        export VM_WORKER_COUNT=""
+        export RHCOS_IMAGE_URI=""
+        ```
+    
+    === "Example file"
+    
+        ```bash title="Setup to connect to Nutanix Prism Central (Infrastructure/Cloud Provider)"
+        export PRISMCENTRAL_ADDRESS="x.x.x.x"
+        export PRISMCENTRAL_PORT="9440"
+        export PRISMELEMENT_ADDRESS="x.x.x.x"
+        export PRISMELEMENT_PORT="9440"
+        export PRISMELEMENT_CLUSTERNAME="PECLUSTER"
+        export PRISMELEMENT_NETWORKNAME="PECLUSTER_AHV_VLAN0"
+        export NUTANIX_USERNAME="admin"
+        export NUTANIX_PASSWORD="XXXXXXXX"
+        ```
+        ```bash title="Setup for OCP environment variables"
+        export INGRESS_IP="x.x.x.x"
+        export API_IP="x.x.x.x"
+        export VM_MASTER_PREFIX="ocp-master-"
+        export VM_WORKER_PREFIX="ocp-worker-"
+        export VM_MASTER_COUNT="3"                                      #at least 3 are required 
+        export VM_WORKER_COUNT="2"
+        export RHCOS_IMAGE_URI="https://api.openshift.com/api/......"   #export the entire URL
+        ```
+
  
 4.  Download the following terraform files
 
@@ -296,38 +290,19 @@ For latest resource requirements of an OpenShift cluster refer to [OpenShift por
     ``` bash
     vi terraform.tfvars
     ```
-    
-    === "Template file"
 
-        ```bash
-        cluster_name        = "your Nutanix cluster name" # << Change this
-        subnet_name         = "your AHV network's name"  # << Change this
-        user                = "admin"             # << Change this
-        password            = "XXXXXXX"           # << Change this
-        endpoint            = "Prism Central IP"  # << Change this
-        vm_worker_prefix    = "xyz-worker"        # << Change xyz to your initials
-        vm_master_prefix    = "xyz-master"        # << Change xyz to your initials
-        vm_domain           = "yourdomain.com"    # << Change xyz to your initials
-        vm_master_count     = 3
-        vm_worker_count     = 2
-        image_uri           = "Discover ISO URL you copied earlier" # << Change this
-        ```
-
-    === "Example file"
-
-        ```bash
-        cluster_name        = "my-pe-cluster"          
-        subnet_name         = "Primary"       
-        user                = "admin"            
-        password            = "mypcpassword"           
-        endpoint            = "10.55.64.100"          
-        vm_worker_prefix    = "xyz-worker"            
-        vm_master_prefix    = "xyz-master"         
-        vm_domain           = "example.com"
-        vm_master_count     = 3
-        vm_worker_count     = 2
-        image_uri           = "https://api.openshift.com/api/assisted-images/images/fff332e9-abc1-42d1-b9e4-60ce81a914bf?arch=x86_64&image_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzc3NDIzNjEsInN1YiI6ImZmZjMzMmU5LWFiYzEtNDJkMS1iOWU0LTYwY2U4MWE5MTRiZiJ9.w5uPr2yxw2Vk1ZbeIdOlvaAqDOY0TliuMQUX1j0fTLo&type=minimal-iso&version=4.12" 
-        ```
+    ```bash
+    cluster_name        = ${PRISMELEMENT_CLUSTERNAME}
+    subnet_name         = ${PRISMELEMENT_NETWORKNAME}
+    user                = ${NUTANIX_USERNAME}
+    password            = ${NUTANIX_PASSWORD}
+    prismcentral        = ${PRISMCENTRAL_ADDRESS}
+    vm_master_prefix    = ${VM_MASTER_PREFIX}
+    vm_worker_prefix    = ${VM_WORKER_PREFIX}
+    vm_master_count     = ${VM_MASTER_COUNT}
+    vm_worker_count     = ${VM_COUNT_COUNT}
+    image_uri           = ${RHCOS_IMAGE_URI}
+    ```
 
 8.  Validate your Terraform code
 
@@ -513,33 +488,8 @@ You are also able to configure machine API support for your dynamic workloads. Y
 
 There are a few additional steps that you need to do. From a configuration perspective setup the following:
 
-1. Export Nutanix infrastructure/cloud connection parameters to your environment variables.
 
-    === "Template file"
-    
-        ```bash title="Setup to connect to Nutanix Prism Central (Infrastructure/Cloud Provider)"
-        export PRISMCENTRAL_ADDRESS=""
-        export PRISMCENTRAL_PORT=""
-        export PRISMELEMENT_ADDRESS=""
-        export PRISMELEMENT_PORT=""
-        export PRISMELEMENT_CLUSTERNAME=""
-        export NUTANIX_USERNAME=""
-        export NUTANIX_PASSWORD=""
-        ```
-    
-    === "Example file"
-    
-        ```bash title="Setup to connect to Nutanix Prism Central (Infrastructure/Cloud Provider)"
-        export PRISMCENTRAL_ADDRESS="10.55.64.100"
-        export PRISMCENTRAL_PORT="9440"
-        export PRISMELEMENT_ADDRESS="10.55.64.99"
-        export PRISMELEMENT_PORT="9440"
-        export PRISMELEMENT_CLUSTERNAME="PECLUSTER"
-        export NUTANIX_USERNAME="admin"
-        export NUTANIX_PASSWORD="XXXXXXXX"
-        ```
-
-2. Patch your OCP cluster with the Nutanix infrastructure/cloud information
+1. Patch your OCP cluster with the Nutanix infrastructure/cloud information
    
     ```bash
     oc patch infrastructure/cluster --type=merge --patch-file=/dev/stdin <<-EOF
