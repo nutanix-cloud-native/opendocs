@@ -285,7 +285,7 @@ For latest resource requirements of an OpenShift cluster refer to [OpenShift por
     cp terraform.tfvars.sample terraform.tfvars
     ```
 
-7.  Modify your variables to suit your Nutanix environment
+7.  Check your variables file to make sure it matches your environment
 
     ``` bash
     vi terraform.tfvars
