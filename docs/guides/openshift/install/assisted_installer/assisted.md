@@ -13,9 +13,9 @@ title: "Assisted Installer"
 
 Assisted installation works with User Provisioned Infrastructure(UPI). 
 
-An administrator will need to provision all the infrastructure related components and Assisted Installation process can used provision a OpenShift Kubernetes cluster. 
+An administrator will need to provision all the infrastructure related components and Assisted Installation process can used provision a OpenShift cluster. 
 
-This offers quite a few options for customising the following(not limited to):
+This offers quite a few options for customising the following:
 
 - Virtual Machines 
   - CPU, memory, networking and storage
@@ -24,15 +24,20 @@ This offers quite a few options for customising the following(not limited to):
 - Placement of resources in different locations (where supported by OpenShift)
 - IDP services - Active Directory, LDAP, etc.
 
-Once the infrastructure components are provisioned and ready for use, Assisted Installation process can take over and deploy a OpenShift Kubernetes cluster.
+Once the infrastructure components are provisioned and ready for use, Assisted Installation process can take over and deploy a OpenShift cluster.
   
 ## Pre-requisites for Assisted Installation
 
-- Access to [Red Hat Console](https://console.redhat.com/) (portal) to use Assisted Installer and install a OpenShift Kubernetes cluster, add extra OpenShift nodes (at a later time), etc.
--   OCP Master and Worker virtual machines on Nutanix HCI platform created by the administrator
--   Compute, networking and storage associated with the OCP Master and Worker VMs provisioned by the administrator
+!!!info "Assister Installer Pre-requisites Reference"
+       
+       The OCP clusters deployed using Assisted Installers can be used for production, testing and development purposes conforming to these [pre-requisites](https://cloud.redhat.com/blog/using-the-openshift-assisted-installer-service-to-deploy-an-openshift-cluster-on-metal-and-vsphere#:~:text=Pre%2Drequisites,required%20for%20accessing%20the%20cluster).    
+
+- Access to [Red Hat Console](https://console.redhat.com/) (portal) to use Assisted Installer and install a OpenShift cluster, add extra OpenShift nodes (at a later time), etc.
+- OpenShift CLI installation [here](https://docs.openshift.com/container-platform/4.8/cli_reference/openshift_cli/getting-started-cli.html).
+- OCP Master and Worker virtual machines on Nutanix HCI platform created by the administrator
+- Compute, networking and storage associated with the OCP Master and Worker VMs provisioned by the administrator
 -  AHV Network - configured with DNS and DHCP pool in the environment
--   A SSH key pair for the OCP Master and Worker virtual machines
+-   A SSH key pair for the OCP Control plane and Worker virtual machines
 
     ???info "Optional steps to create a SSH key pair"
            
@@ -50,21 +55,20 @@ Once the infrastructure components are provisioned and ready for use, Assisted I
            # copy the contents of the id_rsa.pub file to your Add hosts SSH public key section
            ```
 
-    
--   Find and reserve two static IPs for Openshift Kubernetes cluster's ``API`` and network ``Ingress`` endpoints in the same CIDR as your yet to be installed OCP kubernetes master and worker VMs. 
+-   Find and reserve two static IPs for OpenShift cluster's ``API`` and network ``Ingress`` endpoints in the same CIDR as the yet to be installed OCP Control plane and worker VMs. 
     
     !!!warning
               Make sure to exclude the assigned IPs for ``API`` and network ``Ingress`` endpoints from any DHCP server's scope. 
    
               Do not proceed with installation unless you have made sure that none of the DHCP servers in your environment is distributing these IPs. 
    
-- Add reserved static IPs to your environment's DNS server for the API and Ingress endpoints
+- Add reserved static IPs to the environment's DNS server for the ``API`` and ``Ingress`` endpoints
 
     ???info "Steps to add DNS entries for API and Ingress Endpoints"
 
         We will add API and APPS Ingress DNS records for lookup by OCP IPI installer.
 
-        Export two reserved IPs to your workstation's environment variables to use with ``API`` and ``Ingress`` 
+        Export two reserved IPs to your environment variables to use with ``API`` and ``Ingress`` 
         endpoints.
 
         ```bash
@@ -72,16 +76,15 @@ Once the infrastructure components are provisioned and ready for use, Assisted I
         export INGRESS_IP="x.x.x.x"
         ```
         
-        Your OCP cluster's name becomes a subdomain in your DNS zone ``example.com``. All OCP cluster related lookups are located within subdomain.
+        The OCP cluster's name becomes a subdomain in your DNS zone ``example.com``. All OCP cluster related lookups are located within subdomain.
         
-        - Main domain -  ``example.com``  (can be any domain name but needs to be existing and contactable)
-        - Sub domain - ``ocp-cluster.example.com`` ( ``ocp-cluster`` is your OCP cluster's name)
+        - **Main domain** -  ``domainname`` (e.g: ``example.com``)
+        - **Sub domain** - ``ocpclustername`` (e.g: ``ocp-cluster``)
+        - **FQDN** - ``ocpclustername.domainname`` (e.g: ``ocp-cluster.example.com`` )
         
-        In your environment's DNS server, configure the following DNS entries using the two consecutive IPs you found in the previous section: 
-
-        **Take care to enter the actual IP address as the environment variables will not be available in your DNS server. It is only mentioned here for documentation purposes.**
+        In your environment's DNS server, configure the following DNS entries using the two IPs you found in the previous section: 
         
-        - One ``A`` record DNS entry for OCP Kubernetes cluster's API
+        - One ``A`` record DNS entry for OCP cluster's API
         
             ``` { .text .no-copy }
             ${API_IP} == api.ocp-cluster.example.com
@@ -91,38 +94,28 @@ Once the infrastructure components are provisioned and ready for use, Assisted I
         
             ``` { .text .no-copy }
             ${INGRESS_IP} == *.ocp-cluster.example.com
-            ```
-        
+            ``` 
 
 ## Overview of Assisted Installation Process
 
 Assisted Installer does the following:
 
--   Provides RHCOS and OCP installation binaries in a CD-ROM ISO file
--   Once the OCP VMs (Master and Worker) nodes are booted with this CD-ROM ISO file, using the SSH public key the VMs connect to Red Hat Console
--   VMs show in Assisted Installer page (Red Hat Console) and the administrator begins the installation process
--   Assisted installer will choose one of the Master VMs to serve the Bootstrap role during cluster installation
+-   Provides Red Hat Core Operating System (RHCOS) and OCP installation binaries in a CD-ROM ISO file
+-   The OCP VMs/nodes (Control plane and Worker) are booted with this CD-ROM ISO file
+-   VMs show in Assisted Installer page (Red Hat Console)
+-   The administrator chooses the role of the VMs (Control plane and worker nodes)
+-   Assisted installer will choose one of the Control plane VM to serve the Bootstrap role during cluster installation
 -   Red Hat Console will manage and monitor the installation process from start to finish
--   Upon successful installation of a OCP cluster the following will be
-    provided:
+-   Upon successful installation of a OCP cluster the following will be provided:
     -   KUBECONFIG file for `oc` command line access
     -   Configurable DNS entries for OCP Cluster access
-
-
-!!!info "About Assisted Installer"
-
-       Assisted Installer feature is in GA [General Availability](https://cloud.redhat.com/blog/openshift-assisted-installer-is-now-generally-available) as of July 2022. 
-       
-       The OCP clusters deployed using Assisted Installers can be used for production, testing and development purposes conforming to these [pre-requisites](https://cloud.redhat.com/blog/using-the-openshift-assisted-installer-service-to-deploy-an-openshift-cluster-on-metal-and-vsphere#:~:text=Pre%2Drequisites,required%20for%20accessing%20the%20cluster).
-
-
 ### High Level Installation Steps 
 
 At a high level, we will do the following to get a OCP cluster deployed using Assisted Installer:
 
 1.  Provision OCP Cluster in Red Hat Console
 2.  Generate CD-ROM ISO URL
-3.  Provision OCP Infrastructure - Create Master and Worker VMs in your Nutanix cluster
+3.  Provision OCP Infrastructure - Create Control plane and worker VMs in your Nutanix cluster
 4.  Nutanix AHV cluster using Terraform infrastructure as code
 5.  Install OCP Cluster from Red Hat Console (portal)
 
@@ -140,10 +133,10 @@ At a high level, we will do the following to get a OCP cluster deployed using As
 
 6.  Fill in the following details:
 
-    -   **Cluster name** - ocp-cluster 
-    -   **Base domain** - example.com
-    -   **OpenShift version** - choose the version from drop-down (e.g OpenShift 4.12.9)
-    -   **CPU architecture** - x86_64
+    -   **Cluster name**                 - ``ocp clustername`` (e.g: ocp-cluster)
+    -   **Base domain**                  - ``domainname`` (e.g: example.com)
+    -   **OpenShift version**            - choose the version from drop-down (e.g OpenShift 4.12.9)
+    -   **CPU architecture**             - x86_64
     -   **Hosts' network configuration** - DHCP only 
 
 7.  Click on **Next**
@@ -177,21 +170,59 @@ At a high level, we will do the following to get a OCP cluster deployed using As
 
 In this section we will create all infrastructure components for the OpenShift cluster. 
 
-You are able to create these VMs and its resources using the Prism Element GUI. But in this section we will use **Terraform** code for repeatability and ease. Nutanix provides Terraform integration for managing the entire lifecycle of Nutanix resources (virtual machines, networks, etc). See [Terraform Nutanix Provider](https://github.com/nutanix/terraform-provider-nutanix) for details. 
+Creating infrastructure elements (VMs, associated disks, etc) for the purpose of OCP Kubernetes cluster installation can be accomplished using the Prism Element UI or using APIs offered by Nutanix. Refer to our OCP Assisted Installer [Solutions](../../../../openshift/install/assisted_installer/index.md#installation-steps) section for more information on these methods.
+
+In this section we will use **Terraform** Infrastructure as code (IaC) tool for repeatability and ease. Nutanix provides Terraform integration for managing the entire lifecycle of Nutanix infrastructure resources. See [Terraform Nutanix Provider](https://github.com/nutanix/terraform-provider-nutanix) for details. 
 
 We will create the following minimum required resources in preparation for our OpenShift cluster:
   
 | OCP Role   |    Operating System    |    vCPU    |  RAM         | Storage   | IOPS |           
 | -------------|  ---------------------- |  -------- | ----------- |  --------- |  -------- | 
 | Bootstrap    |  RHCOS                 |  4       |  16 GB       | 100 GB    | 300 | 
-| Master       |  RHCOS                 |  4        | 16 GB      |  100 GB   |  300 | 
+| Control plane       |  RHCOS                 |  4        | 16 GB      |  100 GB   |  300 | 
 | Worker       |  RHCOS               |  8  |  16 GB      |  100 GB |    300 | 
 
 For latest resource requirements of an OpenShift cluster refer to [OpenShift portal](https://docs.openshift.com/container-platform/4.9/installing/installing_platform_agnostic/installing-platform-agnostic.html#installation-minimum-resource-requirements_installing-platform-agnostic).
 
 1.  Login to your workstation
 
-2.  Run the following command to install Terraform on your workstation
+2. Export Nutanix infrastructure/cloud connection parameters to your environment variables.
+
+    === "Template commands"
+    
+        ```bash title="Setup to connect to Nutanix Prism Central (Infrastructure/Cloud Provider)"
+        export TF_VAR_PRISMCENTRAL_ADDRESS=""
+        export TF_VAR_PRISMELEMENT_CLUSTERNAME=""
+        export TF_VAR_PRISMELEMENT_NETWORKNAME=""
+        export TF_VAR_NUTANIX_USERNAME=""
+        export TF_VAR_NUTANIX_PASSWORD=""
+        ```
+        ```bash title="Setup for OCP environment variables"
+        export TF_VAR_VM_MASTER_PREFIX=""
+        export TF_VAR_VM_WORKER_PREFIX=""
+        export TF_VAR_VM_MASTER_COUNT=""             # 3 Control plane nodes are required 
+        export TF_VAR_VM_WORKER_COUNT=""
+        export TF_VAR_RHCOS_IMAGE_URI=""             # Export the entire URL
+        ```
+    
+    === "Example commands"
+    
+        ```bash title="Setup to connect to Nutanix Prism Central (Infrastructure/Cloud Provider)"
+        export TF_VAR_PRISMCENTRAL_ADDRESS="x.x.x.x"
+        export TF_VAR_PRISMELEMENT_CLUSTERNAME="PECLUSTER"
+        export TF_VAR_PRISMELEMENT_NETWORKNAME="PECLUSTER_AHV_VLAN0"
+        export TF_VAR_NUTANIX_USERNAME="admin"
+        export TF_VAR_NUTANIX_PASSWORD="XXXXXXX"
+        ```
+        ```bash title="Setup for OCP environment variables"
+        export TF_VAR_VM_MASTER_PREFIX="ocp-master-"
+        export TF_VAR_VM_WORKER_PREFIX="ocp-worker-"
+        export TF_VAR_VM_MASTER_COUNT="3"            
+        export TF_VAR_VM_WORKER_COUNT="2"
+        export TF_VAR_RHCOS_IMAGE_URI="https://api.openshift.com/api/......"
+        ```
+
+3.  Run the following command to install Terraform on your workstation
 
     === "Mac"
 
@@ -209,111 +240,40 @@ For latest resource requirements of an OpenShift cluster refer to [OpenShift por
         yum -y install terraform
         yum -y install git
         ```
+    ???info "Terraform on another OS?"
 
-3.  Create a working directory
+           Check Terraform documenation [here](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) to install. 
+
+4.  Create a working directory
     
     ```bash
     mkdir ~/tf
     cd ~/tf
     ```
-
-4. Export Nutanix infrastructure/cloud connection parameters to your environment variables.
-
-    === "Template file"
-    
-        ```bash title="Setup to connect to Nutanix Prism Central (Infrastructure/Cloud Provider)"
-        export PRISMCENTRAL_ADDRESS=""
-        export PRISMCENTRAL_PORT=""
-        export PRISMELEMENT_ADDRESS=""
-        export PRISMELEMENT_PORT=""
-        export PRISMELEMENT_CLUSTERNAME=""
-        export PRISMELEMENT_NETWORKNAME=""
-        export NUTANIX_USERNAME=""
-        export NUTANIX_PASSWORD=""
-        ```
-        ```bash title="Setup for OCP environment variables"
-        export INGRESS_IP=""
-        export API_IP=""
-        export VM_MASTER_PREFIX=""
-        export VM_WORKER_PREFIX=""
-        export VM_MASTER_COUNT=""
-        export VM_WORKER_COUNT=""
-        export RHCOS_IMAGE_URI=""
-        ```
-    
-    === "Example file"
-    
-        ```bash title="Setup to connect to Nutanix Prism Central (Infrastructure/Cloud Provider)"
-        export PRISMCENTRAL_ADDRESS="x.x.x.x"
-        export PRISMCENTRAL_PORT="9440"
-        export PRISMELEMENT_ADDRESS="x.x.x.x"
-        export PRISMELEMENT_PORT="9440"
-        export PRISMELEMENT_CLUSTERNAME="PECLUSTER"
-        export PRISMELEMENT_NETWORKNAME="PECLUSTER_AHV_VLAN0"
-        export NUTANIX_USERNAME="admin"
-        export NUTANIX_PASSWORD="XXXXXXXX"
-        ```
-        ```bash title="Setup for OCP environment variables"
-        export INGRESS_IP="x.x.x.x"
-        export API_IP="x.x.x.x"
-        export VM_MASTER_PREFIX="ocp-master-"
-        export VM_WORKER_PREFIX="ocp-worker-"
-        export VM_MASTER_COUNT="3"                                      #at least 3 are required 
-        export VM_WORKER_COUNT="2"
-        export RHCOS_IMAGE_URI="https://api.openshift.com/api/......"   #export the entire URL
-        ```
-
  
-4.  Download the following terraform files
+5.  Download the following terraform files
 
     ```bash
     curl -OL https://raw.githubusercontent.com/nutanix-cloud-native/opendocs/main/docs/guides/openshift/install/assisted_installer/tf/main.tf
     curl -OL https://raw.githubusercontent.com/nutanix-cloud-native/opendocs/main/docs/guides/openshift/install/assisted_installer/tf/variables.tf
-    curl -OL https://raw.githubusercontent.com/nutanix-cloud-native/opendocs/main/docs/guides/openshift/install/assisted_installer/tf/terraform.tfvars.sample
     ```
 
-5.  Initialise Terraform
+6.  Initialise Terraform
     
     ```bash
-    tf init
+    terraform init
     ```
 
-6.  Get your variables file ready with your Nutanix AHV environment
-    information
+7.  Validate your Terraform code
 
     ```bash
-    cp terraform.tfvars.sample terraform.tfvars
+    terraform validate
     ```
 
-7.  Check your variables file to make sure it matches your environment
-
-    ``` bash
-    vi terraform.tfvars
-    ```
+8.  Run Terraform plan to check what resources will be created 
 
     ```bash
-    cluster_name        = ${PRISMELEMENT_CLUSTERNAME}
-    subnet_name         = ${PRISMELEMENT_NETWORKNAME}
-    user                = ${NUTANIX_USERNAME}
-    password            = ${NUTANIX_PASSWORD}
-    prismcentral        = ${PRISMCENTRAL_ADDRESS}
-    vm_master_prefix    = ${VM_MASTER_PREFIX}
-    vm_worker_prefix    = ${VM_WORKER_PREFIX}
-    vm_master_count     = ${VM_MASTER_COUNT}
-    vm_worker_count     = ${VM_COUNT_COUNT}
-    image_uri           = ${RHCOS_IMAGE_URI}
-    ```
-
-8.  Validate your Terraform code
-
-    ```bash
-    tf validate
-    ```
-
-9.  Run Terraform plan to check what resources will be created 
-
-    ```bash
-    tf plan
+    terraform plan
     ```
     ``` { .bash .no-copy }
     # you will see the number of resources that will be created for confirmation
@@ -324,7 +284,7 @@ For latest resource requirements of an OpenShift cluster refer to [OpenShift por
 10.  Apply your Terraform code to create virtual machines and associated resources
   
     ```bash
-    tf apply 
+    terraform apply 
 
     # Terraform will show you all resources that it will to create
     # Type yes to confirm 
@@ -363,15 +323,15 @@ For latest resource requirements of an OpenShift cluster refer to [OpenShift por
 10. Run the Terraform state list command to verify what resources have been created
 
     ``` bash
-    tf state list
+    terraform state list
     ```
 
     ``` { .bash .no-copy }
     # Sample output for the above command
 
-    data.nutanix_cluster.cluster            # < This is your existing Prism Element cluster
-    data.nutanix_subnet.subnet              # < This is your existing Primary subnet
-    nutanix_image.RHCOS                     # < This is OCP Discovery ISO image
+    data.nutanix_cluster.cluster            # < This is your existing Prism cluster
+    data.nutanix_subnet.subnet              # < This is your existing Prism network name
+    nutanix_image.RHCOS                     # < This is RHCOS ISO image
     nutanix_virtual_machine.RHCOS-master[0] # < This is master vm 1
     nutanix_virtual_machine.RHCOS-master[1] # < This is master vm 2
     nutanix_virtual_machine.RHCOS-master[2] # < This is master vm 3
@@ -387,26 +347,23 @@ For latest resource requirements of an OpenShift cluster refer to [OpenShift por
 
 In this section we will use Red Hat Console's Assisted Installer wizard to install the OCP cluster with the VMs we have provisioned.
 
-1.  Return to Red Hat Openshift Console and check if the VMs appear
-    (this may take up to 5 minutes)
+1.  Return to Red Hat Openshift Console and check if the VMs appear (this may take up to 5 minutes)
+   
+2.  Assign roles to your nodes from the drop-down (at least three Control plane nodes)
 
     ![](images/ocp_rh_console_vms.png)
 
-2.  Click **Next** at the bottom of the page
+3.  Click **Next** at the bottom of the page
 
-3.  In the Networking section, assign IPs for your **API Virtual IP** and **Ingress Virtual IP** from your AHV network CIDR range (sample IPs provided in screenshot - use your own reserved IPs). See [pre-requisites](#pre-requisites-for-assisted-installation) section where you reserved IPs.
+4.  In the Networking section 
    
-    ![](images/ocp_ing_api_ips.png)
-
-4.  In the **Host inventory** section, choose the **Control Plane Node** for Master VMs and **Worker** nodes for Worker VMs from the drop-down menu
-
-    ![](images/ocp_node_roles.png)
+    - **Machine network** - choose the CIDR of the ``${TF_VAR_PRISMELEMENT_NETWORKNAME}`` network
+    - **API Virtual IP** -  input the value of ``${API_IP}`` variable
+    - **Ingress Virual IP** - input the value of ``${INGRESS_IP} ``variable
 
 5.  Click **Next** at the bottom of the page
 
 6.  Review your setup information and click on **Install Cluster**
-
-    ![](images/ocp_cluster_summary.png)
 
 7.  You will be taken to monitoring your installation progress
 
@@ -418,47 +375,36 @@ In this section we will use Red Hat Console's Assisted Installer wizard to insta
 
     ![](images/ocp_user_inter.png)
 
-9.  This message is wanting the user to unmount the installation Discovery ISO so they VM can boot into the OS drive
+    This message is wanting the user to unmount the installation Discovery ISO so they VM can boot into the OS drive
 
-10. Go to **Prism Element** > **VM** > **Master/Worker VM** > **update**
+9.  Go to **Prism Central** > **Compute & Storage** > **VM**
 
-11. Under Disks > Click on Eject
+10. Select the VM in question and click on **Update**
+    
+11. Click **Next**
+
+12. Under Disks > Click on Eject
 
     ![](images/pe_vm_cd_eject.png)
 
-12. Click on Save
+13. Click on **Next** twice
+    
+14. Click on **Save**
 
-13. Under **Power Off Actions** choose to Guest Reboot the VM where there are pending user action
+15. Guest Reboot the VM once done which will then boot the VM into the OS disk 
 
-14. Repeat ejecting CD-ROM for all VMs and rebooting it as the Wizard prompts for user action (do not do this before the prompting)
+16. Repeat ejecting CD-ROM for all VMs and rebooting it as the Wizard prompts for user action (do not do this before the prompting)
 
-15. Once all the user actions are sustained for Master and Worker VMs, OCP cluster will be installed
-
-    ![](images/ocp_install_finish.png)
+17. Once all the user actions are sustained for Control plane and Worker VMs, OCP cluster will be installed
 
     !!!tip
            There is a potential for automation for the eject process using [Nutanix REST APIs](https://www.nutanix.dev/api-reference/). 
 
 ### Access to your OpenShift Cluster
 
-Create DNS entries in your environment to be able to access the OpenShift cluster.
+Once you have done creating DNS entries as specified in [pre-requisites](#pre-requisites-for-assisted-installation) section, you can access OpenShift cluster in two ways:
 
-- On your workstation - using ``/etc/hosts`` file
-
-- On your network - creating entries in a DNS server (see [pre-requisites](#pre-requisites-for-assisted-installation))
-
-The Installation wizard gives you DNS entries for your workstation as well as a centralised DNS server.
-
-![](images/ocp_access.png)
-
-Click on **Not able to access Web Console?** link in the status page to reveal IP addresses and DNS entry suggestions.
-
-![](images/ocp_dns_hosts.png)
-
-
-Once you have done creating DNS entries, you can access OpenShift cluster in two ways:
-
-1. Using ``oc`` or ``kubectl`` commands 
+1. Using OpenShift CLI ``oc`` command
    
     Download the kubeconfig file from the installation page of the Red Hat portal to your workstation
  
@@ -468,29 +414,40 @@ Once you have done creating DNS entries, you can access OpenShift cluster in two
     ```bash title="Export kubeconfig to PATH"
     export KUBECONFIG=/path/to/kubeconfig
     ```
-    ```bash title="Execute oc commands to confirm"
+    ```bash title="Execute oc commands to confirm connectivity to cluster"
     oc get nodes
     ```
-   
+
 2. Using the OpenShift Clusters Web UI: 
-
-    You can access your installed OCP Cluster Manger page using the URL provided in the Installation progress screen of Red Hat portal.
     
-    !!!warning
- 
-              This URL can **only** be accessed within your network environment unless you expose it outside your private CIDR range.
- 
-    ![](images/ocp_console_ai.png)
+    === "Template URL"
 
-### Machine API Support - Optional
+        ```URL
+        http:\\console-openshift-console.apps.subdomain.domain.com
+        ```
 
-You are also able to configure machine API support for your dynamic workloads. You might want to do this to keep you worker nodes to a minimum in your private or public clouds to get effective value. The autoscaling functionality will allow for the nodes to be scaled up and down based on the requirements of the workloads. 
+    === "Example URL"
 
-There are a few additional steps that you need to do. From a configuration perspective setup the following:
+        ```URL title="Using ocp-cluster and example.com as FQDN"
+        http:\\console-openshift-console.apps.ocp-cluster.example.com
+        ```
 
+### Machine API Support - optional
 
-1. Patch your OCP cluster with the Nutanix infrastructure/cloud information
+Machine API support allows for OCP nodes to scale out and scale in to accommodate dynamic requirements of workloads.
+
+The following few additional steps are required to configure Machine API support:
+
+1. Export environment variables for configuration
    
+    ```bash
+    export PRISMCENTRAL_PORT=9440
+    export PRISMELEMENT_PORT=9440
+    ```
+
+2. Patch the OCP cluster with the Nutanix infrastructure/cloud information
+   
+    
     ```bash
     oc patch infrastructure/cluster --type=merge --patch-file=/dev/stdin <<-EOF
     {
@@ -498,16 +455,16 @@ There are a few additional steps that you need to do. From a configuration persp
         "platformSpec": {
             "nutanix": {
             "prismCentral": {
-                "address": "${PRISMCENTRAL_ADDRESS}",
+                "address": "${TF_VAR_PRISMCENTRAL_ADDRESS}",
                 "port": ${PRISMCENTRAL_PORT}
             },
             "prismElements": [
                 {
                 "endpoint": {
-                    "address": "${PRISMELEMENT_ADDRESS}",
+                    "address": "${TF_VAR_PRISMELEMENT_ADDRESS}",
                     "port": ${PRISMELEMENT_PORT}
                 },
-                "name": "${PRISMELEMENT_CLUSTERNAME}"
+                "name": "${TF_VAR_PRISMELEMENT_CLUSTERNAME}"
                 }
             ]
             },
@@ -530,19 +487,8 @@ There are a few additional steps that you need to do. From a configuration persp
     type: Opaque
     stringData:
      credentials: |
-       [{"type":"basic_auth","data":{"prismCentral":{"username":"${NUTANIX_USERNAME}","password":"${NUTANIX_PASSWORD}"},"prismElements":null}}]
+       [{"type":"basic_auth","data":{"prismCentral":{"username":"${TF_VAR_NUTANIX_USERNAME}","password":"${TF_VAR_NUTANIX_PASSWORD}"},"prismElements":null}}]
     EOF
     ```
-4. Once you are done with Nutanix cloud connection information you are able to continue with creating MachineSet to support your workloads. For information on creating MachineSet refer to the RedHat document [here](https://docs.openshift.com/container-platform/4.12/machine_management/creating_machinesets/creating-machineset-nutanix.html). 
+4. The next step is to create ``MachineSet`` to support your workloads. For information on creating MachineSet refer to the RedHat document [here](https://docs.openshift.com/container-platform/4.12/machine_management/creating_machinesets/creating-machineset-nutanix.html). 
 
-
-## Takeaways
-
--   You can easily deploy multinode/single node OCP cluster using the Assisted Installer in Red Hat console
--   You can provision resources (VM, Storage, etc) on Nutanix using Terraform IaaC (GitOps)
-    
-    !!!info "Good to know"
-
-          The Installer Provisioned Installer (IPI) also uses Terraform to deploy infrastructure assets (VM) on Nutanix and VMware
-
--   Assisted Installer provisioned OCP clusters can be used as a learning ground and for testing purposes

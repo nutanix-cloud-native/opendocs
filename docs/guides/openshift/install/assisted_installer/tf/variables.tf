@@ -1,37 +1,37 @@
-variable "cluster_name" {
+variable "PRISMELEMENT_CLUSTERNAME" {
   type = string
 }
-variable "subnet_name" {
+variable "PRISMELEMENT_NETWORKNAME" {
   type = string
 }
-variable "password" {
+variable "NUTANIX_PASSWORD" {
   description = "nutanix cluster password"
   type      = string
   sensitive = true
 
 }
-variable "prismcentral" {
+variable "PRISMCENTRAL_ADDRESS" {
   type = string
 }
 
-variable "user" {
+variable "NUTANIX_USERNAME" {
   description = "nutanix cluster username"
   type      = string
   sensitive = true
 }
 
-variable "vm_worker_prefix" { 
+variable "VM_WORKER_PREFIX" { 
 }
 
-variable "vm_master_prefix" { 
+variable "VM_MASTER_PREFIX" { 
 }
 
-variable "vm_master_count" {  
+variable "VM_MASTER_COUNT" {  
 }
 
-variable "vm_worker_count" {
+variable "VM_WORKER_COUNT" {
 }
 
-variable "image_uri" {
+variable "RHCOS_IMAGE_URI" {
   type = string
 }

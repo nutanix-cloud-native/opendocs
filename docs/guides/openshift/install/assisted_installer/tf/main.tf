@@ -8,16 +8,16 @@ terraform {
 }
 
 data "nutanix_cluster" "cluster" {
-  name = var.cluster_name
+  name = var.PRISMELEMENT_CLUSTERNAME
 }
 data "nutanix_subnet" "subnet" {
-  subnet_name = var.subnet_name
+  subnet_name = var.PRISMELEMENT_NETWORKNAME
 }
 
 provider "nutanix" {
-  username     = var.user
-  password     = var.password
-  endpoint     = var.prismcentral
+  username     = var.NUTANIX_USERNAME
+  password     = var.NUTANIX_PASSWORD
+  endpoint     = var.PRISMCENTRAL_ADDRESS
   insecure     = true
   wait_timeout = 60
 }
@@ -27,13 +27,13 @@ provider "nutanix" {
 resource "nutanix_image" "rhocs" {
   name        = "RHOCS"
   description = "RHOCS"
-  source_uri  = var.image_uri
+  source_uri  = var.RHCOS_IMAGE_URI
 }
 
 ## Creating MASTER VMs here
 resource "nutanix_virtual_machine" "rhocs-master" {
-  count                = var.vm_master_count
-  name                 = "${var.vm_master_prefix}-${count.index + 1}"
+  count                = var.VM_MASTER_COUNT
+  name                 = "${var.VM_MASTER_PREFIX}-${count.index + 1}"
   cluster_uuid         = data.nutanix_cluster.cluster.id
   num_vcpus_per_socket = "1"
   num_sockets          = "8"
@@ -72,8 +72,8 @@ resource "nutanix_virtual_machine" "rhocs-master" {
 
 ## Creating WORKER VMs here
 resource "nutanix_virtual_machine" "rhocs-worker" {
-  count                = var.vm_worker_count
-  name                 = "${var.vm_worker_prefix}-${count.index + 1}"
+  count                = var.VM_WORKER_COUNT
+  name                 = "${var.VM_WORKER_PREFIX}-${count.index + 1}"
   cluster_uuid         = data.nutanix_cluster.cluster.id
   num_vcpus_per_socket = "1"
   num_sockets          = "8"
