@@ -1,6 +1,6 @@
 # Custom Cloud Native role
 
-Cloud Native solutions can be deployed on the Nutanix Cloud Platform with a user with administrative permissions. In various scenarios this is not desired and least privileged user needs to be used to deploy these solutions.
+Cloud Native solutions can be deployed on the Nutanix Cloud Platform by a user with administrative permissions. In various scenarios, this is not desired and a least privileged user should be used to deploy solutions.
 
 This page will illustrate the steps required to create a custom Cloud Native role in Prism Central that can be assigned to Prism Central users. The custom role will be created using `Ansible` and the [Nutanix Ansible Collection](https://github.com/nutanix/nutanix.ansible){target=_blank}. 
 
@@ -28,7 +28,7 @@ This page will illustrate the steps required to create a custom Cloud Native rol
 ## Example
 
 !!! note 
-    Update the `role_name` variable if a different name for the custom role is desired
+    Update the `role_name` variable if a different name for the custom role is desired.
 
 ```YAML
 ---
