@@ -123,6 +123,7 @@ nav:
         - "Red Hat OpenShift":
             - "Install":
                 - "IPI": "guides/openshift/install/ipi/index.md"
+        - "Custom Cloud Native Role": "guides/cloud_native_role/index.md"
 markdown_extensions:
   - attr_list
   - admonition
