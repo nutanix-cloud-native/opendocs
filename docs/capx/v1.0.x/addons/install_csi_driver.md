@@ -102,7 +102,7 @@ Then replace `ClusterResourceSet=false` with `ClusterResourceSet=true`.
 
 ### Prepare the Nutanix CSI `ClusterResourceSet`
 
-#### Create the `ConfigMap` for the CNI Plugin
+#### Create the `ConfigMap` for the CSI Plugin
 
 First, create a `ConfigMap` that contains a YAML manifest with all resources to install the Nutanix CSI driver.
 
