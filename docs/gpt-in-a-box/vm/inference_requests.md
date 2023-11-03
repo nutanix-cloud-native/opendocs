@@ -1,6 +1,14 @@
 # Inference and Management Requests
 TorchServe can be inferenced and managed through it's Inference and Management APIs respectively. Find out more about TorchServe APIs in the official [Inference API](https://pytorch.org/serve/inference_api.html) and [Management API](https://pytorch.org/serve/management_api.html) documentation
 
+**Server Configuration**
+
+| Variable | Value |
+| --- | --- |
+| inference_server_endpoint | localhost |
+| inference_port | 8080 |
+| management_port | 8081 |
+
 The following are example cURL commands to Inference and Manage the Inference Server.
 
 ## Inference Requests
