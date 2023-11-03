@@ -19,15 +19,15 @@ The following are example commands to start the Inference Server.
 
 For Inference with official MPT-7B model:
 ```
-bash $WORK_DIR/llm/run.sh -n mpt_7b -d data/translate -a /home/ubuntu/models/model_store
+bash $WORK_DIR/llm/run.sh -n mpt_7b -d $WORK_DIR/data/translate -a /home/ubuntu/models/model_store
 ```
 For Inference with official Falcon-7B model:
 ```
-bash $WORK_DIR/llm/run.sh -n falcon_7b -d data/qa -a /home/ubuntu/models/model_store
+bash $WORK_DIR/llm/run.sh -n falcon_7b -d $WORK_DIR/data/qa -a /home/ubuntu/models/model_store
 ```
 For Inference with official Llama2-7B model:
 ```
-bash $WORK_DIR/llm/run.sh -n llama2_7b -d data/summarize -a /home/ubuntu/models/model_store
+bash $WORK_DIR/llm/run.sh -n llama2_7b -d $WORK_DIR/data/summarize -a /home/ubuntu/models/model_store
 ```
 
 ## Stop Inference Server and Cleanup

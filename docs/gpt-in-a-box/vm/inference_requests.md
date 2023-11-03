@@ -20,26 +20,26 @@ Input data files can be found in the `$WORK_DIR/data` folder.
 
 For MPT-7B model
 ```
-curl -v -H "Content-Type: application/text" http://localhost:8080/predictions/mpt_7b -d @$WORK_DIR/data/qa/sample_test1.txt
+curl -v -H "Content-Type: application/text" http://localhost:8080/predictions/mpt_7b -d @$WORK_DIR/data/qa/sample_text1.txt
 ```
 ```
-curl -v -H "Content-Type: application/json" http://localhost:8080/predictions/mpt_7b -d @$WORK_DIR/data/qa/sample_test4.json
+curl -v -H "Content-Type: application/json" http://localhost:8080/predictions/mpt_7b -d @$WORK_DIR/data/qa/sample_text4.json
 ```
 
 For Falcon-7B model
 ```
-curl -v -H "Content-Type: application/text" http://localhost:8080/predictions/falcon_7b -d @$WORK_DIR/data/summarize/sample_test1.txt
+curl -v -H "Content-Type: application/text" http://localhost:8080/predictions/falcon_7b -d @$WORK_DIR/data/summarize/sample_text1.txt
 ```
 ```
-curl -v -H "Content-Type: application/json" http://localhost:8080/predictions/falcon_7b -d @$WORK_DIR/data/summarize/sample_test3.json
+curl -v -H "Content-Type: application/json" http://localhost:8080/predictions/falcon_7b -d @$WORK_DIR/data/summarize/sample_text3.json
 ```
 
 For Llama2-7B model
 ```
-curl -v -H "Content-Type: application/text" http://localhost:8080/predictions/llama2_7b -d @$WORK_DIR/data/translate/sample_test1.txt
+curl -v -H "Content-Type: application/text" http://localhost:8080/predictions/llama2_7b -d @$WORK_DIR/data/translate/sample_text1.txt
 ```
 ```
-curl -v -H "Content-Type: application/json" http://localhost:8080/predictions/llama2_7b -d @$WORK_DIR/data/translate/sample_test3.json
+curl -v -H "Content-Type: application/json" http://localhost:8080/predictions/llama2_7b -d @$WORK_DIR/data/translate/sample_text3.json
 ```
 
 ## Describe Registered Model
@@ -85,6 +85,8 @@ For Llama2-7B model
 ```
 curl -X POST "http://localhost:8081/models?url=llama2_7b.mar&initial_workers=1&synchronous=true"
 ```
+!!! note
+    Make sure the Model Archive file name given in the cURL request is correct and is present in the model store directory.
 
 ## Edit Registered Model Configuration
 The model can be configured after registration using the Management API of TorchServe. 
@@ -97,16 +99,18 @@ curl -v -X PUT "http://{inference_server_endpoint}:{management_port}/models/{mod
 ### Examples 
 For MPT-7B model
 ```
-curl -v -X PUT "http://localhost:8081/models/mpt_7b?min_worker=3&max_worker=6"
+curl -v -X PUT "http://localhost:8081/models/mpt_7b?min_worker=2&max_worker=2"
 ```
 For Falcon-7B model
 ```
-curl -v -X PUT "http://localhost:8081/models/falcon_7b?min_worker=3&max_worker=6"
+curl -v -X PUT "http://localhost:8081/models/falcon_7b?min_worker=2&max_worker=2"
 ```
 For Llama2-7B model
 ```
-curl -v -X PUT "http://localhost:8081/models/llama2_7b?min_worker=3&max_worker=6"
+curl -v -X PUT "http://localhost:8081/models/llama2_7b?min_worker=2&max_worker=2"
 ```
+!!! note
+    Make sure to have enough GPU and System Memory before increasing number of workers, else the additional workers will fail to load.
 
 ## Unregister a Model
 The following is the template command to unregister a model from the Inference Server:
