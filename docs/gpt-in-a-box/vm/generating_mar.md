@@ -1,4 +1,11 @@
 # Generate PyTorch Model Archive File
+We will download the model files and generate a Model Archive file for the desired LLM, which will be used by TorchServe to load the model. Find out more about Torch Model Archiver [here](https://github.com/pytorch/serve/blob/master/model-archiver/README.md).
+
+Make two new directories, one to store the model files (model_path) and another to store the Model Archive files (mar_output).
+
+!!! note
+    The model store directory (i.e, mar_output) can be the same for multiple Model Archive files. But model files directory (i.e, model_path) should be empty if you're downloading the model.
+
 Run the following command for downloading model files and generating the Model Archive File (MAR) of the desired LLM: 
 ```
 python3 $WORK_DIR/llm/download.py [--no_download --repo_version <REPO_VERSION>] --model_name <MODEL_NAME> --model_path <MODEL_PATH> --mar_output <MAR_EXPORT_PATH> --hf_token <Your_HuggingFace_Hub_Token>
