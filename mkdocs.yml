@@ -118,6 +118,13 @@ nav:
                 - "Manual": "anthos/install/manual/index.md" 
         - "Amazon EKS Anywhere":
             - "Install": "eksa/install/index.md"
+    - "GPT-in-a-Box":
+            - "Deploy on Kubernetes":
+                - "Getting Started": "gpt-in-a-box/kubernetes/getting_started.md"
+                - "Generating Model Archive File": "gpt-in-a-box/kubernetes/generating_mar.md"
+                - "Deploying Inference Server": "gpt-in-a-box/kubernetes/inference_server.md"
+                - "Inference Requests": "gpt-in-a-box/kubernetes/inference_requests.md"
+                - "Custom Model Support": "gpt-in-a-box/kubernetes/custom_model.md"
   - "Guides":
     - "Cloud Native":
         - "Red Hat OpenShift":
