@@ -40,7 +40,9 @@ Curl request for Llama2-7B model
 ```
 curl -v -H "Host: ${SERVICE_HOSTNAME}" -H "Content-Type: application/json" http://${INGRESS_HOST}:${INGRESS_PORT}/v2/models/llama2_7b/infer -d @$WORK_DIR/data/translate/sample_test1.json
 ```
-Input_file should be a json file in the following example format:
+
+### Input data format
+Input data should be in **JSON** format. The input should be a '.json' file containing the prompt in the format below:
 ```
 {
   "id": "42",

@@ -12,7 +12,7 @@ Where the arguments are :
 
 - **model_name**:       Name of custom model
 - **repo_version**:     Any model version, defaults to "1.0" (optional)
-- **model_path**:       Absolute path of custom model files (should be empty non empty)
+- **model_path**:       Absolute path of custom model files (should be a non empty folder)
 - **mar_output**:       Absolute path of export of MAR file (.mar)
 - **no_download**:      Flag to skip downloading the model files, must be set for custom models
 - **handler**:          Path to custom handler, defaults to llm/handler.py (optional)
