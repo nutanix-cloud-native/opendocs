@@ -8,7 +8,7 @@ The Inference Server can be inferenced through the TorchServe Inference API. Fin
 | inference_server_endpoint | localhost |
 | inference_port | 8080 |
 
-The following are example cURL commands to Inference the Inference Server.
+The following are example cURL commands to send inference requests to the Inference Server.
 
 ## Inference Requests
 The following is the template command for inferencing with a text file:

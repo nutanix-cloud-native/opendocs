@@ -8,7 +8,7 @@ The Inference Server can be managed through the TorchServe Management API. Find 
 | inference_server_endpoint | localhost |
 | management_port | 8081 |
 
-The following are example cURL commands to Manage the Inference Server.
+The following are example cURL commands to send management requests to the Inference Server.
 
 ## Describe Registered Model
 Once a model is loaded on the Inference Server, we can use the following request to describe the model and it's configuration.
