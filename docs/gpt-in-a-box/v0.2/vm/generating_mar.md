@@ -13,7 +13,7 @@ python3 $WORK_DIR/llm/download.py [--no_download --repo_version <REPO_VERSION>] 
 Where the arguments are : 
 
 - **model_name**:      Name of model
-- **repo_version**:    Commit ID of model's repo from HuggingFace repository (optional, if not provided default set in model_config will be used)
+- **repo_version**:    Commit ID of model's HuggingFace repository (optional, if not provided default set in model_config will be used)
 - **model_path**:      Absolute path of model files (should be empty if downloading)
 - **mar_output**:      Absolute path of export of MAR file (.mar)
 - **no_download**:     Flag to skip downloading the model files

@@ -10,6 +10,18 @@ The Inference Server can be inferenced through the TorchServe Inference API. Fin
 
 The following are example cURL commands to send inference requests to the Inference Server.
 
+## Health Check
+To find out the running status of a TorchServe server, you can use the ping API that TorchServe supports:
+```
+curl http://{inference_server_endpoint}:{inference_port}/ping
+```
+### Example
+```
+curl http://localhost:8080/ping
+```
+!!! note
+    This only provides information on whether the TorchServe server is running. To check whether a model is successfully registered on TorchServe, you can [**list all models**](management_requests.md#list-registered-models) and [**describe a registered model**](management_requests.md#describe-registered-models).
+
 ## Inference Requests
 The following is the template command for inferencing with a text file:
 ```
