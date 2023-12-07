@@ -1,7 +1,7 @@
 # Custom Model Support
 We provide the capability to generate a MAR file with custom model files and start an inference server using it with Torchserve.
 !!! note
-    A model is recognised as a custom model if it's model name is not present in the [**supported models**](../supported_models.md).
+    A model is recognised as a custom model if it's model name is not present in the [**supported models**](supported_models.md).
 
 ## Generate Model Archive File for Custom Models
 Run the following command for generating the Model Archive File (MAR) with the Custom Model files :

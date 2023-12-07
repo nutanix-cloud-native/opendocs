@@ -5,7 +5,7 @@ Run the following command for starting Kubeflow serving and running inference on
 bash $WORK_DIR/llm/run.sh  -n <MODEL_NAME> -g <NUM_GPUS> -f <NFS_ADDRESS_WITH_SHARE_PATH> -m <NFS_LOCAL_MOUNT_LOCATION> -e <KUBE_DEPLOYMENT_NAME> [OPTIONAL -d <INPUT_PATH> -v <REPO_COMMIT_ID> -t <HUGGINGFACE_HUB_TOKEN>]
 ```
 
-* **n**:    Name of a [supported model](../supported_models.md)
+* **n**:    Name of a [supported model](supported_models.md)
 * **d**:    Absolute path of input data folder (Optional)
 * **g**:    Number of gpus to be used to execute (Set 0 to use cpu)
 * **f**:    NFS server address with share path information

@@ -57,7 +57,7 @@ helm install --wait -n gpu-operator --create-namespace gpu-operator nvidia/gpu-o
 ```
 
 ### Download nutanix package and Install python libraries  
-Download the **v0.3** release version from [NAI-LLM-K8s Releases](https://github.com/nutanix/nai-llm-k8s/releases) and untar the release. Set the working directory to the root folder containing the extracted release.
+Download the **v0.1** release version from [NAI-LLM-K8s Releases](https://github.com/nutanix/nai-llm-k8s/releases) and untar the release. Set the working directory to the root folder containing the extracted release.
 ```
 export WORK_DIR=absolute_path_to_empty_release_directory
 mkdir $WORK_DIR

@@ -1,4 +1,4 @@
-# Supported Models
+# Supported Models for Virtual Machine Version
 
 GPT-in-a-Box currently supports a curated set of HuggingFace models that are validated and tested. Information pertaining to these models is stored in the ```llm/model_config.json``` file.
 
@@ -15,4 +15,4 @@ The Supported Models are :
 | llama2_7b_chat | [meta-llama/Llama-2-7b-chat-hf](https://huggingface.co/meta-llama/Llama-2-7b-chat-hf) |
 
 !!! note
-    To start the inference server with any HuggingFace model, refer to HuggingFace Model Support for [**Virtual Machine**](vm/huggingface_model.md) and [**Kubernetes**](kubernetes/huggingface_model.md) documentation. 
+    To start the inference server with any HuggingFace model, refer to [**HuggingFace Model Support**](huggingface_model.md) documentation.

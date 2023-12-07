@@ -4,7 +4,7 @@ We provide the capability to download model files from any HuggingFace repositor
 To start the Inference Server for any other HuggingFace model, follow the steps below.
 
 !!! Note
-    Only the [**Supported Models**](../supported_models.md) are **validated** and **tested**. To start the inference server for the same, refer to the [**Deploying Inference Server**](inference_server.md) documentation.  
+    Only the [**Supported Models**](supported_models.md) are **validated** and **tested**. To start the inference server for the same, refer to the [**Deploying Inference Server**](inference_server.md) documentation.  
 
 ## Generate Model Archive File for HuggingFace Models
 Run the following command for downloading and generating the Model Archive File (MAR) with the HuggingFace Model files :

@@ -6,7 +6,7 @@ bash $WORK_DIR/llm/run.sh -n <MODEL_NAME> -a <MAR_EXPORT_PATH> [OPTIONAL -d <INP
 ```
 Where the arguments are :
 
-- **n**:    Name of a [supported model](../supported_models.md)
+- **n**:    Name of a [supported model](supported_models.md)
 - **v**:    Commit ID of model's HuggingFace repository (optional, if not provided default set in model_config will be used)
 - **d**:    Absolute path of input data folder (optional)
 - **a**:    Absolute path to the Model Store directory
