@@ -42,5 +42,5 @@ bash $WORK_DIR/llm/run.sh -n <HUGGINGFACE_MODEL_NAME> -g <NUM_GPUS> -f <NFS_ADDR
 ### Example
 To start Inference Server with codellama/CodeLlama-7b-hf:
 ```
-bash $WORK_DIR/llm/run.sh -n codellama_7b_hf -a /mnt/llm -d $WORK_DIR/data/summarize
+bash $WORK_DIR/llm/run.sh -n codellama_7b_hf -d data/qa -g 1 -e llm-deploy -f '1.1.1.1:/llm' -m /mnt/llm
 ```
