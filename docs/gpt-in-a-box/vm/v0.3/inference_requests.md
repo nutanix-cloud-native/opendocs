@@ -10,8 +10,8 @@ The Inference Server can be inferenced through the TorchServe Inference API. Fin
 
 The following are example cURL commands to send inference requests to the Inference Server.
 
-## Health Check
-To find out the running status of a TorchServe server, you can use the ping API that TorchServe supports:
+## Ping Request
+To find out the status of a TorchServe server, you can use the ping API that TorchServe supports:
 ```
 curl http://{inference_server_endpoint}:{inference_port}/ping
 ```

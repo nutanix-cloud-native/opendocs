@@ -1,5 +1,5 @@
 # Getting Started
-This is a guide on getting started with GPT-in-a-Box deployment on a Virtual Machine. We implement the Inference Server using TorchServe with the HuggingFace API Runtime. You can find the open source repository for the virtual machine version [here](https://github.com/nutanix/nai-llm).
+This is a guide on getting started with GPT-in-a-Box deployment on a Virtual Machine. You can find the open source repository for the virtual machine version [here](https://github.com/nutanix/nai-llm).
 
 Tested Specifications: 
 
@@ -34,7 +34,7 @@ sudo sh NVIDIA-Linux-x86_64-515.105.01.run -s
     We don’t need to install CUDA toolkit separately as it is bundled with PyTorch installation. Just NVIDIA driver installation is enough.
 
 ### Download Nutanix package
-Download the **v0.2** release version from the [NAI-LLM Releases](https://github.com/nutanix/nai-llm/releases) and untar the release on the node. Set the working directory to the root folder containing the extracted release.
+Download the **v0.2** release version from the [NAI-LLM Releases](https://github.com/nutanix/nai-llm/releases/tag/v0.2) and untar the release on the node. Set the working directory to the root folder containing the extracted release.
 
 ```
 export WORK_DIR=absolute_path_to_empty_release_directory

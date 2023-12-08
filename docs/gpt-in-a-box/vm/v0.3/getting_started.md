@@ -1,5 +1,5 @@
 # Getting Started
-This is a guide on getting started with GPT-in-a-Box deployment on a Virtual Machine. We implement the Inference Server using TorchServe with the HuggingFace API Runtime. You can find the open source repository for the virtual machine version [here](https://github.com/nutanix/nai-llm).
+This is a guide on getting started with GPT-in-a-Box deployment on a Virtual Machine. You can find the open source repository for the virtual machine version [here](https://github.com/nutanix/nai-llm).
 
 Tested Specifications: 
 

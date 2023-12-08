@@ -122,14 +122,14 @@ nav:
         - "Overview": "gpt-in-a-box/overview.md"
         - "Deploy on Virtual Machine":
             - "v0.3":
-                - "Supported Models": "gpt-in-a-box/vm/v0.3/supported_models.md"
                 - "Getting Started": "gpt-in-a-box/vm/v0.3/getting_started.md"
+                - "Supported Models": "gpt-in-a-box/vm/v0.3/supported_models.md"
                 - "Generating Model Archive File": "gpt-in-a-box/vm/v0.3/generating_mar.md"
                 - "Deploying Inference Server": "gpt-in-a-box/vm/v0.3/inference_server.md"
                 - "Inference Requests": "gpt-in-a-box/vm/v0.3/inference_requests.md"
                 - "Model Version Support": "gpt-in-a-box/vm/v0.3/model_version.md"
-                - "Custom Model Support": "gpt-in-a-box/vm/v0.3/custom_model.md"
                 - "HuggingFace Model Support": "gpt-in-a-box/vm/v0.3/huggingface_model.md"
+                - "Custom Model Support": "gpt-in-a-box/vm/v0.3/custom_model.md"
                 - "Management Requests": "gpt-in-a-box/vm/v0.3/management_requests.md"
             - "v0.2":
                 - "Getting Started": "gpt-in-a-box/vm/v0.2/getting_started.md"
@@ -141,13 +141,13 @@ nav:
                 - "Management Requests": "gpt-in-a-box/vm/v0.2/management_requests.md"
         - "Deploy on Kubernetes":
             - "v0.2":
-                - "Supported Models": "gpt-in-a-box/kubernetes/v0.2/supported_models.md"
                 - "Getting Started": "gpt-in-a-box/kubernetes/v0.2/getting_started.md"
+                - "Supported Models": "gpt-in-a-box/kubernetes/v0.2/supported_models.md"
                 - "Generating Model Archive File": "gpt-in-a-box/kubernetes/v0.2/generating_mar.md"
                 - "Deploying Inference Server": "gpt-in-a-box/kubernetes/v0.2/inference_server.md"
                 - "Inference Requests": "gpt-in-a-box/kubernetes/v0.2/inference_requests.md"
-                - "Custom Model Support": "gpt-in-a-box/kubernetes/v0.2/custom_model.md"
                 - "HuggingFace Model Support": "gpt-in-a-box/kubernetes/v0.2/huggingface_model.md"
+                - "Custom Model Support": "gpt-in-a-box/kubernetes/v0.2/custom_model.md"
             - "v0.1":
                 - "Getting Started": "gpt-in-a-box/kubernetes/v0.1/getting_started.md"
                 - "Generating Model Archive File": "gpt-in-a-box/kubernetes/v0.1/generating_mar.md"

@@ -1,7 +1,5 @@
 # Custom Model Support
 We provide the capability to generate a MAR file with custom models and start an inference server using Kubeflow serving.<br />
-!!! note
-    A model is recognised as a custom model if it's model name is not present in the [**supported models**](supported_models.md).
 
 ## Generate Model Archive File for Custom Models
 To generate the MAR file, run the following:
@@ -9,7 +7,7 @@ To generate the MAR file, run the following:
 python3 $WORK_DIR/llm/generate.py --skip_download [--repo_version <REPO_COMMIT_ID> --handler <CUSTOM_HANDLER_PATH>] --model_name <MODEL_NAME> --model_path <MODEL_PATH> --output <NFS_LOCAL_MOUNT_LOCATION>
 ```
 
-* **skip_download**:      Set flag to skip downloading the model files, must be set for custom models
+* **skip_download**:    Set flag to skip downloading the model files, must be set for custom models
 * **model_name**:       Name of custom model
 * **repo_version**:     Any model version, defaults to "1.0" (optional)
 * **model_path**:       Absolute path of custom model files (should be non empty)

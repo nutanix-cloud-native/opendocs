@@ -6,7 +6,7 @@ We provide the capability to generate a MAR file with custom models and start an
 ## Generate Model Archive File for Custom Models
 To generate the MAR file, run the following:
 ```
-python3 download.py --no_download [--repo_version <REPO_COMMIT_ID> --handler <CUSTOM_HANDLER_PATH>] --model_name <MODEL_NAME> --model_path <MODEL_PATH> --output <NFS_LOCAL_MOUNT_LOCATION>
+python3 $WORK_DIR/llm/download.py --no_download [--repo_version <REPO_COMMIT_ID> --handler <CUSTOM_HANDLER_PATH>] --model_name <MODEL_NAME> --model_path <MODEL_PATH> --output <NFS_LOCAL_MOUNT_LOCATION>
 ```
 
 * **no_download**:      Set flag to skip downloading the model files, must be set for custom models
@@ -19,7 +19,7 @@ python3 download.py --no_download [--repo_version <REPO_COMMIT_ID> --handler <CU
 ## Start Inference Server with Custom Model Archive File
 Run the following command for starting Kubeflow serving and running inference on the given input with a custom MAR file:
 ```
-bash run.sh -n <CUSTOM_MODEL_NAME> -g <NUM_GPUS> -f <NFS_ADDRESS_WITH_SHARE_PATH> -m <NFS_LOCAL_MOUNT_LOCATION> -e <KUBE_DEPLOYMENT_NAME> [OPTIONAL -d <INPUT_PATH>]
+bash $WORK_DIR/llm/run.sh -n <CUSTOM_MODEL_NAME> -g <NUM_GPUS> -f <NFS_ADDRESS_WITH_SHARE_PATH> -m <NFS_LOCAL_MOUNT_LOCATION> -e <KUBE_DEPLOYMENT_NAME> [OPTIONAL -d <INPUT_PATH>]
 ```
 
 * **n**:    Name of custom model, this name must not be in model_config

@@ -1,5 +1,5 @@
 # Getting Started  
-This is a guide on getting started with GPT-in-a-Box deployment on a Kubernetes Cluster. We implement the Inference Server using Kubeflow serving with the HuggingFace API Runtime. You can find the open source repository for the K8s version [here](https://github.com/nutanix/nai-llm-k8s). 
+This is a guide on getting started with GPT-in-a-Box deployment on a Kubernetes Cluster. You can find the open source repository for the K8s version [here](https://github.com/nutanix/nai-llm-k8s). 
 
 ## Setup
 
