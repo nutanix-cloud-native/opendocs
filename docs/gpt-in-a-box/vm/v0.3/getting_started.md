@@ -34,7 +34,7 @@ sudo sh NVIDIA-Linux-x86_64-515.105.01.run -s
     There is no need to install CUDA toolkit separately as it is bundled with PyTorch installation. The NVIDIA driver installation is sufficient.
 
 ### Download Nutanix package
-Download the **v0.3** release version from the [NAI-LLM Releases](https://github.com/nutanix/nai-llm/releases) and untar the release on the node. Set the working directory to the root folder containing the extracted release.
+Download the **v0.3** release version from the [NAI-LLM Releases](https://github.com/nutanix/nai-llm/releases/tag/v0.3) and untar the release on the node. Set the working directory to the root folder containing the extracted release.
 
 ```
 export WORK_DIR=absolute_path_to_empty_release_directory
