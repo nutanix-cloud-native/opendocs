@@ -1,10 +1,9 @@
 ## Download model files and Generate MAR file
 Run the following command for downloading model files and generating MAR file: 
 ```
-python3 $WORK_DIR/llm/download.py [--no_download --repo_version <REPO_COMMIT_ID>] --model_name <MODEL_NAME> --output <NFS_LOCAL_MOUNT_LOCATION> --hf_token <Your_HuggingFace_Hub_Token>
+python3 $WORK_DIR/llm/download.py [--repo_version <REPO_COMMIT_ID>] --model_name <MODEL_NAME> --output <NFS_LOCAL_MOUNT_LOCATION> --hf_token <Your_HuggingFace_Hub_Token>
 ```
 
-* **no_download**:      Set flag to skip downloading the model files
 * **model_name**:       Name of model
 * **output**:           Mount path to your nfs server to be used in the kube PV where model files and model archive file be stored
 * **repo_version**:     Commit id of model's repo from HuggingFace (optional, if not provided default set in model_config will be used)

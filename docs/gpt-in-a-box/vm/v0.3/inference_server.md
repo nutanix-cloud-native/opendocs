@@ -1,16 +1,15 @@
 # Deploying Inference Server
+
 Run the following command to start TorchServe (Inference Server) and run inference on the provided input:
 ```
 bash $WORK_DIR/llm/run.sh -n <MODEL_NAME> -a <MAR_EXPORT_PATH> [OPTIONAL -d <INPUT_PATH> -v <REPO_VERSION>]
 ```
 Where the arguments are :
 
-- **n**:    Name of model
-- **v**:    Commit ID of model's repo from HuggingFace repository (optional, if not provided default set in model_config will be used)
+- **n**:    Name of a [supported model](supported_models.md)
+- **v**:    Commit ID of model's HuggingFace repository (optional, if not provided default set in model_config will be used)
 - **d**:    Absolute path of input data folder (optional)
 - **a**:    Absolute path to the Model Store directory
-
-The available LLMs model names are mpt_7b (mosaicml/mpt_7b), falcon_7b (tiiuae/falcon-7b), llama2_7b (meta-llama/Llama-2-7b-hf).
 
 Once the Inference Server has successfully started, you should see a "Ready For Inferencing" message.
 
