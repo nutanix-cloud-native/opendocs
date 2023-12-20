@@ -1,6 +1,6 @@
 # HuggingFace Model Support
 !!! Note
-    To start the inference server for the [**Supported Models**](supported_models.md), refer to the [**Deploying Inference Server**](inference_server.md) documentation.
+    To start the inference server for the [**Validated Models**](validated_models.md), refer to the [**Deploying Inference Server**](inference_server.md) documentation.
 
 We provide the capability to download model files from any HuggingFace repository and generate a MAR file to start an inference server using it with Torchserve.
 
