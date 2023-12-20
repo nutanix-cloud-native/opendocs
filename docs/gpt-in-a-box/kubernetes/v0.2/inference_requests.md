@@ -1,4 +1,4 @@
-Kubeflow serving can be inferenced and managed through it's Inference APIs. Find out more about Kubeflow serving APIs in the official [Inference API](https://kserve.github.io/website/0.8/modelserving/v1beta1/torchserve/#model-inference) documentation.  
+Kubeflow serving can be inferenced and managed through its Inference APIs. Find out more about Kubeflow serving APIs in the official [Inference API](https://kserve.github.io/website/0.8/modelserving/v1beta1/torchserve/#model-inference) documentation.
 
 ### Set HOST and PORT  
 The first step is to [determine the ingress IP and ports](https://kserve.github.io/website/0.8/get_started/first_isvc/#4-determine-the-ingress-ip-and-ports) and set INGRESS_HOST and INGRESS_PORT.  
@@ -31,15 +31,15 @@ curl -v -H "Host: ${SERVICE_HOSTNAME}" -H "Content-Type: application/json" http:
 #### Examples:  
 Curl request for MPT-7B model
 ```
-curl -v -H "Host: ${SERVICE_HOSTNAME}" -H "Content-Type: application/json" http://${INGRESS_HOST}:${INGRESS_PORT}/v2/models/mpt_7b/infer -d @$WORK_DIR/data/qa/sample_test1.json
+curl -v -H "Host: ${SERVICE_HOSTNAME}" -H "Content-Type: application/json" http://${INGRESS_HOST}:${INGRESS_PORT}/v2/models/mpt_7b/infer -d @$WORK_DIR/data/qa/sample_text1.json
 ```
 Curl request for Falcon-7B model
 ```
-curl -v -H "Host: ${SERVICE_HOSTNAME}" -H "Content-Type: application/json" http://${INGRESS_HOST}:${INGRESS_PORT}/v2/models/falcon_7b/infer -d @$WORK_DIR/data/summarize/sample_test1.json
+curl -v -H "Host: ${SERVICE_HOSTNAME}" -H "Content-Type: application/json" http://${INGRESS_HOST}:${INGRESS_PORT}/v2/models/falcon_7b/infer -d @$WORK_DIR/data/summarize/sample_text1.json
 ```
 Curl request for Llama2-7B model
 ```
-curl -v -H "Host: ${SERVICE_HOSTNAME}" -H "Content-Type: application/json" http://${INGRESS_HOST}:${INGRESS_PORT}/v2/models/llama2_7b/infer -d @$WORK_DIR/data/translate/sample_test1.json
+curl -v -H "Host: ${SERVICE_HOSTNAME}" -H "Content-Type: application/json" http://${INGRESS_HOST}:${INGRESS_PORT}/v2/models/llama2_7b/infer -d @$WORK_DIR/data/translate/sample_text1.json
 ```
 
 ### Input data format
