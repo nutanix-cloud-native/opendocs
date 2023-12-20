@@ -1,7 +1,11 @@
 # Custom Model Support
-We provide the capability to generate a MAR file with custom models and start an inference server using Kubeflow serving.<br />
+In some cases you may want to use a custom model, e.g. a custom fine-tuned model. We provide the capability to generate a MAR file with custom models and start an inference server using Kubeflow serving.<br />
 
 ## Generate Model Archive File for Custom Models
+
+!!! note
+    The model files should be placed in an NFS share accessible by the Nutanix package. This directory will be passed to the --model_path argument. You'll also need to provide the --output path where you want the model archive export to be stored.
+
 To generate the MAR file, run the following:
 ```
 python3 $WORK_DIR/llm/generate.py --skip_download [--repo_version <REPO_COMMIT_ID> --handler <CUSTOM_HANDLER_PATH>] --model_name <MODEL_NAME> --model_path <MODEL_PATH> --output <NFS_LOCAL_MOUNT_LOCATION>
