@@ -1,7 +1,11 @@
 # Custom Model Support
-We provide the capability to generate a MAR file with custom model files and start an inference server using it with Torchserve.
+In some cases you may want to use a custom model, e.g. a custom fine-tuned model. We provide the capability to generate a MAR file with custom model files and start an inference server using it with Torchserve.
 
 ## Generate Model Archive File for Custom Models
+
+!!! note
+    The model archive files should be placed in a directory accessible by the Nutanix package, e.g. /home/ubuntu/models/&lt;custom_model_name&gt;/model_files. This directory will be passed to the --model_path argument. You'll also need to provide the --mar_output path where you want the model archive export to be stored.
+
 Run the following command for generating the Model Archive File (MAR) with the Custom Model files :
 ```
 python3 $WORK_DIR/llm/generate.py --skip_download [--repo_version <REPO_VERSION> --handler <CUSTOM_HANDLER_PATH>] --model_name <CUSTOM_MODEL_NAME> --model_path <MODEL_PATH> --mar_output <MAR_EXPORT_PATH>
