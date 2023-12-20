@@ -123,7 +123,7 @@ nav:
         - "Deploy on Virtual Machine":
             - "v0.3":
                 - "Getting Started": "gpt-in-a-box/vm/v0.3/getting_started.md"
-                - "Supported Models": "gpt-in-a-box/vm/v0.3/supported_models.md"
+                - "Validated Models": "gpt-in-a-box/vm/v0.3/validated_models.md"
                 - "Generating Model Archive File": "gpt-in-a-box/vm/v0.3/generating_mar.md"
                 - "Deploying Inference Server": "gpt-in-a-box/vm/v0.3/inference_server.md"
                 - "Inference Requests": "gpt-in-a-box/vm/v0.3/inference_requests.md"
@@ -142,7 +142,7 @@ nav:
         - "Deploy on Kubernetes":
             - "v0.2":
                 - "Getting Started": "gpt-in-a-box/kubernetes/v0.2/getting_started.md"
-                - "Supported Models": "gpt-in-a-box/kubernetes/v0.2/supported_models.md"
+                - "Validated Models": "gpt-in-a-box/kubernetes/v0.2/validated_models.md"
                 - "Generating Model Archive File": "gpt-in-a-box/kubernetes/v0.2/generating_mar.md"
                 - "Deploying Inference Server": "gpt-in-a-box/kubernetes/v0.2/inference_server.md"
                 - "Inference Requests": "gpt-in-a-box/kubernetes/v0.2/inference_requests.md"

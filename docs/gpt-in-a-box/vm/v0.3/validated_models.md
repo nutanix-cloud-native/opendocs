@@ -1,8 +1,8 @@
-# Supported Models for Kubernetes Version
+# Validated Models for Virtual Machine Version
 
-GPT-in-a-Box currently supports a curated set of HuggingFace models Information pertaining to these models is stored in the ```llm/model_config.json``` file.
+GPT-in-a-Box has been validated on a curated set of HuggingFace models. Information pertaining to these models is stored in the ```llm/model_config.json``` file.
 
-The Supported Models are :
+The Validated Models are :
 
 | Model Name | HuggingFace Repository ID |
 | --- | --- |
