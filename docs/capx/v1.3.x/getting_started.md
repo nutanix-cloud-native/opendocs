@@ -8,6 +8,9 @@ For more information on how CAPX handles credentials, visit [Credential Manageme
 
 For more information on the port requirements for CAPX, visit [Port Requirements](./port_requirements.md).
 
+!!! note
+    [Nutanix Cloud Controller Manager (CCM)](../../ccm/latest/overview.md) is a mandatory component starting from CAPX v1.3.0. Before upgrading existing CAPX installations with a version prior to v1.3.0 to v1.3.0 or later, ensure all CAPX-managed Kubernetes clusters are configured to use Nutanix CCM. See [CAPX v1.3.x Upgrade Procedure](./tasks/capx_v13x_upgrade_procedure.md).
+
 ## Production Workflow
 
 ### Build OS image for NutanixMachineTemplate resource
