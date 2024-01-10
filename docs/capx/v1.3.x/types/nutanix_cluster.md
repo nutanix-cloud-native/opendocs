@@ -48,6 +48,17 @@ The table below provides an overview of the supported parameters of the `spec` a
 |prismCentral.additionalTrustBundle.kind     |string|Kind of the additionalTrustBundle. Allowed value: `ConfigMap`                     |
 |prismCentral.additionalTrustBundle.name     |string|Name of the `ConfigMap` containing the Prism Central trust bundle.                |
 |prismCentral.additionalTrustBundle.namespace|string|(Optional) Namespace of the `ConfigMap` containing the Prism Central trust bundle.|
+|failureDomains                              |list  |(Optional) Failure domains for the Kubernetes nodes                               |
+|failureDomains.[].name                      |string|Name of the failure domain                                                        |
+|failureDomains.[].cluster                   |object|Reference (name or uuid) to the Prism Element cluster. Name or UUID can be passed |
+|failureDomains.[].cluster.type              |string|Type to identify the Prism Element cluster. Allowed values: `name` and `uuid`     |
+|failureDomains.[].cluster.name              |string|Name of the Prism Element cluster.                                                |
+|failureDomains.[].cluster.uuid              |string|UUID of the Prism Element cluster.                                                |
+|failureDomains.[].subnets                   |list  |(Optional) Reference (name or uuid) to the subnets to be assigned to the VMs.     |
+|failureDomains.[].subnets.[].type           |string|Type to identify the subnet. Allowed values: `name` and `uuid`                    |
+|failureDomains.[].subnets.[].name           |string|Name of the subnet.                                                               |
+|failureDomains.[].subnets.[].uuid           |string|UUID of the subnet.                                                               |
+|failureDomains.[].controlPlane              |bool  |Indicates if a failure domain is suited for control plane nodes
 
 !!! note
     To prevent duplicate IP assignments, it is required to assign an IP-address to the `controlPlaneEndpoint.host` variable that is not part of the Nutanix IPAM or DHCP range assigned to the subnet of the CAPX cluster.

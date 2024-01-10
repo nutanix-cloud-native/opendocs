@@ -60,11 +60,11 @@ The table below provides an overview of the supported parameters of the `spec` a
 |image.type                          |string|Type to identify the OS image. Allowed values: `name` and `uuid`                                        |
 |image.name                          |string|Name of the image.                                                                                      |
 |image.uuid                          |string|UUID of the image.                                                                                      |
-|cluster                             |object|Reference (name or uuid) to the Prism Element cluster. Name or UUID can be passed                       |
+|cluster                             |object|(Optional) Reference (name or uuid) to the Prism Element cluster. Name or UUID can be passed            |
 |cluster.type                        |string|Type to identify the Prism Element cluster. Allowed values: `name` and `uuid`                           |
 |cluster.name                        |string|Name of the Prism Element cluster.                                                                      |
 |cluster.uuid                        |string|UUID of the Prism Element cluster.                                                                      |
-|subnets                             |list  |Reference (name or uuid) to the subnets to be assigned to the VMs.                                      |
+|subnets                             |list  |(Optional) Reference (name or uuid) to the subnets to be assigned to the VMs.                           |
 |subnets.[].type                     |string|Type to identify the subnet. Allowed values: `name` and `uuid`                                          |
 |subnets.[].name                     |string|Name of the subnet.                                                                                     |
 |subnets.[].uuid                     |string|UUID of the subnet.                                                                                     |
@@ -79,3 +79,6 @@ The table below provides an overview of the supported parameters of the `spec` a
 |gpus.[].type                        |string|Type to identify the GPU. Allowed values: `name` and `deviceID`                                         |
 |gpus.[].name                        |string|Name of the GPU or the vGPU profile                                                                     |
 |gpus.[].deviceID                    |string|DeviceID of the GPU or the vGPU profile                                                                 |
+
+!!! note
+    The `cluster` or `subnets` configuration parameters are optional in case failure domains are defined on the `NutanixCluster` and `MachineDeployment` resources.
