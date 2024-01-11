@@ -2,7 +2,7 @@
 
 Starting from CAPX v1.3.0, it is required for all CAPX-managed Kubernetes clusters to use the Nutanix Cloud Controller Manager (CCM). 
 
-Before upgrading CAPX instances with a version prior to v1.3.0 to v1.3.0 or later, it is required to follow the [steps](#steps) detailed below for each of the CAPX-managed Kubernetes clusters that don't use Nutanix CCM.
+Before upgrading CAPX instances to v1.3.0 or later, it is required to follow the [steps](#steps) detailed below for each of the CAPX-managed Kubernetes clusters that don't use Nutanix CCM.
 
 
 ## Steps
