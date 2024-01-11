@@ -50,10 +50,10 @@ See the [Validated Kubernetes Versions](https://cluster-api.sigs.k8s.io/referenc
 
 ### Prism Central
 
-| CAPX   | 2022.1.0.2 | pc.2022.6 |pc.2023.x |
-|--------|------------|-----------|----------|
-| v1.3.x | No         | Yes       |Yes       |
-| v1.2.x | No         | Yes       |Yes       |
-| v1.1.x | No         | Yes       |No        |
-| v1.0.x | Yes        | Yes       |No        |
-| v0.5.x | Yes        | Yes       |No        |
+| CAPX   | 2022.1.0.2 | pc.2022.6 |pc.2022.9 |pc.2023.x |
+|--------|------------|-----------|----------|----------|
+| v1.3.x | No         | Yes       |No        |Yes       |
+| v1.2.x | No         | Yes       |Yes       |Yes       |
+| v1.1.x | No         | Yes       |No        |No        |
+| v1.0.x | Yes        | Yes       |No        |No        |
+| v0.5.x | Yes        | Yes       |No        |No        |
