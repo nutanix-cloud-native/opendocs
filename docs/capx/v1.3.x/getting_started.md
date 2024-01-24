@@ -46,6 +46,8 @@ NUTANIX_SSH_AUTHORIZED_KEY: ""
 NUTANIX_PRISM_ELEMENT_CLUSTER_NAME: ""
 NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME: ""
 NUTANIX_SUBNET_NAME: ""
+
+EXP_CLUSTER_RESOURCE_SET: true # Required for Nutanix CCM installation
 ```
 
 You can also see the required list of variables by running the following:
@@ -80,6 +82,9 @@ Optional Variables:
 
 !!! note
     To prevent duplicate IP assignments, it is required to assign an IP-address to the `CONTROL_PLANE_ENDPOINT_IP` variable that is not part of the Nutanix IPAM or DHCP range assigned to the subnet of the CAPX cluster. 
+
+!!! warning
+    Make sure [Cluster Resource Set (CRS)](https://cluster-api.sigs.k8s.io/tasks/experimental-features/cluster-resource-set){target=_blank} is enabled before running `clusterctl init`
 
 Now you can instantiate Cluster API with the following:
 ```
