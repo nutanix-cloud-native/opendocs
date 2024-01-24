@@ -7,7 +7,10 @@ Before upgrading CAPX instances to v1.3.0 or later, it is required to follow the
 
 ## Steps
 
-This procedure uses [Cluster Resource Set (CRS)](https://cluster-api.sigs.k8s.io/tasks/experimental-features/cluster-resource-set){target=_blank} to install Nutanix CCM but it can also be installed using the [Nutanix CCM Helm chart](https://artifacthub.io/packages/helm/nutanix/nutanix-cloud-provider){target=_blank}. 
+This procedure uses [Cluster Resource Set (CRS)](https://cluster-api.sigs.k8s.io/tasks/experimental-features/cluster-resource-set){target=_blank} to install Nutanix CCM but it can also be installed using the [Nutanix CCM Helm chart](https://artifacthub.io/packages/helm/nutanix/nutanix-cloud-provider){target=_blank}.
+
+!!! warning
+    Make sure [CRS](https://cluster-api.sigs.k8s.io/tasks/experimental-features/cluster-resource-set){target=_blank} is enabled on the management cluster before following the procedure.
 
 Perform following steps for each of the CAPX-managed Kubernetes clusters that are not configured to use Nutanix CCM:
 
