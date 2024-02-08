@@ -176,7 +176,8 @@ nav:
                 - "Generating Model Archive File": "gpt-in-a-box/kubernetes/v0.1/generating_mar.md"
                 - "Deploying Inference Server": "gpt-in-a-box/kubernetes/v0.1/inference_server.md"
                 - "Inference Requests": "gpt-in-a-box/kubernetes/v0.1/inference_requests.md"
-                - "Custom Model Support": "gpt-in-a-box/kubernetes/v0.1/custom_model.md"            
+                - "Custom Model Support": "gpt-in-a-box/kubernetes/v0.1/custom_model.md"   
+        - "Support": "gpt-in-a-box/support.md"         
   - "Guides":
     - "Cloud Native":
         - "Red Hat OpenShift":
