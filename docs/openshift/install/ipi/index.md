@@ -1,11 +1,7 @@
 # Red Hat OpenShift Container Platform Installer Provisioned Installation on Nutanix AOS (AHV)
 
-**Note:** Red Hat OpenShift Container Platform IPI has been tested for specific compatibility on following AOS and Prism Central versions:
-
-| Openshift | AOS               | Prism Central |
-|-----------|-------------------|---------------|
-| 4.12      | 5.20.4+ or 6.5.1+ | 2022.4+       |
-| 4.11      | 5.20.4+ or 6.1.1+ | 2022.4+       |
+!!! note
+    Visit the [Red Hat OpenShift Container Platform documentation](https://docs.openshift.com/container-platform/latest/installing/installing_nutanix/preparing-to-install-on-nutanix.html){target=_blank} to learn more about the tested AOS and Prism Central versions.
 
 ## Installation Prerequisites
 
