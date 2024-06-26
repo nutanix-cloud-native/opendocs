@@ -61,7 +61,7 @@ helm install --wait -n gpu-operator --create-namespace gpu-operator nvidia/gpu-o
 For NKE 2.9, refer the [official documentation](https://portal.nutanix.com/page/documents/details?targetId=Release-Notes-Nutanix-Kubernetes-Engine-v2_9:top-validated-config-r.html) for the validated config.
 
 ### Download nutanix package and Install python libraries  
-Download the **v0.2** release version from [NAI-LLM-K8s Releases](https://github.com/nutanix/nai-llm-k8s/releases/tag/v0.2) and untar the release. Set the working directory to the root folder containing the extracted release.
+Download the **v0.2.2** release version from [NAI-LLM-K8s Releases](https://github.com/nutanix/nai-llm-k8s/releases/tag/v0.2.2) and untar the release. Set the working directory to the root folder containing the extracted release.
 ```
 export WORK_DIR=absolute_path_to_empty_release_directory
 mkdir $WORK_DIR
