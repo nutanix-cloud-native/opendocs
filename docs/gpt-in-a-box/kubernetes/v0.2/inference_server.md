@@ -2,7 +2,7 @@
 
 Run the following command for starting Kubeflow serving and running inference on the given input:
 ```
-bash $WORK_DIR/llm/run.sh  -n <MODEL_NAME> -g <NUM_GPUS> -f <NFS_ADDRESS_WITH_SHARE_PATH> -m <NFS_LOCAL_MOUNT_LOCATION> -e <KUBE_DEPLOYMENT_NAME> [OPTIONAL -d <INPUT_PATH> -v <REPO_COMMIT_ID> -t <HUGGINGFACE_HUB_TOKEN>]
+bash $WORK_DIR/llm/run.sh  -n <MODEL_NAME> -g <NUM_GPUS> -f <NFS_ADDRESS_WITH_SHARE_PATH> -m <NFS_LOCAL_MOUNT_LOCATION> -e <KUBE_DEPLOYMENT_NAME> [OPTIONAL -d <INPUT_PATH> -v <REPO_COMMIT_ID>]
 ```
 
 * **n**:    Name of a [validated model](validated_models.md)
@@ -12,7 +12,6 @@ bash $WORK_DIR/llm/run.sh  -n <MODEL_NAME> -g <NUM_GPUS> -f <NFS_ADDRESS_WITH_SH
 * **m**:    Mount path to your nfs server to be used in the kube PV where model files and model archive file be stored
 * **e**:    Desired name of the deployment metadata (will be created)
 * **v**:    Commit ID of model's HuggingFace repository (optional, if not provided default set in model_config will be used)
-* **t**:    Your HuggingFace token. Needed for LLAMA(2) model.
 
 Should print "Inference Run Successful" as a message once the Inference Server has successfully started.  
 
@@ -29,7 +28,7 @@ bash $WORK_DIR/llm/run.sh -n falcon_7b -d data/qa -g 1 -e llm-deploy -f '1.1.1.1
 ```
 For 1 GPU Inference with official Llama2-7B model and keep inference server alive:
 ```
-bash $WORK_DIR/llm/run.sh -n llama2_7b -d data/summarize -g 1 -e llm-deploy -f '1.1.1.1:/llm' -m /mnt/llm -t <HUGGINGFACE_HUB_TOKEN>
+bash $WORK_DIR/llm/run.sh -n llama2_7b -d data/summarize -g 1 -e llm-deploy -f '1.1.1.1:/llm' -m /mnt/llm
 ```
 
 ### Cleanup Inference deployment
