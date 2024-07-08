@@ -9,7 +9,7 @@ python3 $WORK_DIR/llm/generate.py [--hf_token <HUGGINGFACE_HUB_TOKEN> --repo_ver
 * **model_name**:       Name of a [validated model](validated_models.md)
 * **output**:           Mount path to your nfs server to be used in the kube PV where model files and model archive file be stored
 * **repo_version**:     Commit ID of model's HuggingFace repository (optional, if not provided default set in model_config will be used)
-* **hf_token**:         Your HuggingFace token. Needed to download LLAMA(2) models.
+* **hf_token**:         Your HuggingFace token. Needed to download LLAMA(2) models. (It can alternatively be set using the environment variable 'HF_TOKEN')
 
 ### Examples  
 The following are example commands to generate the model archive file.  
