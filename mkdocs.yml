@@ -141,7 +141,7 @@ nav:
                 - "Manual": "anthos/install/manual/index.md" 
         - "Amazon EKS Anywhere":
             - "Install": "eksa/install/index.md"
-    - "GPT-in-a-Box":
+    - "GPT-in-a-Box 1.0":
         - "Overview": "gpt-in-a-box/overview.md"
         - "Deploy on Virtual Machine":
             - "v0.3":

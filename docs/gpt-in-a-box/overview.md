@@ -1,6 +1,6 @@
-# Nutanix GPT-in-a-Box Documentation
+# Nutanix GPT-in-a-Box 1.0 Documentation
 
-Welcome to the official home dedicated to documenting how to run Nutanix GPT-in-a-Box. Nutanix GPT-in-a-Box is a new turnkey solution that includes everything needed to build AI-ready infrastructure. Here, you'll find information and code to run Nutanix GPT-in-a-Box on Virtual Machines or Kubernetes Clusters.
+Welcome to the official home dedicated to documenting how to run Nutanix GPT-in-a-Box 1.0. Nutanix GPT-in-a-Box 1.0 is a turnkey solution that includes everything needed to build AI-ready infrastructure. Here, you'll find information and code to run Nutanix GPT-in-a-Box 1.0 on Virtual Machines or Kubernetes Clusters.
 
 This new solution includes:
 
