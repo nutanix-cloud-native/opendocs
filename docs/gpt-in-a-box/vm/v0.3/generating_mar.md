@@ -17,7 +17,7 @@ Where the arguments are :
 - **model_path**:      Absolute path of model files (should be empty if downloading)
 - **mar_output**:      Absolute path of export of MAR file (.mar)
 - **skip_download**:   Flag to skip downloading the model files
-- **hf_token**:        Your HuggingFace token. Needed to download and verify LLAMA(2) models.
+- **hf_token**:        Your HuggingFace token. Needed to download and verify LLAMA(2) models. (It can alternatively be set using the environment variable 'HF_TOKEN')
 
 ## Examples
 The following are example commands to generate the model archive file.
