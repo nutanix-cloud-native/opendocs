@@ -97,7 +97,7 @@ Based on requirements, choose one of the following options:
             #nfsServerName above is File Server Name in Prism without DNS suffix, not the FQDN.
             csi.storage.k8s.io/provisioner-secret-name: ntnx-secret
             csi.storage.k8s.io/provisioner-secret-namespace: openshift-cluster-csi-drivers
-        storageType: NutanixFiles
+            storageType: NutanixFiles
 
 2. Create a PVC yaml file like the below example and apply in the openshift-image-registry namespace (`oc -n openshift-image-registry apply -f <filename>`).
 
