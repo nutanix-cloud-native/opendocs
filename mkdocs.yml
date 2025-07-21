@@ -158,7 +158,23 @@ nav:
                                                           - "Autoscaler": "capx/v0.5.x/experimental/autoscaler.md"
                                                 - "Troubleshooting": "capx/v0.5.x/troubleshooting.md"
                             - "Nutanix Cloud Controller Manager (CCM)":
-                                      - "v0.3.x (Latest)":
+                                      - "v0.5.x (Latest)":
+                                                - "Overview": "ccm/v0.5.x/overview.md"
+                                                - "Requirements": "ccm/v0.5.x/requirements.md"
+                                                - "Configuration": "ccm/v0.5.x/ccm_configuration.md"
+                                                - "Certificate Trust": "ccm/v0.5.x/pc_certificates.md"
+                                                - "Credentials": "ccm/v0.5.x/ccm_credentials.md"
+                                                - "Topology Discovery": "ccm/v0.5.x/topology_discovery.md"
+                                                - "Custom Labeling": "ccm/v0.5.x/custom_labeling.md"
+                                      - "v0.4.x":
+                                                - "Overview": "ccm/v0.4.x/overview.md"
+                                                - "Requirements": "ccm/v0.4.x/requirements.md"
+                                                - "Configuration": "ccm/v0.4.x/ccm_configuration.md"
+                                                - "Certificate Trust": "ccm/v0.4.x/pc_certificates.md"
+                                                - "Credentials": "ccm/v0.4.x/ccm_credentials.md"
+                                                - "Topology Discovery": "ccm/v0.4.x/topology_discovery.md"
+                                                - "Custom Labeling": "ccm/v0.4.x/custom_labeling.md"
+                                      - "v0.3.x":
                                                 - "Overview": "ccm/v0.3.x/overview.md"
                                                 - "Requirements": "ccm/v0.3.x/requirements.md"
                                                 - "Configuration": "ccm/v0.3.x/ccm_configuration.md"
