@@ -27,39 +27,42 @@ Nutanix follows the version validation policies below:
 
 ## Validated versions
 ### Cluster-API
-| CAPX   | CAPI v1.3.x | CAPI v1.4.x | CAPI v1.5.x | CAPI v1.6.x | CAPI v1.7.x | CAPI v1.8.x |
-|--------|-------------|-------------|-------------|-------------|-------------|-------------|
-| v1.5.x | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         |
-| v1.4.x | Yes         | Yes         | Yes         | Yes         | Yes         | No          |
-| v1.3.x | Yes         | Yes         | Yes         | Yes         | No          | No          |
-| v1.2.x | Yes         | Yes         | Yes         | No          | No          | No          |
-| v1.1.x | Yes         | No          | No          | No          | No          | No          |
-| v1.0.x | No          | No          | No          | No          | No          | No          |
-| v0.5.x | No          | No          | No          | No          | No          | No          |
+| CAPX   | CAPI v1.3.x | CAPI v1.4.x | CAPI v1.5.x | CAPI v1.6.x | CAPI v1.7.x | CAPI v1.8.x | CAPI v1.9.x |
+|--------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|
+| v1.6.x | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         |
+| v1.5.x | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         | No          |
+| v1.4.x | Yes         | Yes         | Yes         | Yes         | Yes         | No          | No          |
+| v1.3.x | Yes         | Yes         | Yes         | Yes         | No          | No          | No          |
+| v1.2.x | Yes         | Yes         | Yes         | No          | No          | No          | No          |
+| v1.1.x | Yes         | No          | No          | No          | No          | No          | No          |
+| v1.0.x | No          | No          | No          | No          | No          | No          | No          |
+| v0.5.x | No          | No          | No          | No          | No          | No          | No          |
 
 See the [Validated Kubernetes Versions](https://cluster-api.sigs.k8s.io/reference/versions.html?highlight=version#supported-kubernetes-versions){target=_blank} page for more information on CAPI validated versions.
 
 ### AOS
 
-| CAPX   | 5.20.4.5 (LTS) | 6.1.1.5 (STS) | 6.5.x (LTS) | 6.6 (STS) | 6.7 (STS) | 6.8 (STS) |
-|--------|----------------|---------------|-------------|-----------|-----------|-----------|
-| v1.5.x | No             | No            | Yes         | No        | No        | Yes       |
-| v1.4.x | No             | No            | Yes         | No        | No        | Yes       |
-| v1.3.x | No             | No            | Yes         | Yes       | Yes       | No        |
-| v1.2.x | No             | No            | Yes         | Yes       | Yes       | No        |
-| v1.1.x | No             | No            | Yes         | No        | No        | No        |
-| v1.0.x | Yes            | Yes           | No          | No        | No        | No        |
-| v0.5.x | Yes            | Yes           | No          | No        | No        | No        |
+| CAPX   | 5.20.4.5 (LTS) | 6.1.1.5 (STS) | 6.5.x (LTS) | 6.6 (STS) | 6.7 (STS) | 6.8 (STS) | 6.10 | 7.0 | 7.3 |
+|--------|----------------|---------------|-------------|-----------|-----------|-----------|------|-----|-----|
+| v1.6.x | No             | No            | Yes         | No        | No        | Yes       | Yes  | Yes | Yes |
+| v1.5.x | No             | No            | Yes         | No        | No        | Yes       | Yes  | Yes | Yes |
+| v1.4.x | No             | No            | Yes         | No        | No        | Yes       | No   | No  | No  |
+| v1.3.x | No             | No            | Yes         | Yes       | Yes       | No        | No   | No  | No  |
+| v1.2.x | No             | No            | Yes         | Yes       | Yes       | No        | No   | No  | No  |
+| v1.1.x | No             | No            | Yes         | No        | No        | No        | No   | No  | No  |
+| v1.0.x | Yes            | Yes           | No          | No        | No        | No        | No   | No  | No  |
+| v0.5.x | Yes            | Yes           | No          | No        | No        | No        | No   | No  | No  |
 
 
 ### Prism Central
 
-| CAPX   | 2022.1.0.2 | pc.2022.6 | pc.2022.9 | pc.2023.x | pc.2024.x |
-|--------|------------|-----------|-----------|-----------|-----------|
-| v1.5.x | No         | Yes       | No        | Yes       | Yes       |
-| v1.4.x | No         | Yes       | No        | Yes       | Yes       |
-| v1.3.x | No         | Yes       | No        | Yes       | No        |
-| v1.2.x | No         | Yes       | Yes       | Yes       | No        |
-| v1.1.x | No         | Yes       | No        | No        | No        |
-| v1.0.x | Yes        | Yes       | No        | No        | No        |
-| v0.5.x | Yes        | Yes       | No        | No        | No        |
+| CAPX   | 2022.1.0.2 | pc.2022.6 | pc.2022.9 | pc.2023.x | pc.2024.x | pc.7.3 |
+|--------|------------|-----------|-----------|-----------|-----------|--------|
+| v1.6.x | No         | Yes       | No        | Yes       | Yes       | Yes    |
+| v1.5.x | No         | Yes       | No        | Yes       | Yes       | Yes    |
+| v1.4.x | No         | Yes       | No        | Yes       | Yes       | No     |
+| v1.3.x | No         | Yes       | No        | Yes       | No        | No     |
+| v1.2.x | No         | Yes       | Yes       | Yes       | No        | No     |
+| v1.1.x | No         | Yes       | No        | No        | No        | No     |
+| v1.0.x | Yes        | Yes       | No        | No        | No        | No     |
+| v0.5.x | Yes        | Yes       | No        | No        | No        | No     |
