@@ -27,7 +27,7 @@ nav:
                                                 - "Credential Management": "capx/v1.5.x/credential_management.md"
                                                 - "Tasks":
                                                           - "Modifying Machine Configuration": "capx/v1.5.x/tasks/modify_machine_configuration.md"
-                                                          - "CAPX v1.5.x Upgrade Procedure": "capx/v1.5.x/tasks/capx_v14x_upgrade_procedure.md"
+                                                          - "CAPX v1.5.x Upgrade Procedure": "capx/v1.5.x/tasks/capx_v15x_upgrade_procedure.md"
                                                 - "Port Requirements": "capx/v1.5.x/port_requirements.md"
                                                 - "User Requirements": "capx/v1.5.x/user_requirements.md"
                                                 - "Addons":
