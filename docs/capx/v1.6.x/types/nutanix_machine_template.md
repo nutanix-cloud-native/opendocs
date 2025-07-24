@@ -43,6 +43,24 @@ spec:
       # gpus:
       #  - type: name
       #    name: "GPU NAME"
+      # Note: Either of `image` or `imageLookup` must be set, but not both.
+      # imageLookup:
+      #   format: "NUTANIX_IMAGE_LOOKUP_FORMAT"
+      #   baseOS: "NUTANIX_IMAGE_LOOKUP_BASE_OS"
+      # dataDisks:
+      #   - diskSize:
+      #     deviceProperties:
+      #       deviceType: Disk
+      #       adapterType: SCSI
+      #       deviceIndex: 1
+      #     storageConfig:
+      #       diskMode: Standard
+      #       storageContainer:
+      #         type: name
+      #         name: "NUTANIX_VM_DISK_STORAGE_CONTAINER"
+      #     dataSource:
+      #       type: name
+      #       name: "NUTANIX_DATA_SOURCE_IMAGE_NAME"
 ```
 
 ## NutanixMachineTemplate spec
@@ -79,6 +97,28 @@ The table below provides an overview of the supported parameters of the `spec` a
 |gpus.[].type                        |string|Type to identify the GPU. Allowed values: `name` and `deviceID`                                         |
 |gpus.[].name                        |string|Name of the GPU or the vGPU profile                                                                     |
 |gpus.[].deviceID                    |string|DeviceID of the GPU or the vGPU profile                                                                 |
+|imageLookup                                         |object|(Optional) Reference to a container that holds how to look up rhcos images for the cluster.             |
+|imageLookup.format                                  |string|Naming format to look up the image for the machine. Default: `capx-{{.BaseOS}}-{{.K8sVersion}}-*`       |
+|imageLookup.baseOS                                  |string|Name of the base operating system to use for image lookup.                                              |
+|dataDisks                                           |list  |(Optional) Reference to the data disks to be attached to the VM.                                        |
+|dataDisks.[].diskSize                               |string|Size (in Quantity format) of the disk attached to the VM. The minimum diskSize is `1GB`.                |
+|dataDisks.[].deviceProperties                       |object|(Optional) Reference to the properties of the disk device.                                              |
+|dataDisks.[].deviceProperties.deviceType            |string|VM disk device type. Allowed values: `Disk` (default) and `CDRom`                                       |
+|dataDisks.[].deviceProperties.adapterType           |string|Adapter type of the disk address.                                                                       |
+|dataDisks.[].deviceProperties.deviceIndex           |int   |(Optional) Index of the disk address. Allowed values: non-negative integers (default: `0`)              |
+|dataDisks.[].storageConfig                          |object|(Optional) Reference to the storage configuration parameters of the VM disks.                           |
+|dataDisks.[].storageConfig.diskMode                 |string|Specifies the disk mode. Allowed values: `Standard` (default) and `Flash`                               |
+|dataDisks.[].storageConfig.storageContainer         |object|(Optional) Reference (name or uuid) to the storage_container used by the VM disk.                       |
+|dataDisks.[].storageConfig.storageContainer.type    |string|Type to identify the storage container. Allowed values: `name` and `uuid`                               |
+|dataDisks.[].storageConfig.storageContainer.name    |string|Name of the storage container.                                                                          |
+|dataDisks.[].storageConfig.storageContainer.uuid    |string|UUID of the storage container.                                                                          |
+|dataDisks.[].dataSource                             |object|(Optional) Reference (name or uuid) to a data source image for the VM disk.                             |
+|dataDisks.[].dataSource.type                        |string|Type to identify the data source image. Allowed values: `name` and `uuid`                               |
+|dataDisks.[].dataSource.name                        |string|Name of the data source image.                                                                          |
+|dataDisks.[].dataSource.uuid                        |string|UUID of the data source image.                                                                          |
 
 !!! note
-    The `cluster` or `subnets` configuration parameters are optional in case failure domains are defined on the `NutanixCluster` and `MachineDeployment` resources.
+  - The `cluster` or `subnets` configuration parameters are optional in case failure domains are defined on the `NutanixCluster` and `MachineDeployment` resources.
+  - If the `deviceType` is `Disk`, the valid `adapterType` can be `SCSI`, `IDE`, `PCI`, `SATA` or `SPAPR`. If the `deviceType` is `CDRom`, the valid `adapterType` can be `IDE` or `SATA`.
+  - Either of `image` or `imageLookup` must be set, but not both.
+  - For a Machine VM, the `deviceIndex` for the disks with the same `deviceType.adapterType` combination should start from `0` and increase consecutively afterwards. Note that for each Machine VM, the `Disk.SCSI.0` and `CDRom.IDE.0` are reserved to be used by the VM's system. So for `dataDisks` of Disk.SCSI and CDRom.IDE, the `deviceIndex` should start from `1`.
