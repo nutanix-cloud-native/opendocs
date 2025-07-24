@@ -1,4 +1,4 @@
-# CAPX v1.5.x Upgrade Procedure
+# CAPX v1.6.x Upgrade Procedure
 
 Starting from CAPX v1.3.0, it is required for all CAPX-managed Kubernetes clusters to use the Nutanix Cloud Controller Manager (CCM). 
 
@@ -61,9 +61,9 @@ spec:
 ```
 3. Add the Nutanix CCM CRS resources:
 
-    - [nutanix-ccm-crs.yaml](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/blob/v1.5.0/templates/base/nutanix-ccm-crs.yaml){target=_blank}
-    - [nutanix-ccm-secret.yaml](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/blob/v1.5.0/templates/base/nutanix-ccm-secret.yaml)
-    - [nutanix-ccm.yaml](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/blob/v1.5.0/templates/base/nutanix-ccm.yaml)
+    - [nutanix-ccm-crs.yaml](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/blob/v1.6.0/templates/ccm/nutanix-ccm-crs.yaml){target=_blank}
+    - [nutanix-ccm-secret.yaml](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/blob/v1.6.0/templates/ccm/nutanix-ccm-secret.yaml)
+    - [nutanix-ccm.yaml](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/blob/v1.6.0/templates/ccm/nutanix-ccm.yaml)
 
     Make sure to update each of the variables before applying the `YAML` files.
 
@@ -80,4 +80,4 @@ spec:
 kubectl get pod -A -l k8s-app=nutanix-cloud-controller-manager
 ```
 6. Trigger a new rollout of the Kubernetes nodes by performing a Kubernetes upgrade or by using `clusterctl alpha rollout restart`. See the [clusterctl alpha rollout](https://cluster-api.sigs.k8s.io/clusterctl/commands/alpha-rollout#restart){target=_blank} for more information.
-7. Upgrade CAPX to v1.5.0 by following the [clusterctl upgrade](https://cluster-api.sigs.k8s.io/clusterctl/commands/upgrade.html?highlight=clusterctl%20upgrade%20pla#clusterctl-upgrade){target=_blank} documentation
+7. Upgrade CAPX to v1.6.0 by following the [clusterctl upgrade](https://cluster-api.sigs.k8s.io/clusterctl/commands/upgrade.html?highlight=clusterctl%20upgrade%20pla#clusterctl-upgrade){target=_blank} documentation

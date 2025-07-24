@@ -61,9 +61,9 @@ spec:
 ```
 3. Add the Nutanix CCM CRS resources:
 
-    - [nutanix-ccm-crs.yaml](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/blob/v1.4.0/templates/base/nutanix-ccm-crs.yaml){target=_blank}
-    - [nutanix-ccm-secret.yaml](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/blob/v1.4.0/templates/base/nutanix-ccm-secret.yaml)
-    - [nutanix-ccm.yaml](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/blob/v1.4.0/templates/base/nutanix-ccm.yaml)
+    - [nutanix-ccm-crs.yaml](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/blob/v1.4.0/templates/ccm/nutanix-ccm-crs.yaml){target=_blank}
+    - [nutanix-ccm-secret.yaml](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/blob/v1.4.0/templates/ccm/nutanix-ccm-secret.yaml)
+    - [nutanix-ccm.yaml](https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/blob/v1.4.0/templates/ccm/nutanix-ccm.yaml)
 
     Make sure to update each of the variables before applying the `YAML` files.
 
