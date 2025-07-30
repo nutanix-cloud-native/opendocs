@@ -39,14 +39,14 @@ See the [Validated Kubernetes Versions](https://cluster-api.sigs.k8s.io/referenc
 
 | CAPX   | 6.5.x (LTS) | 6.6 (STS) | 6.7 (STS) | 6.8 (STS) | 6.10 | 7.0 | 7.3 |
 |--------|-------------|-----------|-----------|-----------|------|-----|-----|
-| v1.6.x | Yes         | No        | No        | Yes       | Yes  | Yes | Yes |
+| v1.6.x | No          | No        | No        | Yes       | Yes  | Yes | Yes |
 | v1.5.x | Yes         | No        | No        | Yes       | Yes  | Yes | Yes |
 | v1.4.x | Yes         | No        | No        | Yes       | No   | No  | No  |
 
 ### Prism Central
 
-| CAPX   |pc.2022.6 | pc.2022.9 | pc.2023.x | pc.2024.x | pc.7.3 |
+| CAPX   | pc.2022.6 | pc.2022.9 | pc.2023.x | pc.2024.x | pc.7.3 |
 |--------|-----------|-----------|-----------|-----------|--------|
-| v1.6.x | Yes       | No        | Yes       | Yes       | Yes    |
+| v1.6.x | No        | No        | Yes       | Yes       | Yes    |
 | v1.5.x | Yes       | No        | Yes       | Yes       | Yes    |
 | v1.4.x | Yes       | No        | Yes       | Yes       | No     |
