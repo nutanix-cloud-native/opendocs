@@ -51,7 +51,7 @@ With Nutanix CSI Provider you can:
           namespace: openshift-cluster-csi-drivers
         spec: 
           ntnxInitConfigMap:
-            usePC : false (false for PE based installations. Default is true.)
+            usePC : false
 
 
 
