@@ -30,7 +30,7 @@ The table below provides an overview of the supported parameters of the `spec` a
 |prismElementCluster.type                    |string|Type to identify the Prism Element cluster. Allowed values: `name` and `uuid`               |
 |prismElementCluster.name                    |string|Name of the Prism Element cluster.                                                          |
 |prismElementCluster.uuid                    |string|UUID of the Prism Element cluster.                                                          |
-|subnets                                     |list  |(Optional) Reference (name or uuid) to the subnets to be assigned to the VMs.               |
+|subnets                                     |list  |Reference (name or uuid) to the subnets to be assigned to the VMs.               |
 |subnets.[].type                             |string|Type to identify the subnet. Allowed values: `name` and `uuid`                              |
 |subnets.[].name                             |string|Name of the subnet.                                                                         |
 |subnets.[].uuid                             |string|UUID of the subnet.                                                                         |
@@ -78,6 +78,24 @@ spec:
       name: "SubnetA"
     - type: name
       name: "SubnetB"
+```
+
+### Multiple Subnets by Name and UUID
+
+```yaml
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: NutanixFailureDomain
+metadata:
+  name: fd-names
+spec:
+  prismElementCluster:
+    type: name
+    name: "PrismClusterA"
+  subnets:
+    - type: name
+      name: "SubnetA"
+    - type: uuid
+      name: "11111111-1111-1111-1111-111111111111"
 ```
 
 ## Day 2 Operations: Rolling Out New Failure Domains
