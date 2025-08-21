@@ -7,8 +7,8 @@ Example of a `NutanixFailureDomain` resource:
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: NutanixFailureDomain
 metadata:
-  name: example-failure-domain
-  namespace: default
+  name: "${FAILURE_DOMAIN_NAME}"
+  namespace: "${CLUSTER_NAMESPACE}"
 spec:
   prismElementCluster:
     type: name
