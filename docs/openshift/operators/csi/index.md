@@ -115,7 +115,7 @@ In order to use this driver, create the relevant storage classes and secrets usi
         kind: StorageClass
         apiVersion: storage.k8s.io/v1
         metadata:
-          name: nutanix-volume
+          name: nutanix-files
         provisioner: csi.nutanix.com
         parameters:
           csi.storage.k8s.io/provisioner-secret-name: ntnx-pe-secret
