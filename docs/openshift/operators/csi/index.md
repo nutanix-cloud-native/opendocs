@@ -40,7 +40,7 @@ With Nutanix CSI Provider you can:
           namespace: openshift-cluster-csi-drivers
         spec: 
           ntnxInitConfigMap:
-            usePC : true (false for PE based installations. Default is true.)
+            usePC : true
 
 4. To install Nutanix CSI Driver interacting in PE Mode
 
