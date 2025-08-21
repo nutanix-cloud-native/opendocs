@@ -57,7 +57,7 @@ With Nutanix CSI Provider you can:
 
 ### Configuring the K8s secret and storage class
 
-In order to use this driver, create the relevant storage classes and secrets using the OpenShift CLI, by followinig the below section:
+In order to use this driver, create the relevant storage classes and secrets using the OpenShift CLI, by following the below section:
 
 1. Depending on the mode of interaction of the CSI Driver(Interacting with PC or PE), create a secret yaml file like the below example and apply (`oc -n openshift-cluster-csi-drivers apply -f <filename>`).
 
