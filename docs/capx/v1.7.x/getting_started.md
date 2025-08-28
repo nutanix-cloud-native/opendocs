@@ -30,7 +30,6 @@ The [Cluster API installation](https://cluster-api.sigs.k8s.io/user/quick-start.
 
 Make sure these prerequisites have been met before moving to the [Configure and Install Cluster API Provider Nutanix Cloud Infrastructure](#configure-and-install-cluster-api-provider-nutanix-cloud-infrastructure) step.
 
-
 ### Configure and Install Cluster API Provider Nutanix Cloud Infrastructure
 To initialize Cluster API Provider Nutanix Cloud Infrastructure, `clusterctl` requires the following variables, which should be set in either `~/.cluster-api/clusterctl.yaml` or as environment variables.
 ```
@@ -113,7 +112,7 @@ clusterctl get kubeconfig ${TEST_CLUSTER_NAME} -n ${TEST_NAMESPACE} > ${TEST_CLU
 kubectl --kubeconfig ./${TEST_CLUSTER_NAME}.kubeconfig get nodes 
 ```
 
-### Install CNI on workload a cluster
+### Install CNI on a workload cluster
 
 You must deploy a Container Network Interface (CNI) based pod network add-on so that your pods can communicate with each other. Cluster DNS (CoreDNS) will not start up before a network is installed.
 
@@ -128,12 +127,13 @@ Follow the specific install guide for your selected CNI and install only one pod
 
 Once a pod network has been installed, you can confirm that it is working by checking that the CoreDNS pod is running in the output of `kubectl get pods --all-namespaces`.
 
-
-### Add failure Domain to Cluster
+### Add Failure Domain to Cluster
 
 To update your cluster to use new or modified failure domains after initial deployment, follow these steps:
+
 1. Create NutanixFailureDomain resource
-For example, define a failure domain in example.yaml:
+
+   For example, define a failure domain in example.yaml:
 ```
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: NutanixFailureDomain
@@ -149,53 +149,66 @@ spec:
     - type: name
       name: "SubnetB"
 ```
+
 2. Apply the resource
-```
+
+   ```
 kubectl apply -f example.yaml
 ```
 
 3. Edit the NutanixCluster resource to reference the failure domain(s)
-```
+
+   ```
 kubectl edit nutanixcluster <cluster-name> -n <namespace>
 ```
-In the spec section, add the controlPlaneFailureDomains field:
-```
+
+   In the spec section, add the controlPlaneFailureDomains field:
+
+   ```
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: NutanixCluster
 metadata:
 spec:
-    controlPlaneFailureDomains: // add  controlPlaneFailureDomains
-    - name: "fd-domain-1"       // failureDomain name
-    - name: "fd-domain-2"       // failureDomain name
-    controlPlaneEndpoint:
-    prismCentral:
+  controlPlaneFailureDomains: # add controlPlaneFailureDomains
+    - name: "fd-domain-1"      # failureDomain name
+    - name: "fd-domain-2"      # failureDomain name
+  controlPlaneEndpoint:
+  prismCentral:
 ```
 
 4. Verify the update
-Check that the failure domains are registered with the cluster:
-```
+
+   Check that the failure domains are registered with the cluster:
+
+   ```
 kubectl get cluster <cluster-name> -n <namespace> -o yaml
 ```
-Look for the failureDomains in status section:
-```
+
+   Look for the failureDomains in status section:
+
+   ```
 failureDomains:
-    fd-domain-1:
-      controlPlane: true
-    fd-domain-2:
-      controlPlane: true
+  fd-domain-1:
+    controlPlane: true
+  fd-domain-2:
+    controlPlane: true
 ```
 
 ### Add Failure Domain to MachineDeployment
 
 To associate a MachineDeployment with a specific failure domain:
+
 1. Export the MachineDeployment definition
-```
+
+   ```
 kubectl get machinedeployments <name> -n <namespace> -o yaml > machinedeployment.yaml
 ```
 
 2. Edit the manifest to add the failure domain
-Under spec.template.spec, add a failureDomain field:
-```
+
+   Under spec.template.spec, add a failureDomain field:
+
+   ```
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: MachineDeployment
 metadata:
@@ -216,19 +229,24 @@ spec:
 ```
 
 3. Apply the changes
-```
+
+   ```
 kubectl apply -f machinedeployment.yaml
 ```
 
 4. Verify the Update
-Confirm that the failure domain field was updated:
-```
+
+   Confirm that the failure domain field was updated:
+
+   ```
 kubectl get machinedeployments <name> -n <namespace> -o yaml | grep failureDomain
 ```
 
 5. Check placement of machines
-Ensure new machines are placed in the specified failure domain:
-```
+
+   Ensure new machines are placed in the specified failure domain:
+
+   ```
 kubectl get machines -l cluster.x-k8s.io/deployment-name=<name> -n <namespace> -o yaml
 ```
 
