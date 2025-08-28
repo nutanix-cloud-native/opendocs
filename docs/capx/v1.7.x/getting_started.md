@@ -224,7 +224,7 @@ spec:
       labels:
         cluster.x-k8s.io/deployment-name: your-machinedeployment
     spec:
-      failureDomain: "your-failure-domain-name"
+      failureDomain: "fd-domain-1"
       # other fields like bootstrap, infrastructureRef ...
 ```
 
