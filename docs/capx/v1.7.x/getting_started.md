@@ -170,8 +170,8 @@ kind: NutanixCluster
 metadata:
 spec:
   controlPlaneFailureDomains: # add controlPlaneFailureDomains
-    - name: "fd-domain-1"      # failureDomain name
-    - name: "fd-domain-2"      # failureDomain name
+  - name: "fd-domain-1"      # failureDomain name
+  - name: "fd-domain-2"      # failureDomain name
   controlPlaneEndpoint:
   prismCentral:
 ```
