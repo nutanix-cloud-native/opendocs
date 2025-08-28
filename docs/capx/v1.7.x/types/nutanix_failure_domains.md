@@ -97,28 +97,3 @@ spec:
     - type: uuid
       name: "11111111-1111-1111-1111-111111111111"
 ```
-
-## Day 2 Operations: Rolling Out New Failure Domains
-
-To update your cluster to use new or modified failure domains after initial deployment, follow these steps:
-
-1. **Update Failure Domain References**  
-   Edit your `NutanixCluster` and/or `NutanixMachineTemplate` resources to reference the new or updated `NutanixFailureDomain` objects.  
-   For example, update the `controlPlaneFailureDomains` or `failureDomain` fields as needed.
-
-2. **Apply the Updated Resources**  
-   Use `kubectl apply -f <resource-file>.yaml` to apply your changes.
-
-3. **Trigger a Rolling Restart**  
-   Use the following command to trigger a rolling restart of the machines in the cluster, ensuring the new failure domain assignments take effect:
-   ```bash
-   clusterctl alpha rollout restart <resource> -n <namespace>
-   ```
-   Replace `<resource>` with the appropriate resource type (e.g., `machinedeployment`, `controlplane`), and `<namespace>` with your cluster's namespace.
-
-**Example:**
-```bash
-clusterctl alpha rollout restart machinedeployment/my-md -n default
-```
-
-This process ensures that workloads are redistributed according to the updated

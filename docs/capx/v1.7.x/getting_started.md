@@ -129,6 +129,109 @@ Follow the specific install guide for your selected CNI and install only one pod
 Once a pod network has been installed, you can confirm that it is working by checking that the CoreDNS pod is running in the output of `kubectl get pods --all-namespaces`.
 
 
+### Add failure Domain to Cluster
+
+To update your cluster to use new or modified failure domains after initial deployment, follow these steps:
+1. Create NutanixFailureDomain resource
+For example, define a failure domain in example.yaml:
+```
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: NutanixFailureDomain
+metadata:
+  name: fd-domain-1
+spec:
+  prismElementCluster:
+    type: name
+    name: "PrismClusterA"
+  subnets:
+    - type: name
+      name: "SubnetA"
+    - type: name
+      name: "SubnetB"
+```
+2. Apply the resource
+```
+kubectl apply -f example.yaml
+```
+
+3. Edit the NutanixCluster resource to reference the failure domain(s)
+```
+kubectl edit nutanixcluster <cluster-name> -n <namespace>
+```
+In the spec section, add the controlPlaneFailureDomains field:
+```
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: NutanixCluster
+metadata:
+spec:
+    controlPlaneFailureDomains: // add  controlPlaneFailureDomains
+    - name: "fd-domain-1"       // failureDomain name
+    - name: "fd-domain-2"       // failureDomain name
+    controlPlaneEndpoint:
+    prismCentral:
+```
+
+4. Verify the update
+Check that the failure domains are registered with the cluster:
+```
+kubectl get cluster <cluster-name> -n <namespace> -o yaml
+```
+Look for the failureDomains in status section:
+```
+failureDomains:
+    fd-domain-1:
+      controlPlane: true
+    fd-domain-2:
+      controlPlane: true
+```
+
+### Add Failure Domain to MachineDeployment
+
+To associate a MachineDeployment with a specific failure domain:
+1. Export the MachineDeployment definition
+```
+kubectl get machinedeployments <name> -n <namespace> -o yaml > machinedeployment.yaml
+```
+
+2. Edit the manifest to add the failure domain
+Under spec.template.spec, add a failureDomain field:
+```
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: MachineDeployment
+metadata:
+  name: your-machinedeployment
+  namespace: your-namespace
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      cluster.x-k8s.io/deployment-name: your-machinedeployment
+  template:
+    metadata:
+      labels:
+        cluster.x-k8s.io/deployment-name: your-machinedeployment
+    spec:
+      failureDomain: "your-failure-domain-name"
+      # other fields like bootstrap, infrastructureRef ...
+```
+
+3. Apply the changes
+```
+kubectl apply -f machinedeployment.yaml
+```
+
+4. Verify the Update
+Confirm that the failure domain field was updated:
+```
+kubectl get machinedeployments <name> -n <namespace> -o yaml | grep failureDomain
+```
+
+5. Check placement of machines
+Ensure new machines are placed in the specified failure domain:
+```
+kubectl get machines -l cluster.x-k8s.io/deployment-name=<name> -n <namespace> -o yaml
+```
+
 ### Kube-vip settings
 
 Kube-vip is a true load balancing solution for the Kubernetes control plane. It distributes API requests across control plane nodes. It also has the capability to provide load balancing for Kubernetes services.
