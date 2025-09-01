@@ -23,6 +23,7 @@ nav:
                                                 - "Types":
                                                           - "NutanixCluster": "capx/v1.7.x/types/nutanix_cluster.md"
                                                           - "NutanixMachineTemplate": "capx/v1.7.x/types/nutanix_machine_template.md"
+                                                          - "NutanixFailureDomain": "capx/v1.7.x/types/nutanix_failure_domain.md"
                                                 - "Certificate Trust": "capx/v1.7.x/pc_certificates.md"
                                                 - "Credential Management": "capx/v1.7.x/credential_management.md"
                                                 - "Tasks":
