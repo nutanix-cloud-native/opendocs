@@ -138,6 +138,26 @@ In order to use this driver, create the relevant storage classes and secrets usi
         allowVolumeExpansion: true
         reclaimPolicy: Delete
 
+4. For PC based installation create storage class yaml as shown below and apply (`oc apply -f <filename>`).
+
+        kind: StorageClass
+        apiVersion: storage.k8s.io/v1
+        metadata:
+          name: nutanix-volume
+        provisioner: csi.nutanix.com
+        parameters:
+          csi.storage.k8s.io/fstype: ext4
+          storageContainer: default-container
+          storageType: NutanixVolumes
+          #description: "description added to each storage object created by the driver"
+          #isSegmentedIscsiNetwork: "false"
+          #whitelistIPMode: ENABLED
+          #chapAuth: ENABLED
+          #isLVMVolume: "false"
+          #numLVMDisks: 4
+        allowVolumeExpansion: true
+        reclaimPolicy: Delete
+
     
 **Note:** By default, new RHCOS based nodes are provisioned with the required `scsi-initiator-utils` package installed, but with the `iscsid` service disabled. This can result in messages like `iscsiadm: can not connect to iSCSI daemon (111)!`. When this occurs, confirm that the `iscsid.service` is running on worker nodes. It can be enabled and started globally using the Machine Config Operator or directly on each node using systemctl (`sudo systemctl enable --now iscsid`).
      
