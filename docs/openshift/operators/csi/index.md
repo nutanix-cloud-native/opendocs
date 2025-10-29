@@ -42,7 +42,7 @@ With Nutanix CSI Provider you can:
           ntnxInitConfigMap:
             usePC : true
 
-4. To install Nutanix CSI Driver interacting in PE Mode
+5. To install Nutanix CSI Driver interacting in PE Mode
 
         apiVersion: crd.nutanix.com/v1alpha1
         kind: NutanixCsiStorage
