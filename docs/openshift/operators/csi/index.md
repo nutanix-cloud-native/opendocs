@@ -74,7 +74,7 @@ In order to use this driver, create the relevant storage classes and secrets usi
 
 1. Depending on the mode of interaction of the CSI Driver(Interacting with PC or PE), create a secret yaml file like the below example and apply (`oc -n openshift-cluster-csi-drivers apply -f <filename>`).
 
-    ### Create a Nutanix PC secret
+    ### Nutanix PC based secret
         apiVersion: v1
         kind: Secret
         metadata:
@@ -84,7 +84,7 @@ In order to use this driver, create the relevant storage classes and secrets usi
           # prism-central-ip:prism-port:username:password.
           key: 1.2.3.4:9440:admin:password
 
-    ### Create a Nutanix PE secret
+    ### Nutanix PE based secret
         apiVersion: v1
         kind: Secret
         metadata:
@@ -95,7 +95,7 @@ In order to use this driver, create the relevant storage classes and secrets usi
           key: 1.2.3.4:9440:admin:password
           files-key: "fileserver01.sample.com:csi:password1" # For dynamic files mode
 
-    ### PC Secret for service account based authentication
+    ### Nutanix PC secret with service account based authentication
         apiVersion: v1
         kind: Secret
         metadata:
@@ -111,7 +111,7 @@ In order to use this driver, create the relevant storage classes and secrets usi
 
 2. Depending on the mode of interaction of the CSI Driver(Interacting with PC or PE and storageType NutanixVolumes or NutanixFiles), create a storageclass yaml file like the below example and apply (`oc -n openshift-cluster-csi-drivers apply -f <filename>`).
     
-    ### For NutanixVolumes on PE based installation create storage class yaml like the below.
+    ### Nutanix Volumes on PE based installation
 
         kind: StorageClass
         apiVersion: storage.k8s.io/v1
@@ -139,7 +139,7 @@ In order to use this driver, create the relevant storage classes and secrets usi
         allowVolumeExpansion: true
         reclaimPolicy: Delete
 
-    ### For dynamic files mode on PE create storage class yaml like the below example and apply (`oc apply -f <filename>`).
+    ### Nutanix dynamic files on PE based installation
 
         kind: StorageClass
         apiVersion: storage.k8s.io/v1
@@ -162,7 +162,7 @@ In order to use this driver, create the relevant storage classes and secrets usi
           #description: "description added to each storage object created by the driver"
         allowVolumeExpansion: true
 
-    ### For NutanixVolumes on PC based installation create storage class yaml as shown below and apply (`oc apply -f <filename>`).
+    ### Nutanix Volumes on PC based installation
 
         kind: StorageClass
         apiVersion: storage.k8s.io/v1
