@@ -53,6 +53,19 @@ With Nutanix CSI Provider you can:
           ntnxInitConfigMap:
             usePC : false
 
+CSI 3.3.8 supports PC service account-based authentication in Nutanix Volumes and Nutanix Files. Instead of using username and password secrets, Prism Central administrators can now create service accounts, configure RBAC, and use generated API keys for secure storage provisioning.
+
+6. To install Nutanix CSI Driver with service account based authentication
+
+        apiVersion: crd.nutanix.com/v1alpha1
+        kind: NutanixCsiStorage
+        metadata:
+          name: nutanixcsistorage
+          namespace: openshift-cluster-csi-drivers
+        spec: 
+          authType: "service-auth"
+          ntnxInitConfigMap:
+            usePC : true
 
 
 ### Configuring the K8s secret and storage class
@@ -81,6 +94,20 @@ In order to use this driver, create the relevant storage classes and secrets usi
           # prism-element-ip:prism-port:username:password.
           key: 1.2.3.4:9440:admin:password
           files-key: "fileserver01.sample.com:csi:password1" # For dynamic files mode
+
+        ### PC Secret for service account based authentication
+        apiVersion: v1
+        kind: Secret
+        metadata:
+          name: ntnx-pc-secret
+          namespace: openshift-cluster-csi-drivers
+        type: Opaque
+        stringData:
+          host: 1.2.3.4
+          port: 9440
+          key_type: "api-key"
+          key_value: "xxxxxxxxxxx"
+          auth_type: "service-auth"
 
 2. Create storage class yaml like the below example and apply (`oc apply -f <filename>`).
 
