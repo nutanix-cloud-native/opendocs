@@ -74,7 +74,7 @@ In order to use this driver, create the relevant storage classes and secrets usi
 
 1. Depending on the mode of interaction of the CSI Driver(Interacting with PC or PE), create a secret yaml file like the below example and apply (`oc -n openshift-cluster-csi-drivers apply -f <filename>`).
 
-        ### Create a Nutanix PC secret
+    ### Create a Nutanix PC secret
         apiVersion: v1
         kind: Secret
         metadata:
@@ -84,7 +84,7 @@ In order to use this driver, create the relevant storage classes and secrets usi
           # prism-central-ip:prism-port:username:password.
           key: 1.2.3.4:9440:admin:password
 
-        ### Create a Nutanix PE secret
+    ### Create a Nutanix PE secret
         apiVersion: v1
         kind: Secret
         metadata:
@@ -95,7 +95,7 @@ In order to use this driver, create the relevant storage classes and secrets usi
           key: 1.2.3.4:9440:admin:password
           files-key: "fileserver01.sample.com:csi:password1" # For dynamic files mode
 
-        ### PC Secret for service account based authentication
+    ### PC Secret for service account based authentication
         apiVersion: v1
         kind: Secret
         metadata:
@@ -109,7 +109,7 @@ In order to use this driver, create the relevant storage classes and secrets usi
           key_value: "xxxxxxxxxxx"
           auth_type: "service-auth"
 
-2. Create storage class yaml like the below example and apply (`oc apply -f <filename>`).
+### For PE based installation create storage class yaml like the below example and apply (`oc apply -f <filename>`).
 
         kind: StorageClass
         apiVersion: storage.k8s.io/v1
@@ -137,14 +137,16 @@ In order to use this driver, create the relevant storage classes and secrets usi
         allowVolumeExpansion: true
         reclaimPolicy: Delete
 
-3. For dynamic files mode example create storage class yaml like the below example and apply (`oc apply -f <filename>`).
+### For dynamic files mode example create storage class yaml like the below example and apply (`oc apply -f <filename>`).
 
         kind: StorageClass
         apiVersion: storage.k8s.io/v1
         metadata:
-          name: nutanix-files
+          name: nutanix-dynfiles
         provisioner: csi.nutanix.com
         parameters:
+          dynamicProv: ENABLED
+          nfsServerName: fs
           csi.storage.k8s.io/provisioner-secret-name: ntnx-pe-secret
           csi.storage.k8s.io/provisioner-secret-namespace: openshift-cluster-csi-drivers
           csi.storage.k8s.io/node-publish-secret-name: ntnx-pe-secret
@@ -153,19 +155,12 @@ In order to use this driver, create the relevant storage classes and secrets usi
           csi.storage.k8s.io/controller-expand-secret-namespace: openshift-cluster-csi-drivers
           csi.storage.k8s.io/controller-publish-secret-name: ntnx-pe-secret
           csi.storage.k8s.io/controller-publish-secret-namespace: openshift-cluster-csi-drivers
-          csi.storage.k8s.io/fstype: ext4
-          storageContainer: default-container
-          storageType: NutanixVolumes
+          storageType: NutanixFiles
+          squashType: "none"
           #description: "description added to each storage object created by the driver"
-          #isSegmentedIscsiNetwork: "false"
-          #whitelistIPMode: ENABLED
-          #chapAuth: ENABLED
-          #isLVMVolume: "false"
-          #numLVMDisks: 4
         allowVolumeExpansion: true
-        reclaimPolicy: Delete
 
-4. For PC based installation create storage class yaml as shown below and apply (`oc apply -f <filename>`).
+### For PC based installation create storage class yaml as shown below and apply (`oc apply -f <filename>`).
 
         kind: StorageClass
         apiVersion: storage.k8s.io/v1
