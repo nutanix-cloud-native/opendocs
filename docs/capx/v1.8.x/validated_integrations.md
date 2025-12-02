@@ -27,13 +27,11 @@ Nutanix follows the version validation policies below:
 
 ## Validated versions
 ### Cluster-API
-| CAPX   | CAPI v1.3.x | CAPI v1.4.x | CAPI v1.5.x | CAPI v1.6.x | CAPI v1.7.x | CAPI v1.8.x | CAPI v1.9.x | CAPI v1.10.x |
-|--------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|--------------|
-| v1.8.x | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         | Yes          | 
-| v1.7.x | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         | Yes          |
-| v1.6.x | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         | No           |
-| v1.5.x | Yes         | Yes         | Yes         | Yes         | Yes         | Yes         | No          | No           |
-| v1.4.x | Yes         | Yes         | Yes         | Yes         | Yes         | No          | No          | No           |
+| CAPX   | CAPI v1.8.x | CAPI v1.9.x | CAPI v1.10.x |
+|--------|-------------|-------------|--------------|
+| v1.8.x | Yes         | Yes         | Yes          | 
+| v1.7.x | Yes         | Yes         | Yes          |
+| v1.6.x | Yes         | Yes         | No           |
 
 See the [Validated Kubernetes Versions](https://cluster-api.sigs.k8s.io/reference/versions.html?highlight=version#supported-kubernetes-versions){target=_blank} page for more information on CAPI validated versions.
 

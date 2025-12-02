@@ -23,6 +23,7 @@ The following permissions are required for Prism Central domain users:
 - Delete Name Category
 - Delete Value Category
 - Delete Virtual Machine
+- Detach Volume Group From AHV VM
 - View Category Mapping
 - View Cluster
 - View Image

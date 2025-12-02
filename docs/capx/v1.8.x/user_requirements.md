@@ -35,7 +35,7 @@ The following permissions are required for Prism Central domain users:
 
 ## CAPX v1.8.x Upgrade Requirements
 
-When upgrading CAPX to v1.8.x, users must meet the following additional requirements:
+When upgrading CAPX v1.7.x to v1.8.x, users must meet the following additional requirements:
 
 The following permissions are required for Prism Central domain users: 
 
