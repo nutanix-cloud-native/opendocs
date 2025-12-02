@@ -47,6 +47,10 @@ See the [Validated Kubernetes Versions](https://cluster-api.sigs.k8s.io/referenc
 | v1.5.x | Yes         | Yes       | Yes  | Yes | Yes |
 | v1.4.x | Yes         | Yes       | No   | No  | No  |
 
+!!! warning "Cloud-Init Compatibility with AOS 7.3"
+
+    When using CAPX v1.8.x with AOS 7.3, operating systems that do not use cloud-config for cloud-init may experience issues. Ensure your OS images are configured to use cloud-config format for cloud-init to avoid compatibility problems.
+
 ### Prism Central
 
 | CAPX   | pc.2022.6 | pc.2023.x | pc.2024.x | pc.7.3 |
