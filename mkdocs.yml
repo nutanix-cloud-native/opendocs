@@ -18,7 +18,32 @@ nav:
                   - "Cloud Native":
                             - "Overview": "index.md"
                             - "Cluster API Provider: Nutanix (CAPX)":
-                                      - "v1.7.x (latest)":
+                                      - "v1.8.x (latest)":
+                                                - "Getting Started": "capx/v1.8.x/getting_started.md"
+                                                - "Types":
+                                                          - "NutanixCluster": "capx/v1.8.x/types/nutanix_cluster.md"
+                                                          - "NutanixMachineTemplate": "capx/v1.8.x/types/nutanix_machine_template.md"
+                                                          - "NutanixFailureDomain": "capx/v1.8.x/types/nutanix_failure_domains.md"
+                                                - "Certificate Trust": "capx/v1.8.x/pc_certificates.md"
+                                                - "Credential Management": "capx/v1.8.x/credential_management.md"
+                                                - "Tasks":
+                                                          - "Modifying Machine Configuration": "capx/v1.8.x/tasks/modify_machine_configuration.md"
+                                                          - "CAPX v1.8.x Upgrade Procedure": "capx/v1.8.x/tasks/capx_v18x_upgrade_procedure.md"
+                                                - "Port Requirements": "capx/v1.8.x/port_requirements.md"
+                                                - "User Requirements": "capx/v1.8.x/user_requirements.md"
+                                                - "Addons":
+                                                          - "CSI Driver Installation": "capx/v1.8.x/addons/install_csi_driver.md"
+                                                - "Validated Integrations": "capx/v1.8.x/validated_integrations.md"
+                                                - "Topology":
+                                                          - "Multi-PE CAPX cluster": "capx/v1.8.x/topology/capx_multi_pe.md"
+                                                - "Experimental":
+                                                          - "Autoscaler": "capx/v1.8.x/experimental/autoscaler.md"
+                                                          - "OIDC Integration": "capx/v1.8.x/experimental/oidc.md"
+                                                          - "Flow VPC": "capx/v1.8.x/experimental/vpc.md"
+                                                          - "Proxy Configuration": "capx/v1.8.x/experimental/proxy.md"
+                                                          - "Registry Mirror Configuration": "capx/v1.8.x/experimental/registry_mirror.md"
+                                                - "Troubleshooting": "capx/v1.8.x/troubleshooting.md"
+                                      - "v1.7.x":
                                                 - "Getting Started": "capx/v1.7.x/getting_started.md"
                                                 - "Types":
                                                           - "NutanixCluster": "capx/v1.7.x/types/nutanix_cluster.md"
