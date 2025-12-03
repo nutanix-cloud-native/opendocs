@@ -152,19 +152,19 @@ spec:
 
 2. Apply the resource
 
-   ```
+```
 kubectl apply -f example.yaml
 ```
 
 3. Edit the NutanixCluster resource to reference the failure domain(s)
 
-   ```
+```
 kubectl edit nutanixcluster <cluster-name> -n <namespace>
 ```
 
    In the spec section, add the controlPlaneFailureDomains field:
 
-   ```
+```
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: NutanixCluster
 metadata:
@@ -180,13 +180,13 @@ spec:
 
    Check that the failure domains are registered with the cluster:
 
-   ```
+```
 kubectl get cluster <cluster-name> -n <namespace> -o yaml
 ```
 
    Look for the failureDomains in status section:
 
-   ```
+```
 failureDomains:
   fd-domain-1:
     controlPlane: true
@@ -200,7 +200,7 @@ To associate a MachineDeployment with a specific failure domain:
 
 1. Export the MachineDeployment definition
 
-   ```
+```
 kubectl get machinedeployments <name> -n <namespace> -o yaml > machinedeployment.yaml
 ```
 
@@ -208,7 +208,7 @@ kubectl get machinedeployments <name> -n <namespace> -o yaml > machinedeployment
 
    Under spec.template.spec, add a failureDomain field:
 
-   ```
+```
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: MachineDeployment
 metadata:
@@ -230,7 +230,7 @@ spec:
 
 3. Apply the changes
 
-   ```
+```
 kubectl apply -f machinedeployment.yaml
 ```
 
@@ -238,7 +238,7 @@ kubectl apply -f machinedeployment.yaml
 
    Confirm that the failure domain field was updated:
 
-   ```
+```
 kubectl get machinedeployments <name> -n <namespace> -o yaml | grep failureDomain
 ```
 
@@ -246,7 +246,7 @@ kubectl get machinedeployments <name> -n <namespace> -o yaml | grep failureDomai
 
    Ensure new machines are placed in the specified failure domain:
 
-   ```
+```
 kubectl get machines -l cluster.x-k8s.io/deployment-name=<name> -n <namespace> -o yaml
 ```
 

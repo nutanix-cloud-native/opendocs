@@ -42,8 +42,6 @@ See the [Validated Kubernetes Versions](https://cluster-api.sigs.k8s.io/referenc
 | v1.8.x | No          | Yes       | Yes  | Yes | Yes |
 | v1.7.x | No          | Yes       | Yes  | Yes | Yes |
 | v1.6.x | No          | Yes       | Yes  | Yes | Yes |
-| v1.5.x | Yes         | Yes       | Yes  | Yes | Yes |
-| v1.4.x | Yes         | Yes       | No   | No  | No  |
 
 !!! warning "Cloud-Init Compatibility with AOS 7.3"
 
@@ -56,5 +54,3 @@ See the [Validated Kubernetes Versions](https://cluster-api.sigs.k8s.io/referenc
 | v1.8.x | No        | No        | No        | Yes    |
 | v1.7.x | No        | Yes       | Yes       | Yes    |
 | v1.6.x | No        | Yes       | Yes       | Yes    |
-| v1.5.x | Yes       | Yes       | Yes       | Yes    |
-| v1.4.x | Yes       | Yes       | Yes       | No     |
