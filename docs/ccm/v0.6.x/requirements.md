@@ -1,33 +1,41 @@
 # Requirements
 
-This section provides an overview of the requirements for Nutanix CCM:
+Nutanix Cloud Controller Manager (CCM) interacts with Nutanix Prism Central (PC) APIs using a Prism Central user account to fetch the required information for Kubernetes nodes.
+
+CCM supports two types of PC users:
+
+- Local users: automatically get `Viewer` permissions when no role is assigned.
+- Domain users: must be assigned a role that includes the `Viewer` role.
 
 ## Port requirements
 
-Nutanix CCM uses Prism Central APIs to fetch the required information for the Kubernetes nodes. As a result, the Kubernetes nodes need to have access to the Prism Central endpoint that is configured in the `nutanix-config` configmap.
+Nutanix CCM uses Prism Central APIs to communicate with the Prism Central endpoint configured in the `nutanix-config` configmap. The following network connectivity is required:
 
 |Source            |Destination         |Protocol  |Port |Description                             |
 |------------------|--------------------|----------|-----|----------------------------------------|
 |Kubernetes nodes  |Prism Central       |TCP       |9440 |Nutanix CCM communication to Prism Central|
 
 ## User permissions
-Nutanix CCM will only perform read operations and requires a user account with an assigned `Viewer` role to consume Prism Central APIs.
 
-### Required roles: Local user
+Nutanix CCM performs read-only operations and requires minimal permissions to consume Prism Central APIs.
 
-|Role               |Required|
-|-------------------|--------|
-|User Admin         |No      |
-|Prism Central Admin|No      |
+### Required permissions for local users
+
+Local users automatically receive the necessary permissions:
+
+- View Cluster
+- View Category
+- View Host
+- View Virtual Machine
 
 !!! note
+    For local users, if no role is assigned, the local user will only get `Viewer` permissions, which are sufficient for CCM operations.
 
-    For local users, if no role is assigned, the local user will only get `Viewer` permissions
+### Required permissions for domain users
 
-### Required roles: Directory user
+The following role must be assigned for Prism Central domain users:
 
-Assign following role in the user role-mapping if a non-local user is required: 
+- Viewer
 
-|Role               |Required|
-|-------------------|--------|
-|Viewer             |Yes     |
+!!! note
+    Domain users must be explicitly assigned the `Viewer` role in the user role-mapping configuration.
