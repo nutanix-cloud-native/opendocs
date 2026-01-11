@@ -39,7 +39,7 @@ See the [Validated Kubernetes Versions](https://cluster-api.sigs.k8s.io/referenc
 
 | CAPX   | 6.5.x (LTS) | 6.8 (STS) | 6.10 | 7.0 | 7.3 |
 |--------|-------------|-----------|------|-----|-----|
-| v1.8.x | No          | Yes       | Yes  | Yes | Yes |
+| v1.8.x | No          | No        | No   | No  | Yes |
 | v1.7.x | No          | Yes       | Yes  | Yes | Yes |
 | v1.6.x | No          | Yes       | Yes  | Yes | Yes |
 

@@ -31,7 +31,7 @@ Nutanix follows the version validation policies below for CCM:
 
 | CCM    | 6.5.x (LTS) | 6.8 (STS) | 6.10 | 7.0 | 7.3 |
 |--------|-------------|-----------|------|-----|-----|
-| v0.6.x | No          | Yes       | Yes  | Yes | Yes |
+| v0.6.x | No          | No        | No   | No  | Yes |
 | v0.5.x | Yes         | Yes       | Yes  | Yes | Yes |
 | v0.4.x | Yes         | Yes       | Yes  | Yes | No  |
 
