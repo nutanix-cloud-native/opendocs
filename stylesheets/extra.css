@@ -1,0 +1,38 @@
+@font-face {
+    font-family: Ntnx;
+    font-weight: 300;
+    src: url(/fonts/Ntnx-Thin_fb5e3af32c79ba0829df..woff) format("woff"), url(/fonts/Ntnx-Thin_1124ae90852da00cfd07..ttf) format("truetype")
+}
+
+@font-face {
+    font-family: Ntnx;
+    font-weight: 400;
+    src: url(/fonts/Ntnx-Regular_6e13eb427af287f8af3c..woff) format("woff"), url(/fonts/Ntnx-Regular_fa59ac55c2170e0e6703..ttf) format("truetype")
+}
+
+@font-face {
+    font-family: Ntnx;
+    font-weight: 500;
+    src: url(/fonts/Ntnx-Medium_b1e2851227222366d691..woff) format("woff"), url(/fonts/Ntnx-Medium_d0f459266105e360d5b3..ttf) format("truetype")
+}
+
+@font-face {
+    font-family: Ntnx;
+    font-weight: 600;
+    src: url(/fonts/Ntnx-Semibold_0bfb593c816c8208bd63..woff) format("woff"), url(/fonts/Ntnx-Semibold_05ff2647ca089da1145b..ttf) format("truetype")
+}
+
+@font-face {
+    font-family: Ntnx;
+    font-weight: 700;
+    src: url(/fonts/Ntnx-Bold_9981e61404de6d2ed57e..woff) format("woff"), url(/fonts/Ntnx-Bold_15c4443053f2def04d0a..ttf) format("truetype")
+}
+
+:root>* {
+    --md-text-font: Ntnx, Helvetica Neue, Helvetica, Arial, sans-serif;
+    --md-primary-fg-color: #22272E;
+    --md-primary-fg-color--light: #ECB7B7;
+    --md-primary-fg-color--dark: #90030C;
+    --md-accent-fg-color: #1C6Cc6;
+    --md-typeset-a-color: #1C6Cc6;
+}
