@@ -13,22 +13,22 @@ See [Credential Management](./credential_management.md){target=_blank} for more 
 
 The following permissions are required for Prism Central domain users: 
 
+- Create New Virtual Machine
+- Delete Existing Virtual Machine
+- Power On Virtual Machine
+- View Existing Virtual Machine
 - Create Category
+- Delete Category
+- View Category
+- View Cluster
 - View Cluster Pgpu Profiles
 - View Cluster Vgpu Profiles
 - Create Image
-- Create New Virtual Machine
 - Delete Image
-- Delete Category
-- Delete Virtual Machine
-- Detach Volume Group From AHV VM
-- Power On Virtual Machine
-- View Category
-- View Cluster
 - View Image
 - View Project
 - View Subnet
-- View Virtual Machine
+- Detach Volume Group From AHV VM
 
 !!! note
     The list of permissions has been validated on PC 7.3 and above.
