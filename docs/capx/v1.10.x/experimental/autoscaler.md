@@ -127,3 +127,44 @@ metadata:
     cluster.x-k8s.io/cluster-api-autoscaler-node-group-max-size: "5"
     cluster.x-k8s.io/cluster-api-autoscaler-node-group-min-size: "1"
 ```
+
+## Scaling from zero
+
+Starting with CAPX v1.10.x, the `NutanixMachineTemplate` resource exposes a `status.capacity` field. The Cluster Autoscaler uses this capacity information to make scale-up decisions when a node group has **zero** replicas, since in that case there are no existing nodes from which to infer the resources a new machine would provide. This implements the Cluster API [opt-in autoscaling from zero](https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20210310-opt-in-autoscaling-from-zero.md){target=_blank} proposal.
+
+CAPX populates `status.capacity` automatically based on the machine configuration (for example `vcpuSockets`, `vcpusPerSocket`, and `memorySize`). You can inspect it with:
+
+```bash
+kubectl get nutanixmachinetemplate <name> -n <namespace> -o jsonpath='{.status.capacity}'
+```
+
+Example of a populated `status.capacity`:
+
+```YAML
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: NutanixMachineTemplate
+metadata:
+  name: "${CLUSTER_NAME}-mt-0"
+  namespace: "${NAMESPACE}"
+spec:
+  template:
+    spec:
+      vcpuSockets: 2
+      vcpusPerSocket: 1
+      memorySize: "4Gi"
+      # ...
+status:
+  capacity:
+    cpu: "2"
+    memory: "4Gi"
+```
+
+!!! note
+    To allow a node group to scale down to (and back up from) zero, set the minimum size annotation to `"0"` on the `MachineDeployment`:
+
+    ```YAML
+    metadata:
+      annotations:
+        cluster.x-k8s.io/cluster-api-autoscaler-node-group-min-size: "0"
+        cluster.x-k8s.io/cluster-api-autoscaler-node-group-max-size: "5"
+    ```

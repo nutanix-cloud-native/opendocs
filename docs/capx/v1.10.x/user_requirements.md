@@ -34,11 +34,14 @@ The following permissions are required for Prism Central domain users:
 !!! note
     The list of permissions has been validated on PC 7.3 and above.
 
+!!! note
+    To use the [`NutanixMetro`](./types/nutanix_metro.md) resource (and the related `NutanixMetroSite` and `NutanixVirtualHADomain` resources), the Prism Central user must additionally have the **DR Admin** role, as these resources manage disaster-recovery entities such as protection policies and recovery plans.
+
 ## CAPX v1.10.x Upgrade Requirements
 
-When upgrading CAPX v1.9.x to v1.10.x, users must meet the following additional requirements:
+CAPX v1.10.x does not introduce any new Prism Central permission requirements compared to v1.9.x. When upgrading from v1.9.x to v1.10.x, no additional permissions beyond those already required for v1.9.x need to be granted.
 
-The following permissions are required for Prism Central domain users: 
+For reference, the complete set of permissions required for Prism Central domain users is: 
 
 - Create Category
 - Create Category Mapping
